@@ -1,0 +1,149 @@
+@keyframes alertAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes disAlertAnimation {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes popout {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+@include zoom-animation('top', scaleY(0), scaleY(1), center top);
+@include zoom-animation('left', scale(.45, .45), scale(1, 1), top left);
+@include zoom-animation('right', scale(.45, .45), scale(1, 1), top right);
+@include zoom-animation('bottom', scaleY(0), scaleY(1),  center bottom);
+
+@keyframes menu {
+  0% {
+    border-right: none;
+  }
+  100% {
+    border-right-width: 2px;
+  }
+}
+.spread-enter {
+  height: 0;
+  //margin: 0;
+}
+.spread-enter-active {
+  height: 265px;
+  //margin-top: 12px;
+  transition: height 1.5s cubic-bezier(.645, .045, .355, 1);
+
+}
+.spread-exit {
+  height: 265px;
+}
+.spread-exit-active {
+  height: 0;
+  transition: height .8s cubic-bezier(.645, .045, .355, 1)
+}
+
+@keyframes oneOpacity {
+  0% {
+    opacity: 1;
+  }
+  33.3333% {
+    opacity: .25;
+  }
+  66.6667% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes oneTrans {
+  0% {
+    transform: scale(1);
+  }
+  33.3333% {
+    transform: scale(.8);
+  }
+  66.6667% {
+    transform: scale(.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes twoOpacity {
+  0% {
+    opacity: .5;
+  }
+  33.3333% {
+    opacity: 1;
+  }
+  66.6667% {
+    opacity: .25;
+  }
+  100% {
+    opacity: 5;
+  }
+}
+
+@keyframes TwoTrans {
+  0% {
+    transform: scale(.8);
+  }
+  33.3333% {
+    transform: scale(1);
+  }
+  66.6667% {
+    transform: scale(.8);
+  }
+  100% {
+    transform: scale(.8);
+  }
+}
+
+@keyframes threeOpacity {
+  0% {
+    opacity: .25;
+  }
+  33.3333% {
+    opacity: .5;
+  }
+  66.6667% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .25;
+  }
+}
+
+@keyframes ThreeTrans {
+  0% {
+    transform: scale(.8);
+  }
+  33.3333% {
+    transform: scale(.8);
+  }
+  66.6667% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(.8);
+  }
+}

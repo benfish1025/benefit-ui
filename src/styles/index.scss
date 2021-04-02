@@ -1,0 +1,20 @@
+@import "variables";
+@import "mixins";
+@import "reboot";
+@import "utilities";
+@import "animations";
+
+/* Button Style*/
+@import "../components/Button/_style.scss";
+/* Alert Style*/
+@import "../components/Alert/_style.scss";
+/* Nav Style*/
+@import "../components/Nav/_style.scss";
+/* Menu Style*/
+@import "../components/Menu/_style.scss";
+/* Switch Style*/
+@import "../components/Switch/_style.scss";
+/* CheckBox Style*/
+@import "../components/CheckBox/_style.scss";
+/* Card Style */
+@import "../components/Card/_style.scss";

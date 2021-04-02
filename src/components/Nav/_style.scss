@@ -1,0 +1,119 @@
+.nav {
+  display: flex;
+  justify-content: center;
+  height: 7rem;
+  background-color: #fff;
+  border-bottom: 2px solid #e5e5e5;
+  .nav-under {
+    padding: 0 2rem;
+    margin: 0;
+    flex-grow: 1;
+    max-width: 1140px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.nav-item {
+  font-size: 1.6rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  transition: 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  z-index: 100;
+  &:hover {
+    filter: brightness(.7) contrast(2.5);
+    & .nav-popout {
+      display: block;
+      transition: none;
+    }
+  }
+}
+.nav-popout {
+  display: none;
+  border: 2px solid #e5e5e5;
+  border-radius: 15px;
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translateX(-50%);
+  &:after {
+    z-index: -5;
+    content:'';
+    display: block;
+    position:absolute;
+    bottom:92%;
+    left:50%;
+    border-radius: 3px;
+    transform: translateX(-50%) rotate(45deg);
+    padding:.7rem;
+    border-width:2px;
+    border-style:solid;
+    border-color: #e5e5e5;
+    background-color: #ffffff;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+  }
+  /*&__triangle {
+    width: 1.4rem;
+    height: 1.4rem;
+    border: 2px solid #e5e5e5;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: rotate(45deg);
+    transform-origin: top;
+  }*/
+  &__item {
+    color: inherit;
+    width: 28rem;
+    height: 6.5rem;
+    padding-left: 1rem;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    overflow: hidden;
+    &:hover {
+      background-color: #f7f7f7;
+    }
+    .popout-item__image {
+      margin-right: 1rem;
+      width: 3.6rem;
+      height: 3.6rem;
+      & img {
+        width: 3.6rem;
+        height: 3.6rem;
+      }
+    }
+    &:nth-child(2){
+      border-top-left-radius: 13px;
+      border-top-right-radius: 13px;
+    }
+    &:last-child {
+      border-bottom-left-radius: 13px;
+      border-bottom-right-radius: 13px;
+    }
+    &:not(:last-child) {
+      border-bottom: 2px solid #e5e5e5;
+    }
+  }
+}
+.item-content {
+  display: flex;
+  align-items: center;
+  &__image {
+    margin-right: 1rem;
+    width: 36px;
+    height: 36px;
+    & img {
+      color: #afafaf;
+      width: 36px;
+      height: 36px;
+    }
+  }
+  &__name {
+    color: #afafaf;
+  }
+}
+

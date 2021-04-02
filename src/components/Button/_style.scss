@@ -1,0 +1,127 @@
+.btn {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: .8px;
+  white-space: nowrap;
+  vertical-align: middle;
+  text-align: center;
+  border-radius: 15px;
+  border-style: solid;
+  transition: filter 0.2s ease;
+  &:focus {
+    outline: none;
+  }
+  &.disabled,
+  &[disabled] {
+    cursor: not-allowed;
+    border-width: 0;
+    margin-bottom: 4px;
+    transform: translate3d(0, 4px, 0);
+    background: #e5e5e5;
+    color: rgb(175, 175, 175);
+    > * {
+      pointer-events: none;
+    }
+  }
+}
+//size///////////////////////////////////////
+.btn-full {
+  display: block;
+  width: 100%;
+}
+
+.btn-tiny {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.btn-normal {
+  padding-left: 65px;
+  padding-right: 65px;
+}
+//样式大类///////////////////////////////////
+.btn-primary {
+  border-width: 0 0 4px;
+  background: rgb(120, 200, 0);
+  border-color: rgb(88, 167, 0);
+  color: rgb(255, 255, 253);
+  padding-top: 12px;
+  padding-bottom: 12px;
+  &:hover:enabled {
+    filter: brightness(1.1);
+  }
+  &:active:enabled {
+    border-width: 0;
+    margin-bottom: 4px;
+    transform: translate3d(0,4px,0);
+  }
+}
+.btn-sub {
+  border-width: 0 0 4px;
+  background: rgb(28, 176, 246);
+  border-color: rgb(24, 153, 214);
+  color: rgb(255, 255, 253);
+  padding-top: 12px;
+  padding-bottom: 12px;
+  &:hover:enabled {
+    filter: brightness(1.1);
+  }
+  &:active:enabled {
+    border-width: 0;
+    margin-bottom: 4px;
+    transform: translate3d(0,4px,0);
+  }
+}
+.btn-last {
+  padding-top: 11px;
+  padding-bottom: 11px;
+  background: rgb(255, 255, 253);
+  border-color: rgb(229, 229, 229);
+  color: rgb(175, 175, 175);
+  border-width: 2px 2px 4px;
+  &:hover:enabled {
+    filter: brightness(.9);
+  }
+  &:active:enabled {
+    border-width: 2px;
+    margin-bottom: 2px;
+    transform: translate3d(0,2px,0);
+  }
+}
+.btn-check {
+  padding: 11px 15px;
+  background: rgb(255, 255, 253);
+  border-color: rgb(229, 229, 229);
+  color: rgb(175, 175, 175);
+  border-width: 2px 2px 4px;
+  &:hover {
+    filter: brightness(.9);
+    border-width: 2px;
+    margin-bottom: 2px;
+    transform: translate3d(0,2px,0);
+  }
+  &:active {
+    filter: brightness(1);
+    background-color: #ddf4ff;
+    border-color: #84d8ff;
+    color: rgb(24, 153, 214);
+    border-width: 2px;
+  }
+}
+.btn-image {
+
+}
+.btn-link {
+  color: #1cb0f6;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: capitalize;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
