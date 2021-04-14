@@ -10,7 +10,7 @@ interface CheckBoxGroupProps {
   options: Option[],
   defaultValue?: string[],
   tittle?: string,
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void,
+  onChange?: () => void,
   className?: string,
   style?: CSSProperties
 }
@@ -20,6 +20,7 @@ const CheckBoxGroup:React.FC<CheckBoxGroupProps> = (props) => {
   const [indeterminate, setIndeterminate] = useState(()=>{
     return !!defaultValue && defaultValue?.length !== options?.length
   })
+  const [interact, setInteract] = useState(false)
   const [orderChecked, setOrderChecked] = useState(()=>{
     return !!defaultValue && defaultValue.length === options?.length
   })
@@ -33,19 +34,16 @@ const CheckBoxGroup:React.FC<CheckBoxGroupProps> = (props) => {
     setOrderChecked(order !== 0)
 
   },[order])
-  const calculate = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.checked) {
-      setOrder(order + 1)
-    } else {
-      setOrder(order - 1)
-    }
+  const orderChange = () => {
+    setOrderChecked(!orderChecked)
   }
   const renderCheckBox = () => {
     if (options) {
       return options.map((option, index) => {
         const state = defaultValue && defaultValue.includes(option.value)
+        console.log('renderCheckBox运行了',state)
         return (
-          <CheckBox key={option.value} defaultChecked={state} disabled={option.disabled} onChange={calculate}>{option.label}</CheckBox>
+          <CheckBox key={option.value} checked={orderChecked} disabled={option.disabled}>{option.label}</CheckBox>
         )
       })
     } else {
@@ -54,8 +52,8 @@ const CheckBoxGroup:React.FC<CheckBoxGroupProps> = (props) => {
   }
 
   return (
-      <div className={className}>
-        <CheckBox indeterminate={indeterminate} checked={false}>{tittle}</CheckBox>
+      <div className={className} style={style}>
+        <CheckBox onChange={orderChange} indeterminate={indeterminate} checked={orderChecked}>{tittle}</CheckBox>
         {renderCheckBox()}
       </div>
   )

@@ -39,12 +39,12 @@
   padding-right: 15px;
 }
 
-.btn-normal {
+.btn-middle {
   padding-left: 65px;
   padding-right: 65px;
 }
 //样式大类///////////////////////////////////
-.btn-primary {
+.btn-success {
   border-width: 0 0 4px;
   background: rgb(120, 200, 0);
   border-color: rgb(88, 167, 0);
@@ -60,7 +60,93 @@
     transform: translate3d(0,4px,0);
   }
 }
-.btn-sub {
+.btn-white {
+  background-color: hsla(0, 0%, 100%, 0.5);
+  border-color: transparent;
+  color: inherit;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-width: 0 0 4px;
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    border-width: 0 0 4px;
+    border-radius: 16px;
+    background-clip: padding-box;
+    border-style: solid;
+    z-index: -1;
+    border-color: transparent;
+    background-color: rgb(255, 255, 253);
+  }
+  &:hover:enabled {
+    filter: brightness(1.1);
+  }
+  &:active:enabled {
+    border-width: 4px 0 0;
+    background-color: transparent;
+    transform: translate3d(0,0,0);
+    &::after {
+      border-width: 0;
+      bottom: 0;
+    }
+  }
+}
+.btn-ghost {
+  background-color: transparent;
+  border-color: transparent;
+  color: rgb(255, 255, 253);
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-width: 0 0 4px;
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -4px;
+    border-width: 2px 2px 4px;
+    border-radius: 16px;
+    background-clip: padding-box;
+    border-style: solid;
+    z-index: -1;
+    border-color: rgba(0,0,0,.2);
+  }
+  &:hover:enabled {
+    filter: brightness(1.1);
+  }
+  &:active:enabled {
+    margin-bottom: 0;
+    transform: translate3d(0,2px,0);
+    &::after {
+      border-width: 2px 2px 2px;
+      bottom: -2px;
+    }
+  }
+}
+.btn-error {
+  border-width: 0 0 4px;
+  background: #ff4b4b;
+  border-color: #ea2b2b;
+  color: rgb(255, 255, 253);
+  padding-top: 12px;
+  padding-bottom: 12px;
+  &:hover:enabled {
+    filter: brightness(1.1);
+  }
+  &:active:enabled {
+    border-width: 0;
+    margin-bottom: 4px;
+    transform: translate3d(0,4px,0);
+  }
+}
+.btn-normal {
   border-width: 0 0 4px;
   background: rgb(28, 176, 246);
   border-color: rgb(24, 153, 214);

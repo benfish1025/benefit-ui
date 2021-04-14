@@ -1,0 +1,28 @@
+.b-popconfirm {
+  color: #fff;
+  padding: 24px 16px;
+  background-color: #ffc800;
+  border-color: #ffc800;
+  min-width: 300px;
+  max-width: 300px;
+  &__tittle {
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 2rem;
+  }
+  &__detail {
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 2rem;
+  }
+  &__container {
+    margin-bottom: 24px;
+  }
+
+  &::after {
+    padding:.5rem;
+    border-color: inherit;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+  }
+}

@@ -1,0 +1,84 @@
+/*
+    background-color: #ffdfe0;
+    color: #ea2b2b;
+
+    background-color: #ff4b4b;
+------------------------------------
+    background-color: #d7ffb8;
+    color: #58a700;
+
+
+*/
+.message-wrapper {
+  z-index: 300;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 13rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &.is-success {
+    background-color: #d7ffb8;
+    color: #58a700;
+  }
+  &.is-normal {
+    background-color: #ddf4ff;
+    color: #1cb0f6;
+  }
+  &.is-error {
+    background-color: #ffdfe0;
+    color: #ea2b2b;
+  }
+  .message-content {
+    margin-right: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    &__avatar {
+      height: 60px;
+      width: 60px;
+      background-color: #fff;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      background-size: 50%;
+      border-radius: 50%;
+      margin-right: 30px;
+      &.is-success {
+        background-image: url("check.svg");
+      }
+      &.is-normal {
+        background-image: url("normal.svg");
+      }
+      &.is-error {
+        background-image: url("error.svg");
+      }
+    }
+    &__text {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      & .tittle{
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 4px 0 8px 0;
+      }
+      & .info {
+        font-size: 1.6rem;
+        font-weight: 600;
+      }
+    }
+    .button-wrapper {
+
+    }
+  }
+
+}
+.check {
+    opacity: 0.2;
+    animation-name: twoTrans;
+    animation-duration: 1.2s;
+    animation-delay: 0.2s;
+    animation-timing-function: ease-in-out;
+}

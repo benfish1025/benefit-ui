@@ -69,14 +69,14 @@ class Unfold extends React.Component<UnfoldProps> {
     vertical: {
       paddingTop: '0',
       paddingBottom: '0',
-      borderTopWidth: '0',
+      // borderTopWidth: '0',
       borderBottomWidth: '0',
       height: '0'
     },
     horizontal: {
       paddingLeft: '0',
       paddingRight: '0',
-      borderLeftWidth: '0',
+      // borderLeftWidth: '0',
       borderRightWidth: '0',
       width: '0'
     }
@@ -196,6 +196,7 @@ class Unfold extends React.Component<UnfoldProps> {
       width,
       height
     }
+    console.log(this.prevSize)
   }
 
   public hideNode() {

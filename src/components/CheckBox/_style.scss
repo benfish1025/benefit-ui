@@ -16,10 +16,37 @@ input[type=checkbox]{
   margin: 0;
   position: relative;
   width: 20px;
-}
-input[type=checkbox]:checked{
-  border: 2px solid #1caff6;
+  &:checked {
+    border: 2px solid #1caff6;
+    &::after {
+      border-bottom: 3px solid #1caff6;
+      border-left: 3px solid #1caff6;
+      content: "";
+      position: absolute;
+      height: 35%;
+      left: 25%;
+      top: 31%;
+      transform: rotate(-45deg);
+      width: 55%;
+    }
+    &[disabled],
+    &.disabled {
+      border: 2px solid #afafaf;
+      &::after {
+        border-bottom: 3px solid #afafaf;
+        border-left: 3px solid #afafaf;
+        content: "";
+        position: absolute;
+        height: 35%;
+        left: 25%;
+        top: 31%;
+        transform: rotate(-45deg);
+        width: 55%;
+      }
+    }
+  }
   &.indeterminate {
+    border: 2px solid #1caff6;
     &::after {
       background-color: #1caff6;
       content: "";
@@ -31,32 +58,6 @@ input[type=checkbox]:checked{
       height: 58%;
       border-radius: 3px;
     }
-  }
-  &[disabled],
-  &.disabled {
-    border: 2px solid #afafaf;
-    &::after {
-      border-bottom: 3px solid #afafaf;
-      border-left: 3px solid #afafaf;
-      content: "";
-      position: absolute;
-      height: 35%;
-      left: 25%;
-      top: 31%;
-      transform: rotate(-45deg);
-      width: 55%;
-    }
-  }
-  &::after {
-    border-bottom: 3px solid #1caff6;
-    border-left: 3px solid #1caff6;
-    content: "";
-    position: absolute;
-    height: 35%;
-    left: 25%;
-    top: 31%;
-    transform: rotate(-45deg);
-    width: 55%;
   }
 }
 .checkbox {

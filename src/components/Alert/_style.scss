@@ -7,16 +7,17 @@
   top: 0;
   z-index: 400;
 }
-.alert-true {
+/*.alert-true {
   animation-name: alertAnimation;
   animation-duration: 0.3s;
 }
 .alert-false {
   animation-name: disAlertAnimation;
   animation-duration: 0.3s;
-}
+}*/
 .alert-container {
-  position: absolute;
+  z-index: 410;
+  position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%,-50%);

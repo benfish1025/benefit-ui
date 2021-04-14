@@ -1,10 +1,9 @@
 import React, {ChangeEvent, InputHTMLAttributes, useState} from 'react'
 import ClassNames from 'classnames'
-
 interface CheckBoxProps extends Omit<InputHTMLAttributes<HTMLElement>,'onChange'>{
   defaultChecked?: boolean,
   disabled?: boolean,
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
+  onChange?: (mode?: any) => any,
   className?: string,
   style?: React.CSSProperties,
   indeterminate?: boolean
@@ -18,9 +17,9 @@ const CheckBox: React.FC<CheckBoxProps> = (props) => {
     'indeterminate': indeterminate
   })
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log('checkbox is',e.target.checked)
     if (onChange) {
-      onChange(e)
+      onChange(e.target.checked)
+      console.log(e.target.checked)
     }
   }
   return(

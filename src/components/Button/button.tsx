@@ -1,8 +1,8 @@
 import React, {AnchorHTMLAttributes, ButtonHTMLAttributes} from 'react'
 import ClassNames from 'classnames'
 
-export type ButtonSize = 'tiny' | 'normal' | 'full'
-export type ButtonType = 'primary' | 'sub' | 'last' | 'link'
+export type ButtonSize = 'tiny' | 'middle' | 'full'
+export type ButtonType = 'white' | 'ghost' | 'success' | 'normal' | 'error'| 'link' | 'last'
 interface CustomButtonProps {
     className?: string;
     disabled?: boolean;
@@ -46,8 +46,8 @@ const Button: React.FC<ButtonProps> = (props) => {
 }
 Button.defaultProps = {
     disabled: false,
-    btnType: 'primary',
-    size: 'tiny'
+    btnType: 'success',
+    size: 'middle'
 }
 export default Button
 

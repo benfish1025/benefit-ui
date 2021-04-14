@@ -1,0 +1,16 @@
+.b-select {
+  z-index: 10;
+  position: relative;
+  & input {
+    pointer-events: none;
+  }
+}
+.input-wrapper {
+  margin: -15px -8px -12px -8px;
+}
+.select-button {
+  &:hover:enabled {
+    filter: none;
+  }
+
+}

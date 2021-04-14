@@ -1,7 +1,7 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext, useRef, useState} from 'react'
 import ClassNames from 'classnames'
 import {MenuItemProps} from "./menuItem";
-import Unfold from '../Fold/fold'
+import Transition from "../Transition/transition";
 import { MenuContext } from './menu'
 
 export interface SubMenuProps {
@@ -15,7 +15,8 @@ const SubMenu: React.FC<SubMenuProps> = ({index, tittle, className, children}) =
   const isSpread = (context.mode === 'vertical' && index) ? openSubMenus.includes(index) : false
   const [spread, setSpread] = useState(isSpread)
   const classes = ClassNames('menu-item sub-menu',{
-    [`menu-item--${context.mode}`]: context.mode
+    [`menu-item--${context.mode}`]: context.mode,
+    'is-active': context.index && context.index[0] === index
   })
   const wrapperClasses = ClassNames('sub-menu__wrapper',{
     'is-spread': spread,
@@ -54,13 +55,11 @@ const SubMenu: React.FC<SubMenuProps> = ({index, tittle, className, children}) =
   return (
       <li className={classes} {...hoverEvents} {...clickEvents}>
         <span>{tittle}</span>
-        <Unfold
-            vertical={true}
-            visible={spread}>
+        <Transition in={spread} timeout={300} animation="zoom-in-top">
           <ul className={wrapperClasses}>
             {createChildren()}
           </ul>
-        </Unfold>
+        </Transition>
       </li>
   )
 }

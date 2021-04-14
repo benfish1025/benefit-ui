@@ -1,0 +1,145 @@
+.b-popover {
+  border: 2px solid #e5e5e5;
+  padding: 10px;
+  background-color: #f7f7f7;
+  border-radius: 15px;
+  position: absolute;
+  white-space: nowrap;
+  &-wrapper {
+    position: relative;
+    cursor: default;
+    & span {
+      padding: 5px;
+      background-image: url('line.svg');
+      background-position: bottom;
+      background-repeat: repeat-x;
+
+    }
+  }
+  &--bottom {
+    top: 145%;
+    left: 50%;
+    transform: translateX(-50%);
+    &:after {
+      top:-6px;
+      left:50%;
+      transform: translateX(-50%) rotate(45deg);
+    }
+  }
+  &--top {
+    bottom: 145%;
+    left: 50%;
+    transform: translateX(-50%);
+    &:after {
+      bottom: -6px;
+      left:50%;
+      transform: translateX(-50%) rotate(225deg);
+    }
+  }
+  &--left {
+    right: 145%;
+    top: 50%;
+    transform: translateY(-50%);
+    &:after {
+      right: -6px;
+      top:50%;
+      transform: translateY(-50%) rotate(135deg);
+    }
+  }
+  &--right {
+    left: 145%;
+    top: 50%;
+    transform: translateY(-50%);
+    &:after {
+      left: -6px;
+      top:50%;
+      transform: translateY(-50%) rotate(315deg);
+    }
+  }
+  &:after {
+    content:'';
+    display: block;
+    position:absolute;
+    border-radius: 3px;
+    padding:.3rem;
+    border-width:2px;
+    border-style:solid;
+    border-color: #e5e5e5;
+    background-color: inherit;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+  }
+}
+.popover-bottom-enter {
+  transform: translateX(-50%) scale(0);
+  transform-origin: center top;
+}
+.popover-bottom-enter-active {
+  transform: translateX(-50%) scale(1);
+  transform-origin: center top;
+  transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+}
+.popover-bottom-exit {
+  transform: translateX(-50%) scale(1);
+  transform-origin: center top;
+}
+.popover-bottom-exit-active {
+  transform: translateX(-50%) scale(0);
+  transform-origin: center top;
+  transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+}
+
+.popover-top-enter {
+  transform: translateX(-50%) scale(0);
+  transform-origin: center bottom;
+}
+.popover-top-enter-active {
+  transform: translateX(-50%) scale(1);
+  transform-origin: center bottom;
+  transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+}
+.popover-top-exit {
+  transform: translateX(-50%) scale(1);
+  transform-origin: center bottom;
+}
+.popover-top-exit-active {
+  transform: translateX(-50%) scale(0);
+  transform-origin: center bottom;
+  transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+}
+.popover-left-enter {
+  transform: translateY(-50%) scale(0);
+  transform-origin: right center;
+}
+.popover-left-enter-active {
+  transform: translateY(-50%) scale(1);
+  transform-origin: right center;
+  transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+}
+.popover-left-exit {
+  transform: translateY(-50%) scale(1);
+  transform-origin: right center;
+}
+.popover-left-exit-active {
+  transform: translateY(-50%) scale(0);
+  transform-origin: right center;
+  transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+}
+.popover-right-enter {
+  transform: translateY(-50%) scale(0);
+  transform-origin: left center;
+}
+.popover-right-enter-active {
+  transform: translateY(-50%) scale(1);
+  transform-origin: left center;
+  transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+}
+.popover-right-exit {
+  transform: translateY(-50%) scale(1);
+  transform-origin: left center;
+}
+.popover-right-exit-active {
+  transform: translateY(-50%) scale(0);
+  transform-origin: left center;
+  transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+}
