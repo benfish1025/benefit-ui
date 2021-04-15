@@ -3,17 +3,13 @@
   display: inline-block;
   cursor: pointer;
   height: 18px;
-  width: 20px;
+  width: 22px;
+  background-repeat: no-repeat;
+  background-size: 22px 18px;
   margin-right: 8px;
   transition: transform 100ms linear 50ms;
   position: relative;
-  & img {
-    height: 18px;
-    width: 20px;
-    vertical-align: top;
-  }
   &-half {
-
     &__wrapper {
       position: absolute;
       top: 0;
@@ -23,15 +19,6 @@
       display: flex;
     }
     flex-grow: 1;
-    &.is-gray {
-      filter: grayscale(100%);
-    }
-    &--left {
-
-    }
-    &--right {
-
-    }
   }
   &.is-disabled {
     cursor: default;
@@ -40,14 +27,14 @@
   &:hover {
     transform: scale(1.1);
   }
-  /*&--half {
-    background-image: url('love-gray.svg');
+  &--half {
+    background-image: url('love-half.svg');
   }
   &--on {
     background-image: url('love.svg');
   }
   &--off {
     background-image: url('love-gray.svg');
-  }*/
+  }
 }
 

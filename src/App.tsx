@@ -21,7 +21,42 @@ import Popover from "./components/Popover/popover";
 // @ts-ignore
 import Popconfirm from './components/Popconfirm/popconfirm'
 import Rate from "./components/Rate/rate";
+import Table from "./components/Table/table";
+const dataSource = [
+  {
+    key: '1',
+    name: 'Mike',
+    age: 32,
+    address: '10 Downing Street',
+  },
+  {
+    key: '2',
+    name: 'John',
+    age: 42,
+    address: '10 Downing Street',
+  },
+];
 
+const columns = [
+  {
+    title: 'Name',
+    dataIndex: 'name',
+    key: 'name',
+    render: () => {
+      return <span>你好</span>
+    }
+  },
+  {
+    title: 'Age',
+    dataIndex: 'age',
+    key: 'age',
+  },
+  {
+    title: 'Address',
+    dataIndex: 'address',
+    key: 'address',
+  },
+];
 function App() {
   const lakers = ['bradley', 'pope', 'caruso', 'cook', 'cousins',
     'james', 'AD', 'green', 'howard', 'kuzma', 'McGee', 'rando']
@@ -110,6 +145,9 @@ function App() {
   const Bbutton: ReactElement = <Button btnType={'success'} size={'tiny'}>搜索</Button>
   return (
     <div className="App">
+      <Card>
+        <Table isLoading={alert} rowSelection={true} dataSource={dataSource} columns={columns} />
+      </Card>
       <Card>
         <Rate allowClear={true} defaultValue={4.2} />
       </Card>

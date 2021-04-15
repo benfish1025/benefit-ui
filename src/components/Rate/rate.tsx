@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import ClassNames from 'classnames'
-import loveSvg from './love.svg'
+
 
 interface RateProps {
   count?: number,
@@ -45,11 +45,8 @@ const Rate: React.FC<RateProps> = (props) => {
               className={classes}
               onClick={() => !disabled && handleChange(index)}
           >
-
-            <img src={loveSvg} alt="love"/>
-
             <div className="love-half__wrapper">
-              <div className={'love-half is-gray'}> </div>
+              <div className={'love-half'}> </div>
               <div className={'love-half'}> </div>
             </div>
 

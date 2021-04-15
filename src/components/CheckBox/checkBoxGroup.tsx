@@ -27,9 +27,9 @@ const CheckBoxGroup:React.FC<CheckBoxGroupProps> = (props) => {
   const [order, setOrder] = useState(0)
   console.log(order)
   const length = options.length
-  console.log('长度',length)
+
  useEffect(() => {
-    console.log('预备比较',order)
+
     setIndeterminate(order !== 0 && order < length)
     setOrderChecked(order !== 0)
 
