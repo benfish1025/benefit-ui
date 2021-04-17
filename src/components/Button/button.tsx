@@ -1,13 +1,15 @@
 import React, {AnchorHTMLAttributes, ButtonHTMLAttributes} from 'react'
 import ClassNames from 'classnames'
+import Loading from "../Loading/loading";
 
 export type ButtonSize = 'tiny' | 'middle' | 'full'
-export type ButtonType = 'white' | 'ghost' | 'success' | 'normal' | 'error'| 'link' | 'last'
+export type ButtonType = 'none' | 'image' | 'white' | 'ghost' | 'success' | 'normal' | 'error'| 'link' | 'last'
 interface CustomButtonProps {
     className?: string;
     disabled?: boolean;
     size?: ButtonSize;
     btnType?: ButtonType;
+    isLoading?: boolean,
     href?: string;
     children: React.ReactNode;
 }
@@ -15,6 +17,7 @@ type ButtonProps = CustomButtonProps & ButtonHTMLAttributes<HTMLElement> & Ancho
 
 const Button: React.FC<ButtonProps> = (props) => {
     const {
+        isLoading,
         className,
         disabled,
         size,
@@ -29,17 +32,29 @@ const Button: React.FC<ButtonProps> = (props) => {
         [`btn-${size}`]: size,
         'disabled': (btnType === 'link') && disabled
     })
-
+    const isHidden = ClassNames({
+        'is-hidden': isLoading
+    })
     if (btnType === 'link' && href) {
         return (
-            <a href={href} className={classes} {...restProps}>
+            <a href={href} className={'btn-link'} {...restProps}>
                 {children}
             </a>
+        )
+    } else if (btnType === 'image') {
+        return (
+            <button className={'btn-image'}>
+
+            </button>
         )
     } else {
         return (
             <button disabled={disabled} className={classes} {...restProps}>
-                {children}
+                <Loading spinning={isLoading}>
+                    <span className={isHidden}>
+                        {children}
+                    </span>
+                    </Loading>
             </button>
         )
     }

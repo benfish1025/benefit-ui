@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import ClassNames from "classnames";
 import Unfold from "../Fold/fold";
 import Transition from "../Transition/transition";
+import {ReactComponent} from "./cascade-gray.svg";
 interface OptionProps {
   index?: string,
   value: string,
@@ -41,10 +42,14 @@ const SelectMenu: React.FC<SelectMenuProps> = (props) => {
               'is-disabled': option.disabled,
               'is-active': orderValue[level] === option.value || ( multiple && orderValue.includes(option.value))
             })
-
             return (
                 <li key={index} onClick={(e) => handleSelect(e, option)} className={classes}>
                   {option.value}
+                  {option.children &&
+                  <span className={'cascade-icon'}>
+                    <ReactComponent/>
+                  </span>
+                  }
                   <Transition in={((option.value === currentValue.value &&
                       option.children && orderValue[level] === option.value) || (!multiple && orderValue[level] === option.value && orderValue.length > level + 1))} timeout={400} animation="zoom-in-top">
                   <SelectMenu

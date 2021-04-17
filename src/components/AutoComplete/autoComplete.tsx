@@ -101,8 +101,16 @@ const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
     }
     triggerSearch.current = false
   }
+  const highLightInputValue = (value: string) => {
+    const anchor = value.indexOf(inputValue)
+    const head = value.slice(0,anchor)
+    const tail = value.slice(anchor + inputValue.length)
+    return (
+        <span>{head}<em className={'highlight-auto-value'}>{inputValue}</em>{tail}</span>
+    )
+  }
   const renderTemplate = (item: DataSourceType) => {
-    return renderOptions ? renderOptions(item) : item.value
+    return renderOptions ? renderOptions(item) : highLightInputValue(item.value)
   }
   const renderDropDown = () => {
     return(

@@ -15,25 +15,48 @@ import Input from './components/Input/input'
 import AutoComplete from "./components/AutoComplete/autoComplete"
 import Loading from './components/Loading/loading'
 import Select from './components/Select/select'
-import Transition from './components/Transition/transition'
 import Message from "./components/Message/message";
 import Popover from "./components/Popover/popover";
-// @ts-ignore
 import Popconfirm from './components/Popconfirm/popconfirm'
 import Rate from "./components/Rate/rate";
 import Table from "./components/Table/table";
-const dataSource = [
+import Divider from "./components/Divider/divider";
+import Pager from "./components/Pager/pager";
+import Radio from "./components/Radio/radio";
+import RadioGroup from './components/Radio/radioGroup'
+interface ObjectProps {
+  [key: string]: any
+}
+interface RowDataProps {
+  key: string,
+  name: string,
+  age: number,
+  address: string
+}
+const dataSource: RowDataProps[] = [
   {
     key: '1',
-    name: 'Mike',
+    name: 'John Brown',
     age: 32,
-    address: '10 Downing Street',
+    address: 'New York No. 1 Lake Park',
   },
   {
     key: '2',
-    name: 'John',
-    age: 42,
-    address: '10 Downing Street',
+    name: 'Jim Green',
+    age: 49,
+    address: 'London No. 1 Lake Park',
+  },
+  {
+    key: '3',
+    name: 'Joe Black',
+    age: 22,
+    address: 'Sidney No. 1 Lake Park',
+  },
+  {
+    key: '4',
+    name: 'Jim Red',
+    age: 37,
+    address: 'London No. 2 Lake Park',
   },
 ];
 
@@ -42,20 +65,26 @@ const columns = [
     title: 'Name',
     dataIndex: 'name',
     key: 'name',
-    render: () => {
-      return <span>你好</span>
-    }
+
   },
   {
     title: 'Age',
     dataIndex: 'age',
     key: 'age',
+    sort: true
   },
   {
     title: 'Address',
     dataIndex: 'address',
     key: 'address',
-  },
+  },{
+    title: 'wonder',
+    dataIndex: 'wonder',
+    key: 'wonder',
+    render: (data: RowDataProps) => {
+      return <Button size={'tiny'} btnType={'normal'} onClick={() => alert(data.key)}>{data.name}</Button>
+    }
+  }
 ];
 function App() {
   const lakers = ['bradley', 'pope', 'caruso', 'cook', 'cousins',
@@ -146,6 +175,31 @@ function App() {
   return (
     <div className="App">
       <Card>
+        <RadioGroup vertical={true} radioStyle={'button'} defaultValue={'西瓜'}>
+          <Radio disabled={true} value={'西瓜'}>西瓜</Radio>
+          <Radio value={'苹果'}>苹果</Radio>
+          <Radio value={'橘子'}>橘子</Radio>
+          <Radio value={'香蕉'}>香蕉</Radio>
+        </RadioGroup>
+
+      </Card>
+      <Card>
+        <Pager total={50} defaultCurrent={1}/>
+      </Card>
+      <Divider>{'其他方式'}</Divider>
+      <Card>
+        <Menu defaultIndex={'2'}>
+          <MenuItem>热门</MenuItem>
+          <MenuItem>最新</MenuItem>
+          <MenuItem>已关注</MenuItem>
+          <SubMenu tittle={'体育学院'}>
+            <MenuItem>热门</MenuItem>
+            <MenuItem>最新</MenuItem>
+            <MenuItem>已关注</MenuItem>
+          </SubMenu>
+        </Menu>
+      </Card>
+      <Card>
         <Table isLoading={alert} rowSelection={true} dataSource={dataSource} columns={columns} />
       </Card>
       <Card>
@@ -158,8 +212,8 @@ function App() {
         <Popover position={'right'} content={'你好'}><span>Hi!</span></Popover>
       </Card>
       <Card>
-        <Button btnType={'success'}>更多资讯</Button>
-        <Button btnType={'normal'} disabled={true}>探索更多</Button>
+        <Button isLoading={alert} btnType={'success'}>更多资讯</Button>
+        <Button btnType={"none"} >探索更多</Button>
         <Button btnType={'normal'}  size={'middle'} onClick={() => setAlert(!alert) }>显示Alert!</Button>
       </Card>
       <Message
@@ -201,18 +255,7 @@ function App() {
             placeholder="输入 Github 用户名试试"
             fetchSuggestions={handleFetch} />
       </Card>
-      <Card>
-        <Menu defaultIndex={'2'}>
-          <MenuItem>热门</MenuItem>
-          <MenuItem>最新</MenuItem>
-          <MenuItem>已关注</MenuItem>
-          <SubMenu tittle={'体育学院'}>
-            <MenuItem>热门</MenuItem>
-            <MenuItem>最新</MenuItem>
-            <MenuItem>已关注</MenuItem>
-          </SubMenu>
-        </Menu>
-      </Card>
+
       <Card>
         <Menu defaultIndex={'2'} mode={'vertical'}>
           <MenuItem>热门</MenuItem>

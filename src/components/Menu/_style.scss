@@ -17,18 +17,21 @@
     display: inline-block;
     padding: 15px 12px 15px 12px;
     text-wrap: none;
-    color: #afafaf;
+    color: #777777;
     font-size: 1.6rem;
     font-weight: 700;
     letter-spacing: .8px;
     cursor: pointer;
-    transition: position 0.5s ease-in;
+    transition: border-bottom 0.2s ease-in, color 0.2s ease-in;
     &--horizontal {
       text-align: center;
       border-bottom: 2px solid #e5e5e5;
       &.is-active {
         color: #1cb0f6;
         border-bottom: 2px solid #1cb0f6;
+        & > .spread-icon > svg > path {
+          fill: #1cb0f6;
+        }
       }
       &:hover {
         border-bottom: 2px solid #1cb0f6;
@@ -63,21 +66,46 @@
 }
 
 .sub-menu {
+
   position: relative;
   &__wrapper {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     &--horizontal {
-      position: absolute;
+      /*position: absolute;
       top: 110%;
       left: 0;
       padding: 0;
       margin: 0;
       border: 2px solid #e5e5e5;
-      border-radius: 7px;
+      border-radius: 7px;*/
+      border: 2px solid #e5e5e5;
+      border-radius: 15px;
+      position: absolute;
+      top: 125%;
+      left: 50%;
+      padding: 0;
+      transform: translateX(-50%);
+      &:after {
+        z-index: -5;
+        content:'';
+        display: block;
+        position:absolute;
+        bottom:92%;
+        left:50%;
+        border-radius: 3px;
+        transform: translateX(-50%) rotate(45deg);
+        padding:.7rem;
+        border-width:2px;
+        border-style:solid;
+        border-color: #e5e5e5;
+        background-color: #ffffff;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+      }
       & .menu-item {
         display: block;
         padding: 10px 15px 10px 15px;
         text-align: left;
-        color: #afafaf;
         font-size: 1.6rem;
         font-weight: 700;
         letter-spacing: .8px;
@@ -95,14 +123,14 @@
           }
         }
         &:first-child{
-          border-top-left-radius: 5px;
-          border-top-right-radius: 5px;
+          border-top-left-radius: 14px;
+          border-top-right-radius: 14px;
         }
         &:last-child {
           margin-bottom: -2px;
           border-bottom: 2px solid #e5e5e5;
-          border-bottom-left-radius: 5px;
-          border-bottom-right-radius: 5px;
+          border-bottom-left-radius: 14px;
+          border-bottom-right-radius: 14px;
         }
         &:not(:last-child) {
           border-bottom: 2px solid #e5e5e5;
@@ -136,5 +164,23 @@
         }
       }
     }
+  }
+}
+.spread-icon {
+  display: inline-block;
+  height: 6px;
+  width: 10px;
+  margin-left: 8px;
+  color: black;
+  &.is-spread svg {
+    transform: rotate(180deg);
+    & > path {
+      fill: #1cb0f6;
+    }
+  }
+  & svg {
+    transition: transform 0.2s ease-in-out;
+    height: 6px;
+    width: 10px;
   }
 }

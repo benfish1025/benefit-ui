@@ -16,7 +16,7 @@ const Loading: React.FC<LoadingProps> = ({children, spinning, size, tip}) => {
               <div className={'loading-item loading-item--2'}> </div>
               <div className={'loading-item loading-item--3'}> </div>
             </div>
-            <span className={'loading-tip'}>{tip}</span>
+            {tip && <span className={'loading-tip'}>{tip}</span>}
           </div>
         </Transition>
 

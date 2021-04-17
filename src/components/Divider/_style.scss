@@ -1,0 +1,17 @@
+.b-divider {
+  display: flex;
+  align-items: center;
+  &__line {
+    height: 2px;
+    flex-grow: 1;
+    background-color: #e5e5e5;
+    border-radius: 2px;
+  }
+  &__text {
+    color: #afafaf;
+    font-size: 1.6rem;
+    text-space: 1.2;
+    font-weight: 700;
+    margin: 0 6px;
+  }
+}

@@ -1,3 +1,6 @@
+.highlight-auto-value {
+  color: #1cb0f6;
+}
 .b-autocomplete {
   position: relative;
   z-index: 10;
@@ -13,22 +16,26 @@
   color: #b2b2b2;
 }
 .suggestions-wrapper {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   position: absolute;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   top: 110%;
   left: 10px;
   right: 10px;
   padding: 0;
   margin: 0;
-  border: 2px solid #e5e5e5;
   border-radius: 7px;
   &.is-child {
     position: absolute;
     top: 0;
-    left: 105%;
+    left: 102%;
     width: 100%;
   }
 }
 .suggestion-item {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   position: relative;
   background-color: #fff;
   display: block;
@@ -43,6 +50,9 @@
   &.is-active {
     background-color: #ddf4ff;
     color: #1cb0f6;
+    & > .cascade-icon > svg > path {
+      fill: #1cb0f6;
+    }
   }
   &:hover {
     background-color: #f7f7f7;
@@ -56,12 +66,10 @@
     border-top-right-radius: 5px;
   }
   &:last-child {
-    margin-bottom: -2px;
-    border-bottom: 2px solid #e5e5e5;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
   }
-  &:not(:last-child) {
+  /*&:not(:last-child) {
     border-bottom: 2px solid #e5e5e5;
-  }
+  }*/
 }

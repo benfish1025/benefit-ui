@@ -2,7 +2,7 @@
 @import "mixins";
 @import "reboot";
 @import "utilities";
-@import "animations";
+
 
 /* Button Style*/
 @import "../components/Button/_style.scss";
@@ -36,3 +36,10 @@
 @import "../components/Rate/_style.scss";
 /* TableStyle */
 @import "../components/Table/_style.scss";
+/* TableStyle */
+@import "../components/Divider/_style.scss";
+/* PagerStyle */
+@import "../components/Pager/_style.scss";
+/* PagerStyle */
+@import "../components/Radio/_style.scss";
+@import "animations";

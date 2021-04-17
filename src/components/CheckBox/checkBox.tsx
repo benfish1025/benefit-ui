@@ -27,7 +27,7 @@ const CheckBox: React.FC<CheckBoxProps> = (props) => {
         <span>
           <input className={inputClasses} disabled={disabled} onChange={handleChange} type="checkbox" {...retProps}/>
         </span>
-        <span className={'checkbox-name'}>{children}</span>
+        {children && <span className={'checkbox-name'}>{children}</span>}
       </label>
   )
 }

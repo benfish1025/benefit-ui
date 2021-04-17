@@ -2,6 +2,7 @@ import React from 'react'
 import {ColumnProps} from './table'
 import ClassNames from 'classnames'
 import CheckBox from "../CheckBox/checkBox";
+import TableCell from './tableCell'
 
 interface RowDataProps {
   [key: string]: any
@@ -24,28 +25,28 @@ const TableRow = (props: TableRowProps) => {
   return (
       <tr key={key} className={rowClasses}>
         {rowSelection &&
-          <th className={'t-item t-item--first'}>
+          <td className={'t-item t-item--first'}>
               <CheckBox
                   key={rowData.key}
                   checked={rowSelectionOrder.includes(rowData.key)}
                   disabled={rowData.disabled}
                   onChange={() => onSelectionChange(rowData.key)}
               />
-          </th>}
+          </td>}
         {headData && headData.map((item,index) => {
           const classes = ClassNames('t-item', {
             't-item--first': index === 0 && !rowSelection
           })
           if (!item.render) {
             return (
-            <td className={classes}>
+            <TableCell value={rowData[item.title.toLowerCase()]} cellKey={item.key} rowKey={rowData.key} key={item.key} className={classes}>
               <span>{rowData[item.title.toLowerCase()]}</span>
-            </td>
+            </TableCell>
             )
         } else {
             return (
                     <td className={'t-item'}>
-                      {item.render({...rowData})}
+                      {item.render(rowData)}
                     </td>
                 )
 

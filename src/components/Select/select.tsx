@@ -4,7 +4,8 @@ import Button from "../Button/button";
 import useClickOutside from "../../hooks/useClickOutside"
 import Transition from '../Transition/transition'
 import SelectMenu from "./selectMenu"
-
+import { ReactComponent } from '../Menu/select-tiny.svg'
+import ClassNames from "classnames";
 
 export interface OptionProps {
   index?: string,
@@ -29,6 +30,9 @@ const Select: React.FC<SelectProps> = (props) => {
   const selectRef = useRef<HTMLDivElement>(null)
   const [orderValue,setOrderValue] = useState<unknown[]>(defaultValue || [])
   const [spread, setSpread] = useState(false)
+  const iconClasses = ClassNames('spread-icon', {
+    'is-spread': spread
+  })
   const handleClick = () => {
     setSpread(!spread)
     if (onVisible) {
@@ -74,7 +78,11 @@ const Select: React.FC<SelectProps> = (props) => {
         <Button onClick={handleClick} className={'select-button'} btnType={'last'} size={'full'}>
           <div className="input-wrapper">
             <Input value={helpOrderValue()} onChange={handleChange} placeholder={placeholder}/>
+            <span className={iconClasses}>
+              <ReactComponent/>
+            </span>
           </div>
+
         </Button>
         <Transition in={spread} timeout={400} animation="zoom-in-top">
           <SelectMenu

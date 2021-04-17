@@ -8,7 +8,7 @@
   &-wrapper {
     position: relative;
     cursor: default;
-    & span {
+    & > span {
       padding: 5px;
       background-image: url('line.svg');
       background-position: bottom;
