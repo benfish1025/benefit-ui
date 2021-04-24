@@ -1,6 +1,27 @@
 .margin-top-small {
   margin-top: 10px;
 }
+.margin-right-small {
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
 .padding-bottom-small {
   padding-bottom: 10px;
+}
+.flex-row-wrapper {
+  display: flex;
+  align-items: center;
+}
+.flex-column-wrapper {
+  padding-left: 20px;
+  width: 410px;
+  display: flex;
+  flex-direction: column;
+}
+.horizontal-center {
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
 }

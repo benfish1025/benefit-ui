@@ -1,0 +1,124 @@
+<svg width="999" height="551" viewBox="0 0 999 551" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="BackSvg">
+<rect id="Rectangle 1" x="105" y="5" width="851" height="486" rx="5" fill="#E5E5E5"/>
+<rect id="Rectangle 2" x="105" width="851" height="57" rx="5" fill="#AFAFAF"/>
+<rect id="Rectangle 3" x="135" y="92" width="176" height="367" rx="5" fill="white"/>
+<rect id="Rectangle 6" x="339" y="92" width="583" height="93" rx="5" fill="white"/>
+<rect id="Rectangle 5" x="339" y="207" width="583" height="252" rx="5" fill="white"/>
+<g id="Button">
+<g id="ButtonOrder" filter="url(#filter0_d)">
+<rect x="682" y="407" width="89.3016" height="30.7937" rx="15.3968" fill="#58CC02"/>
+</g>
+<rect id="Button2" x="786.698" y="407" width="89.3016" height="30.7937" rx="15.3968" fill="#AFAFAF"/>
+</g>
+<g id="Group 3">
+<g id="Group">
+<path id="Rectangle" fill-rule="evenodd" clip-rule="evenodd" d="M475 154.5C475 150.91 477.91 148 481.5 148L704.5 148C708.09 148 711 150.91 711 154.5V154.5C711 158.09 708.09 161 704.5 161H481.5C477.91 161 475 158.09 475 154.5V154.5Z" fill="#E5E5E5"/>
+<path id="Rectangle_2" fill-rule="evenodd" clip-rule="evenodd" d="M475 123.5C475 119.358 478.358 116 482.5 116L534.5 116C538.642 116 542 119.358 542 123.5V123.5C542 127.642 538.642 131 534.5 131H482.5C478.358 131 475 127.642 475 123.5V123.5Z" fill="#F1F1F1"/>
+</g>
+</g>
+<g id="Section1">
+<g id="Rectangle 2_3" filter="url(#filter1_d)">
+<rect x="418.127" y="349.476" width="66.746" height="23.0159" rx="11.5079" fill="#FF4B4B"/>
+</g>
+<rect id="Rectangle 2_4" x="379" y="239" width="145" height="18.4127" rx="9.20635" fill="#F1F1F1"/>
+<rect id="Rectangle 2 Copy" x="379" y="271.222" width="145" height="18.4127" rx="9.20635" fill="#F1F1F1"/>
+<rect id="Rectangle 2 Copy 2" x="379" y="303.444" width="145" height="18.4127" rx="9.20635" fill="#F1F1F1"/>
+</g>
+<g id="Section2">
+<g id="Rectangle 2_5" filter="url(#filter2_d)">
+<rect x="605.127" y="349.476" width="66.746" height="23.0159" rx="11.5079" fill="#FF4B4B"/>
+</g>
+<rect id="Rectangle 2_6" x="566" y="239" width="145" height="18.4127" rx="9.20635" fill="#F1F1F1"/>
+<rect id="Rectangle 2 Copy_2" x="566" y="271.222" width="145" height="18.4127" rx="9.20635" fill="#F1F1F1"/>
+<rect id="Rectangle 2 Copy 2_2" x="566" y="303.444" width="145" height="18.4127" rx="9.20635" fill="#F1F1F1"/>
+</g>
+<g id="Group 7">
+<rect id="Rectangle 7" x="176" y="13" width="234" height="30" rx="10" fill="#C4C4C4"/>
+<rect id="Rectangle 8" x="830" y="18" width="20" height="20" rx="3" fill="#C4C4C4"/>
+<rect id="Rectangle 10" x="902" y="18" width="20" height="20" rx="3" fill="#C4C4C4"/>
+<rect id="Rectangle 9" x="866" y="18" width="20" height="20" rx="3" fill="#C4C4C4"/>
+<rect id="Rectangle 4" x="365" y="111" width="54" height="54" rx="5" fill="#C4C4C4"/>
+</g>
+<g id="Lines" filter="url(#filter3_d)">
+<rect id="Line4" x="159" y="119" width="128" height="24" rx="5" fill="#1CB0F6"/>
+<rect id="Line3" x="159" y="155" width="128" height="24" rx="5" fill="#1CB0F6"/>
+<rect id="Line2" x="159" y="227" width="128" height="24" rx="5" fill="#1CB0F6"/>
+<rect id="Line1" x="159" y="191" width="128" height="24" rx="5" fill="#1CB0F6"/>
+</g>
+<g id="Card">
+<g id="Rectangle 16" filter="url(#filter4_d)">
+<rect x="9" y="382" width="278" height="153" rx="5" fill="white"/>
+</g>
+<circle id="Ellipse 1" cx="50" cy="440" r="8" fill="#C4C4C4"/>
+<circle id="Ellipse 2" cx="50" cy="473" r="8" fill="#C4C4C4"/>
+<g id="Group_2">
+<g id="Group_3">
+<path id="Rectangle_3" fill-rule="evenodd" clip-rule="evenodd" d="M80 472.5C80 468.91 82.9101 466 86.5 466H235.5C239.09 466 242 468.91 242 472.5V472.5C242 476.09 239.09 479 235.5 479H86.5C82.9102 479 80 476.09 80 472.5V472.5Z" fill="#E5E5E5"/>
+<path id="Rectangle_4" fill-rule="evenodd" clip-rule="evenodd" d="M80 441.5C80 437.358 83.3579 434 87.5 434H118.492C122.634 434 125.992 437.358 125.992 441.5V441.5C125.992 445.642 122.634 449 118.492 449H87.5C83.3579 449 80 445.642 80 441.5V441.5Z" fill="#F1F1F1"/>
+</g>
+</g>
+</g>
+<g id="Popover" filter="url(#filter5_d)">
+<rect id="Rectangle 17" x="706" y="78" width="268" height="156" rx="5" fill="#FFB100"/>
+<path id="Polygon 1" d="M837.44 66.1871C838.61 64.2734 841.39 64.2734 842.56 66.1871L852.798 82.9353C854.02 84.9343 852.581 87.5 850.238 87.5H829.762C827.419 87.5 825.98 84.9343 827.202 82.9353L837.44 66.1871Z" fill="#FFB100"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_d" x="677" y="399" width="119.302" height="60.7937" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+<feOffset dx="10" dy="7"/>
+<feGaussianBlur stdDeviation="7.5"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.647059 0 0 0 0 0.929412 0 0 0 0 0.431373 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+</filter>
+<filter id="filter1_d" x="413.127" y="341.476" width="96.746" height="53.0159" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+<feOffset dx="10" dy="7"/>
+<feGaussianBlur stdDeviation="7.5"/>
+<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.698039 0 0 0 0 0.698039 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+</filter>
+<filter id="filter2_d" x="600.127" y="341.476" width="96.746" height="53.0159" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+<feOffset dx="10" dy="7"/>
+<feGaussianBlur stdDeviation="7.5"/>
+<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.698039 0 0 0 0 0.698039 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+</filter>
+<filter id="filter3_d" x="154" y="111" width="158" height="162" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+<feOffset dx="10" dy="7"/>
+<feGaussianBlur stdDeviation="7.5"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.517647 0 0 0 0 0.847059 0 0 0 0 1 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+</filter>
+<filter id="filter4_d" x="0" y="378" width="298" height="173" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+<feMorphology radius="5" operator="erode" in="SourceAlpha" result="effect1_dropShadow"/>
+<feOffset dx="1" dy="6"/>
+<feGaussianBlur stdDeviation="7.5"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+</filter>
+<filter id="filter5_d" x="691" y="49.7518" width="308" height="209.248" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+<feOffset dx="5" dy="5"/>
+<feGaussianBlur stdDeviation="10"/>
+<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.784314 0 0 0 0 0 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+</filter>
+</defs>
+</svg>

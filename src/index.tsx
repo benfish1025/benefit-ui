@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './styles/index.scss'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import 'highlight.js/styles/agate.css';
 ReactDOM.render(
   <React.StrictMode>
     <App />

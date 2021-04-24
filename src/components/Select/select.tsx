@@ -75,7 +75,7 @@ const Select: React.FC<SelectProps> = (props) => {
     setSpread(false)})
   return (
       <div ref={selectRef} className={'b-select'}>
-        <Button onClick={handleClick} className={'select-button'} btnType={'last'} size={'full'}>
+        <Button onClick={handleClick} className={'select-button'} btnType={'default'} size={'full'}>
           <div className="input-wrapper">
             <Input value={helpOrderValue()} onChange={handleChange} placeholder={placeholder}/>
             <span className={iconClasses}>

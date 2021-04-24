@@ -10,7 +10,7 @@
 
 */
 .message-wrapper {
-  z-index: 300;
+  z-index: 1000;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -23,7 +23,7 @@
     background-color: #d7ffb8;
     color: #58a700;
   }
-  &.is-normal {
+  &.is-primary {
     background-color: #ddf4ff;
     color: #1cb0f6;
   }
@@ -37,22 +37,33 @@
     justify-content: center;
     align-items: flex-start;
     &__avatar {
-      height: 60px;
-      width: 60px;
+      opacity: 0;
+      height: 0;
+      width: 0;
       background-color: #fff;
       background-repeat: no-repeat;
       background-position: 50% 50%;
       background-size: 50%;
       border-radius: 50%;
       margin-right: 30px;
+      transition: height ease-in 300ms 300ms;
       &.is-success {
+        opacity: 1;
         background-image: url("check.svg");
+        height: 60px;
+        width: 60px;
       }
-      &.is-normal {
+      &.is-primary {
+        opacity: 1;
         background-image: url("normal.svg");
+        height: 60px;
+        width: 60px;
       }
       &.is-error {
+        opacity: 1;
         background-image: url("error.svg");
+        height: 55px;
+        width: 55px;
       }
     }
     &__text {

@@ -6,7 +6,8 @@ export interface MenuItemProps {
   index?: string,
   disabled?:boolean,
   className?: string,
-  style?: CSSProperties
+  style?: CSSProperties,
+  children: React.ReactNode
 }
 const MenuItem: React.FC<MenuItemProps> = (props) => {
   const context = useContext(MenuContext)
@@ -20,12 +21,12 @@ const MenuItem: React.FC<MenuItemProps> = (props) => {
     if (context.onSelect && typeof index === 'string') {
       context.onSelect(index)
     }
-    if (context.mode === 'vertical') {
-      e.stopPropagation()
-    }
+  }
+  const clickEvents = disabled ? {} : {
+    onClick: clickHandle
   }
   return (
-      <li className={classes} style={style} onClick={clickHandle}>
+      <li className={classes} style={style} {...clickEvents}>
         {children}
       </li>
   )

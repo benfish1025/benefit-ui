@@ -2,18 +2,24 @@ import React, {useEffect, useState} from 'react'
 import ClassNames from 'classnames'
 
 interface  SwitchProps {
+  value?: boolean,
   defaultValue?: boolean,
   disabled?: boolean,
-  onChange?: (value: boolean) => void
+  onChange?: (value: boolean) => void,
+  thin?: boolean
 }
 
-const Switch: React.FC<SwitchProps> = ({defaultValue,disabled, onChange}) => {
+const Switch = ({thin, defaultValue,disabled, onChange}: SwitchProps) => {
   const [value, setValue] = useState(defaultValue)
   const classes = ClassNames('switch', {
     'is-active': value,
+    'is-disabled': disabled,
+    'is-thin': thin
   })
   const slideClasses = ClassNames('switch-slide', {
     'is-active': value,
+    'is-disabled': disabled,
+    'is-thin': thin
   })
   useEffect(() => {
     if (onChange && typeof value === 'boolean') {
@@ -21,7 +27,9 @@ const Switch: React.FC<SwitchProps> = ({defaultValue,disabled, onChange}) => {
     }
   }, [value])
   const handleClick = () => {
-    setValue(!value)
+    if (!disabled) {
+      setValue(!value)
+    }
   }
     return(
         <div className={classes} onClick={handleClick}>

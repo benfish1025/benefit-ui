@@ -4,27 +4,30 @@ import {MenuItemProps} from "./menuItem";
 import Transition from "../Transition/transition";
 import { MenuContext } from './menu'
 import { ReactComponent } from './select-tiny.svg'
+import Unfold from '../Fold/fold'
 
 export interface SubMenuProps {
-  tittle?: string,
+  tittle: string,
   index?: string,
-  className?: string
+  className?: string,
+  children: React.ReactNode
 }
 const SubMenu: React.FC<SubMenuProps> = ({index, tittle, className, children}) => {
   const context = useContext(MenuContext)
   const openSubMenus = context.defaultOpenSubMenus as Array<string>
   const isSpread = (context.mode === 'vertical' && index) ? openSubMenus.includes(index) : false
   const [spread, setSpread] = useState(isSpread)
-  const classes = ClassNames('menu-item sub-menu',{
+  const classes = ClassNames('menu-item sub-menu', className, {
     [`menu-item--${context.mode}`]: context.mode,
-    'is-active': context.index && context.index[0] === index,
+    'is-active': (context.index && context.index[0] === index) || (spread && context.mode === 'horizontal')
   })
   const wrapperClasses = ClassNames('sub-menu__wrapper',{
     'is-spread': spread,
     [`sub-menu__wrapper--${context.mode}`]: context.mode
   })
   const iconClasses = ClassNames('spread-icon', {
-    'is-spread': spread
+    'is-color': context.mode === 'vertical' ? context.index && context.index[0] === index : spread,
+    'is-spread': spread,
   })
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -45,29 +48,41 @@ const SubMenu: React.FC<SubMenuProps> = ({index, tittle, className, children}) =
     onMouseEnter: (e: React.MouseEvent) => { handleMouse(e, true)},
     onMouseLeave: (e: React.MouseEvent) => { handleMouse(e, false)}
   } : {}
+  const multiEvents = context.mode === 'horizontal' ? {
+    onMouseEnter: (e: React.MouseEvent) => { handleMouse(e, true)},
+    onMouseLeave: (e: React.MouseEvent) => { handleMouse(e, false)},
+    onClick: handleClick
+  } : {}
   const createChildren = () => {
     return React.Children.map(children, (child,i) => {
       const childElement = child as React.FunctionComponentElement<MenuItemProps>
       const { displayName } = childElement.type
       if (displayName === 'MenuItem') {
-        return React.cloneElement(childElement, { index: `${index}-${i}`})
+        return React.cloneElement(childElement, {
+          index: `${index}-${i}`,
+        })
       } else {
         return null
       }
     })
   }
   return (
-      <li className={classes} {...hoverEvents} {...clickEvents}>
-        <span>{tittle}</span>
-        <span className={iconClasses}>
+      <div className={'sub-menu-group'}>
+        <li className={classes} {...hoverEvents} {...clickEvents}>
+          <span>{tittle}</span>
+          <span className={iconClasses}>
           <ReactComponent/>
         </span>
-        <Transition in={spread} timeout={300} classNames="zoom-in-top-pro">
-          <ul className={wrapperClasses}>
+
+        </li>
+        {/*<Transition in={spread} timeout={300} classNames="zoom-in-top-pro">*/}
+        <Unfold visible={spread} vertical={true}>
+          <ul className={wrapperClasses} {...multiEvents}>
             {createChildren()}
           </ul>
-        </Transition>
-      </li>
+        </Unfold>
+      </div>
+
   )
 }
 SubMenu.displayName = 'SubMenu'

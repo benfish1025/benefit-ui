@@ -1,10 +1,47 @@
+.component {
+  &-explain {
+    color: #777777;
+    font-size: 1.4rem;
+    text-space: 1.2;
+    font-weight: 500;
+    margin: 20px 45px 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &-show-code {
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 3px;
+    &:hover {
+      background-color: rgba(0,0,0,0.05);
+  }
+    &:active svg path {
+      fill: #4b4b4b;
+    }
+  }
+  &-container {
+    margin: 0 auto 20px auto;
+    max-width: 950px;
+  }
+  &-card {
+    border-radius: 5px;
+    border: 2px solid #e5e5e5;
+    &-flex {
+      padding: 35px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+  }
+  &-drawer {
+    padding: 25px 20px;
+    background-color: #333333;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+}
 .card {
-  width: 800px;
-  margin: 0 auto;
-  padding: 80px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  border: 1px solid #e5e5e5;
+
   //background-color: #f8fafb;
 }

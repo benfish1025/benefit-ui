@@ -13,6 +13,9 @@
   border-radius: 15px;
   border-style: solid;
   transition: filter 0.2s ease;
+  &.is-loading {
+    pointer-events: none;
+  }
   & .loading-mask {
     background: none;
     transition: none;
@@ -53,8 +56,8 @@
 }
 
 .btn-middle {
-  padding-left: 65px;
-  padding-right: 65px;
+  width: 200px;
+  min-width: 200px;
 }
 //样式大类///////////////////////////////////
 .btn-success {
@@ -81,7 +84,7 @@
   padding-bottom: 12px;
   border-width: 0 0 4px;
   position: relative;
-  &::after {
+  &::before {
     content: '';
     position: absolute;
     top: 0;
@@ -92,7 +95,6 @@
     border-radius: 16px;
     background-clip: padding-box;
     border-style: solid;
-    z-index: -1;
     border-color: transparent;
     background-color: rgb(255, 255, 253);
   }
@@ -103,7 +105,7 @@
     border-width: 4px 0 0;
     background-color: transparent;
     transform: translate3d(0,0,0);
-    &::after {
+    &::before {
       border-width: 0;
       bottom: 0;
     }
@@ -128,7 +130,6 @@
     border-radius: 16px;
     background-clip: padding-box;
     border-style: solid;
-    z-index: -1;
     border-color: rgba(0,0,0,.2);
   }
   &:hover:enabled {
@@ -159,7 +160,7 @@
     transform: translate3d(0,4px,0);
   }
 }
-.btn-normal {
+.btn-primary {
   border-width: 0 0 4px;
   background: rgb(28, 176, 246);
   border-color: rgb(24, 153, 214);
@@ -175,7 +176,7 @@
     transform: translate3d(0,4px,0);
   }
 }
-.btn-last {
+.btn-default {
   padding-top: 11px;
   padding-bottom: 11px;
   background: rgb(255, 255, 253);
@@ -229,15 +230,8 @@
   font-size: 16px;
   font-weight: 700;
   &:hover {
-    text-decoration: underline;
     color: #1cb0f6;
-  }
-  &:active {
-    color: #1cb0f6;
-  }
-  &:visited {
-    color: #9069cd;
-    text-decoration: underline;
+    text-decoration: none;
   }
 }
 

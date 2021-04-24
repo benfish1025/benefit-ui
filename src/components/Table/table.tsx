@@ -29,7 +29,8 @@ interface TableProps {
   columns: ColumnProps[],
   rowSelection?: boolean,
   onSelectionChange?: (selection: string[]) => void
-  isLoading?: boolean
+  isLoading?: boolean,
+  edit?: boolean
 }
 interface TableContextProps {
   activeRow?: string,
@@ -37,7 +38,8 @@ interface TableContextProps {
   onClickCell?: (row: string, column: string) => void,
   onDoubleClick?: (row: string, column: string) => void,
   inputRow?: string,
-  inputColumn?: string
+  inputColumn?: string,
+  edit?: boolean
 }
 const arrSortUtil = (column: string, data: ObjectProps[], mode: 'upper' | 'lower') => {
   const lowerColumn = column.toLowerCase()
@@ -78,8 +80,8 @@ const arrSortUtil = (column: string, data: ObjectProps[], mode: 'upper' | 'lower
 
 export const TableContext = createContext<TableContextProps>({})
 const Table = (props: TableProps) => {
-  const {isLoading, onSelectionChange, rowSelection, columns, dataSource} = props
-  const [orderValue, setOrderValue] = useState<string[]>(['1','2'])
+  const {edit, isLoading, onSelectionChange, rowSelection, columns, dataSource} = props
+  const [orderValue, setOrderValue] = useState<string[]>([])
   const [activeRow, setActiveRow] = useState<string>('')
   const [inputRow, setInputeRow] = useState<string>('')
   const [activeColumn, setActiveColumn] = useState<string>('')
@@ -101,7 +103,8 @@ const Table = (props: TableProps) => {
     onClickCell: handleClickCell,
     onDoubleClick: handleDoubleClickCell,
     inputRow: inputRow,
-    inputColumn: inputColumn
+    inputColumn: inputColumn,
+    edit: edit
   }
 
   const handleChange = (key: string) => {

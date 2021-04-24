@@ -5,7 +5,7 @@ import {MenuItemProps} from "./menuItem";
 type MenuMode = 'horizontal' | 'vertical'
 interface MenuProps {
   onSelect?: (index: string) => void,
-  defaultIndex: string,
+  defaultIndex?: string,
   children: React.ReactNode,
   className?: string,
   style?: CSSProperties,

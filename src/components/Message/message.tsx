@@ -1,32 +1,40 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Button, {ButtonSize} from "../Button/button";
 import Transition from '../Transition/transition'
 import ClassNames from 'classnames'
 
 
-export type MessageType = 'success' | 'normal' | 'error'
+export type MessageType = 'success' | 'primary' | 'error'
 interface MessageProps {
   type?: MessageType,
-  showMessage?: boolean,
+  showMessage: boolean,
   btnText?: string,
   btnSize?: ButtonSize,
   tittle?: string,
   info?: string,
   onClickButton?: () => void,
   onClose?: () => {},
-  duration?: number
+  duration?: number,
+  showButton?: boolean
 }
 
 const Message: React.FC<MessageProps> = (props) => {
-  const { type, btnText, tittle, info, btnSize, showMessage, onClickButton } = props
+  const { duration, showButton, type = 'success', btnText, tittle, info, btnSize, showMessage, onClickButton } = props
+  const [show, setShow] = useState(showMessage)
+  useEffect(() => {
+    setTimeout(() => {
+      setShow(!show)
+    },300)
+  },[showMessage])
   const messageTypeClasses = ClassNames('message-wrapper', {
     [`is-${type}`]: type
   })
   const iconTypeClasses = ClassNames('message-content__avatar', {
     [`is-${type}`]: type
   })
+
   return (
-      <Transition timeout={300} in={showMessage} classNames={'spread'}>
+      <Transition timeout={300} in={duration ? show : showMessage} classNames={'spread'}>
       <div className={messageTypeClasses}>
         <div className="message-content">
           <div className={iconTypeClasses} id={'check'}> </div>
@@ -36,7 +44,7 @@ const Message: React.FC<MessageProps> = (props) => {
           </p>
         </div>
         <div className="button-wrapper">
-          {btnText && <Button onClick={onClickButton} size={btnSize} btnType={type}>{btnText}</Button>}
+          {showButton && <Button onClick={onClickButton} size={btnSize} btnType={type}>{btnText}</Button>}
         </div>
       </div>
       </Transition>

@@ -9,20 +9,52 @@ interface RateProps {
   allowHalf?: boolean,
   allowClear?: boolean,
   disabled?: boolean,
-  onChange?: (newValue: number) => void
+  onChange?: (newValue: number) => void,
+  tip?: string
 }
 
 const Rate: React.FC<RateProps> = (props) => {
-  const {count = 5,defaultValue, value, disabled, allowClear, allowHalf, onChange} = props
-  const helpHalf = () => {
-    return allowHalf ? 0.5 : 1
+  const {tip, count = 5,defaultValue, value, disabled, allowClear = true, allowHalf, onChange} = props
+  const [halfIndex, setHalfIndex] = useState(0)
+  const helpChangeToOrigin = (index: number) => {
+    return allowHalf ? index / 2 : Math.ceil(index / 2)
+  }
+  const helpChangeToFull = (index: number) => {
+    if(!allowHalf) {
+      return Math.ceil(index / 2) * 2
+    } else return index
+
   }
   const [orderValue, setOrderValue] = useState<number>(defaultValue || 0)
   const helpValue = () => {
     return value ? value : orderValue
   }
+  const transValue = (upload: boolean) => {
+    if (halfIndex && !upload) {
+      if (allowHalf) {
+        return halfIndex
+      } else {
+        return Math.ceil(halfIndex / 2) * 2
+      }
+    } else {
+      const integralPart = Math.floor(helpValue())
+      const fractionalPart = helpValue() - integralPart
+      if (integralPart < 0) {
+        return 0
+      }
+      if (helpValue() - integralPart) {
+        if (fractionalPart <= 0.5) {
+          return allowHalf ? (integralPart + 0.5) * 2 : integralPart * 2
+        } else return (integralPart + 1) * 2
+      } else return integralPart * 2
+    }
+  }
+
   const handleChange = (index: number) => {
-    const newValue = allowClear && Math.clz32(helpValue()) === index + 1? 0 : index + helpHalf()
+    const newValue = allowClear && helpChangeToFull(index) === transValue(true) ? 0 : helpChangeToOrigin(index)
+    if (helpChangeToFull(index) === transValue(true)) {
+      setHalfIndex(0)
+    }
     if (value) {
       onChange && onChange( newValue)
     } else {
@@ -30,24 +62,32 @@ const Rate: React.FC<RateProps> = (props) => {
       onChange && onChange( newValue)
     }
   }
+  const handleClickHalf = (index: number) => {
+    setHalfIndex(index)
+  }
+  let timer: NodeJS.Timeout
+  const handleMouseLeave = () => {
+    clearTimeout(timer)
+    timer = setTimeout(() =>  setHalfIndex(0), 100)
+  }
+
   const renderLoves = () => {
-    const integralPart = Math.floor(helpValue())
-    const fractionalPart = Boolean(helpValue() - integralPart)
     return [...Array(count)].map((value, index) => {
-      const classes = ClassNames('love', {
-        'love--on': index < integralPart,
-        'love--half': index === integralPart && fractionalPart,
-        'love--off': index >= integralPart && !fractionalPart,
+      const trans = transValue(false)
+
+      const halfClasses = ClassNames('love', {
+        'love--on': 2 * index + 2 <= trans,
+        'love--half': 2 * index + 1 === trans,
+        'love--off': 2 * index + 1 > trans || trans === 0,
         'is-disabled': disabled
       })
       return(
           <div
-              className={classes}
-              onClick={() => !disabled && handleChange(index)}
+              className={halfClasses}
           >
             <div className="love-half__wrapper">
-              <div className={'love-half'}> </div>
-              <div className={'love-half'}> </div>
+              <div onClick={() => !disabled && handleChange(index * 2 + 1)} className={'love-half love-half--left'} onMouseEnter={() => handleClickHalf(index * 2 + 1)}> </div>
+              <div onClick={() => !disabled && handleChange(index * 2 + 2)} className={'love-half love-half--right'} onMouseEnter={() => handleClickHalf(index * 2 + 2)}> </div>
             </div>
 
           </div>
@@ -55,8 +95,9 @@ const Rate: React.FC<RateProps> = (props) => {
     })
   }
     return (
-        <div className={'loves-container'}>
+        <div className={'loves-container'} onMouseLeave={handleMouseLeave}>
           { renderLoves() }
+          <span>{tip}</span>
         </div>
     )
   }

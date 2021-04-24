@@ -8,7 +8,7 @@
     justify-content: flex-start;
   }
   &--vertical {
-    max-width: 265px;
+    width: 275px;
     border-right: 2px solid #e5e5e5;
     flex-direction: column;
   }
@@ -21,8 +21,17 @@
     font-size: 1.6rem;
     font-weight: 700;
     letter-spacing: .8px;
+    white-space: nowrap;
     cursor: pointer;
-    transition: border-bottom 0.2s ease-in, color 0.2s ease-in;
+    transition: border 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) 50ms, color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) 50ms, background-color  0.2s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+    &.is-disabled {
+      cursor: not-allowed;
+      color: #e5e5e5;
+      &:hover {
+        color: #e5e5e5;
+        border-color: #e5e5e5;
+      }
+    }
     &--horizontal {
       text-align: center;
       border-bottom: 2px solid #e5e5e5;
@@ -66,10 +75,11 @@
 }
 
 .sub-menu {
-
   position: relative;
+  &-group {
+    position: relative;
+  }
   &__wrapper {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     &--horizontal {
       /*position: absolute;
       top: 110%;
@@ -78,10 +88,11 @@
       margin: 0;
       border: 2px solid #e5e5e5;
       border-radius: 7px;*/
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
       border: 2px solid #e5e5e5;
       border-radius: 15px;
       position: absolute;
-      top: 125%;
+      top: 120%;
       left: 50%;
       padding: 0;
       transform: translateX(-50%);
@@ -139,7 +150,7 @@
     }
     &--vertical {
       padding: 12px 0 0 0;
-      margin: 0 -14px 0 -30px;
+      margin: 0;
       & .menu-item {
         border-right: none;
         padding-left: 60px;
@@ -147,16 +158,16 @@
         border-right: 2px solid #e5e5e5;
         &:hover {
           background-color: #f7f7f7;
-          color: #afafaf;
+          color: #777777;
           &.is-active {
             background-color: #ddf4ff;
             color: #1cb0f6;
           }
         }
-        &:active {
+        /*&:active {
           background-color: #ddf4ff;
           color: #1cb0f6;
-        }
+        }*/
         &.is-active {
           background-color: #ddf4ff;
           color: #1cb0f6;
@@ -174,10 +185,10 @@
   color: black;
   &.is-spread svg {
     transform: rotate(180deg);
-    & > path {
+  }
+  &.is-color svg > path {
       fill: #1cb0f6;
     }
-  }
   & svg {
     transition: transform 0.2s ease-in-out;
     height: 6px;

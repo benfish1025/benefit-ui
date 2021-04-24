@@ -20,7 +20,7 @@ interface CheckBoxGroupNextProps {
 const CheckBoxGroupNext: React.FC<CheckBoxGroupNextProps> = (props) => {
   const { defaultValue, style, tittle, className, options, onChange, value} = props
   const [orderValue, setOrderValue] = useState(defaultValue || [])
-  const classes = ClassNames(className)
+  const classes = ClassNames('checkbox-group-wrapper', className)
   const handleChange = (key: string) => {
     const newValue = orderValue.includes(key)
         ? orderValue.filter((item) => item !== key)

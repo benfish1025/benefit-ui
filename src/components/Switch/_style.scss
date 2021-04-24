@@ -8,8 +8,19 @@
   position: relative;
   transition: background .1s;
   width: 52px;
+  &.is-thin {
+    height: 12px;
+    width: 46px;
+  }
+  &.is-disabled {
+    cursor: not-allowed;
+  }
   &.is-active{
     background: #1cb0f6;
+    &.is-disabled {
+      cursor: not-allowed;
+      background: #afafaf;
+    }
   }
   &-slide{
     background: #fff;
@@ -23,11 +34,25 @@
     position: absolute;
     transition: left .2s;
     width: 28px;
+    &.is-thin {
+      border-radius: 8px;
+      width: 23px;
+      height: 23px;
+    }
+    &.is-disabled {
+      background-color: #e5e5e5;
+      cursor: not-allowed;
+    }
     &.is-active {
       position: absolute;
       left: 24px;
       border: solid #1cb0f6;
       border-width: 2px 2px 4px;
+      &.is-disabled {
+        cursor: not-allowed;
+        background: #e5e5e5;
+        border-color: #afafaf;
+      }
     }
   }
 }

@@ -4,21 +4,22 @@ import Transition from "../Transition/transition";
 
 interface  PopoverProps {
   visible?: boolean,
-  content?: string | React.ReactNode,
+  content: string | React.ReactNode,
   position?: 'top' | 'left' | 'right' | 'bottom',
-  style?: CSSProperties
+  dark?: boolean
 }
 const Popover: React.FC<PopoverProps> = (props) => {
-  const {visible, children, content, position, style } = props
+  const {dark, visible, children, content, position = 'top'} = props
   const [appear, setAppear] = useState(false)
   const classes = ClassNames('b-popover', {
-    [`b-popover--${position}`]: position
+    [`b-popover--${position}`]: position,
+    'is-dark': dark
   })
   const aniClasses = ClassNames({
     [`popover-${position}`]: position
   })
   const helpAppear = () => {
-    if (visible) {
+    if (typeof visible === 'boolean') {
       return visible
     } else return appear
   }

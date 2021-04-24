@@ -5,22 +5,24 @@ import useClickOutside from '../../hooks/useClickOutside'
 import useDebounce from '../../hooks/useDebounce'
 import Transition from "../Transition/transition"
 import Loading from '../Loading/loading'
+import {InputProps} from '../Input/input'
 interface DataSourceObject {
   value: string
 }
 type DataSourceType<T = {}> = T & DataSourceObject
-interface AutoCompleteProps extends Omit<InputHTMLAttributes<HTMLElement>, 'onSelect'>{
+interface AutoCompleteProps extends Omit<InputProps, 'onSelect'>{
   fetchSuggestions: (str: string) => DataSourceType[] | Promise<DataSourceType[]>,
   onSelect?: (item: DataSourceType) => void,
   renderOptions?: (item: DataSourceType) => ReactElement
 }
 
-const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
+const AutoComplete = (props: AutoCompleteProps) => {
   const {
     fetchSuggestions,
     onSelect,
     value,
-    renderOptions
+    renderOptions,
+      ...restProps
   } = props
   const [ inputValue, setInputValue ] = useState(value as string)
   const [ suggestions, setSuggestions ] = useState<DataSourceType[]>([])
@@ -93,20 +95,23 @@ const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
         break
     }
   }
+  let timer: NodeJS.Timeout
   const handleSelect = (item: DataSourceType) => {
-    setInputValue(item.value)
+    clearTimeout(timer)
+    timer = setTimeout(() => setInputValue(item.value), 200)
     setShowDropdown(false)
     if (onSelect) {
       onSelect(item)
     }
     triggerSearch.current = false
   }
-  const highLightInputValue = (value: string) => {
-    const anchor = value.indexOf(inputValue)
-    const head = value.slice(0,anchor)
-    const tail = value.slice(anchor + inputValue.length)
+  const highLightInputValue = (v: string) => {
+    const renderValue = inputValue
+    const anchor = v.indexOf(inputValue)
+    const head = v.slice(0,anchor)
+    const tail = v.slice(anchor + inputValue.length)
     return (
-        <span>{head}<em className={'highlight-auto-value'}>{inputValue}</em>{tail}</span>
+        <span>{head}<em className={'highlight-auto-value'}>{renderValue}</em>{tail}</span>
     )
   }
   const renderTemplate = (item: DataSourceType) => {
@@ -144,8 +149,8 @@ const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
           value={inputValue}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
-        >
-        </Input>
+          {...restProps}
+        />
         <Transition in={showDropdown} timeout={300} animation="zoom-in-top">
           {renderDropDown()}
         </Transition>

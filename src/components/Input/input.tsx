@@ -1,8 +1,7 @@
-import React, {ReactElement, useState} from 'react'
+import React, {InputHTMLAttributes, ReactElement, useState} from 'react'
 import ClassNames from 'classnames'
-import {stringify} from "querystring";
 
-interface InputProps {
+export interface InputProps {
   value?: string,
   defaultValue?: string,
   placeholder?: string,
@@ -19,14 +18,15 @@ interface InputProps {
   error?: boolean,
   readonly?: boolean,
   className?: string,
-  style?: React.CSSProperties
+  style?: React.CSSProperties,
+  thin?: boolean
 }
-const Input: React.FC<InputProps> = (props) => {
+const Input = (props: InputProps) => {
   const {
     readonly,
     value,
     onChange,
-    children,
+    thin,
     className,
     style,
     defaultValue,
@@ -42,10 +42,11 @@ const Input: React.FC<InputProps> = (props) => {
     prefix,
     suffix} = props
   const [orderFocus, setOrderFocus] = useState(false)
-  const classes = ClassNames('b-input', {
+  const classes = ClassNames('b-input', className, {
     'is-disabled': disabled,
     'is-focused': orderFocus,
-    'is-error': error
+    'is-error': error,
+    'is-thin': thin
   })
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
@@ -125,7 +126,7 @@ const Input: React.FC<InputProps> = (props) => {
                   ? (<span className="after-string">
                     <span>{addonAfter}</span>
                   </span>)
-                  : <div>{(addonAfter)}</div>
+                  : <div className={'underwear'}>{(addonAfter)}</div>
               }
             </div>
         )}

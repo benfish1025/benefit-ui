@@ -1,14 +1,24 @@
 .b-popover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   border: 2px solid #e5e5e5;
   padding: 10px;
   background-color: #f7f7f7;
   border-radius: 15px;
   position: absolute;
   white-space: nowrap;
+ /* &.is-dark {
+    background-color: rgba(0,0,0,0.9);
+    border-color: rgba(0,0,0,0.9);
+    color: #e5e5e5;
+    &:after {
+      background-color: rgba(0,0,0,0.8);
+      border-color: rgba(0,0,0,0.9);
+    }
+  }*/
   &-wrapper {
     position: relative;
     cursor: default;
-    & > span {
+    & > .pop-anchor {
       padding: 5px;
       background-image: url('line.svg');
       background-position: bottom;
@@ -68,6 +78,7 @@
     background-color: inherit;
     border-right-color: transparent;
     border-bottom-color: transparent;
+    transition: all ease-in 300ms;
   }
 }
 .popover-bottom-enter {

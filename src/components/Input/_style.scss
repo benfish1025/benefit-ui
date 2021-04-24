@@ -7,6 +7,9 @@
   background: #f7f7f7;
   border: 2px solid #e5e5e5;
   color: #4b4b4b;
+  &.is-thin {
+    padding: 2px 5px;
+  }
   & > div:last-child {
     margin: -10px -12px -10px 0;
     & > span {
@@ -83,4 +86,8 @@
   padding: 5px 10px;
   background: #f7f7f7;
   border: 2px solid #e5e5e5;
+}
+.underwear {
+  display: flex;
+  align-items: center;
 }

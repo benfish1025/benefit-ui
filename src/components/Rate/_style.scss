@@ -1,14 +1,19 @@
-
+.loves-container {
+  display: flex;
+  align-items: center;
+}
 .love {
   display: inline-block;
   cursor: pointer;
   height: 18px;
   width: 22px;
   background-repeat: no-repeat;
-  background-size: 22px 18px;
+
   margin-right: 8px;
-  transition: transform 100ms linear 50ms;
+  transition: all 100ms linear 50ms;
   position: relative;
+  background-image: url('love-gray.svg');
+  background-size: 0 0;
   &-half {
     &__wrapper {
       position: absolute;
@@ -28,12 +33,15 @@
     transform: scale(1.1);
   }
   &--half {
+    background-size: 22px 18px;
     background-image: url('love-half.svg');
   }
   &--on {
+    background-size: 22px 18px;
     background-image: url('love.svg');
   }
   &--off {
+    background-size: 22px 18px;
     background-image: url('love-gray.svg');
   }
 }

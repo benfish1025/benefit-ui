@@ -1,5 +1,6 @@
 .highlight-auto-value {
   color: #1cb0f6;
+  font-style: normal;
 }
 .b-autocomplete {
   position: relative;
@@ -47,6 +48,8 @@
   letter-spacing: .8px;
   cursor: pointer;
   width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
   &.is-active {
     background-color: #ddf4ff;
     color: #1cb0f6;

@@ -23,17 +23,20 @@ const TableCell: React.FC<TableCellProps> = (props) => {
     inputRef.current?.focus()
     inputRef.current?.select()
   },[context.inputRow,context.inputColumn])
-  const handleClick = () => {
-    if (context.onClickCell) {
-      context.onClickCell(rowKey, cellKey)
-    }
-  }
-  const handleDoubleClick = () => {
-    if (context.onDoubleClick) {
-      context.onDoubleClick(rowKey, cellKey)
-    }
 
-  }
+  const helpClickEvent =  context.edit ? {
+    onDoubleClick: () => {
+      if (context.onDoubleClick) {
+        context.onDoubleClick(rowKey, cellKey)
+      }
+    },
+    onClick: () => {
+      if (context.onClickCell) {
+        context.onClickCell(rowKey, cellKey)
+      }
+    }
+  } : {}
+
 const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     switch(e.code) {
       case 'Enter': {
@@ -46,7 +49,7 @@ const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     }
 }
   return (
-      <td onDoubleClick={handleDoubleClick} onClick={handleClick} className={classes} key={key}>
+      <td {...helpClickEvent} className={classes} key={key}>
         {context.inputColumn === cellKey && context.inputRow === rowKey
           ? <input
             defaultValue={value}
