@@ -171,7 +171,7 @@ const Table = (props: TableProps) => {
     'is-active': upper === 'lower'
   })
   return (
-      <Loading spinning={isLoading}>
+      <Loading loading={isLoading}>
 
       <table className="b-table">
         <thead className={'t-row--head'}>

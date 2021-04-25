@@ -12,6 +12,7 @@ interface CustomButtonProps {
     isLoading?: boolean,
     href?: string;
     children: React.ReactNode;
+    delay?: number
 }
 export type ButtonProps = CustomButtonProps & ButtonHTMLAttributes<HTMLElement> & AnchorHTMLAttributes<HTMLElement>
 
@@ -24,6 +25,7 @@ const Button: React.FC<ButtonProps> = (props) => {
         btnType,
         href,
         children,
+        delay,
         ...restProps
     } = props
 
@@ -51,7 +53,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     } else {
         return (
             <button disabled={disabled} className={classes} {...restProps}>
-                <Loading spinning={isLoading}>
+                <Loading delay={delay} loading={isLoading}>
                     <span className={isHidden}>
                         {children}
                     </span>

@@ -122,7 +122,7 @@ const AutoComplete = (props: AutoCompleteProps) => {
         <ul className={'suggestions-wrapper'}>
           {loading &&
               <div className={'suggestions-loading'}>
-                <Loading spinning={loading}/>
+                <Loading loading={loading}/>
               </div>
           }
           {suggestions.length === 0 && !loading && showDropdown &&

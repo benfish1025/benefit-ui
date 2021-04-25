@@ -1,5 +1,6 @@
 import React from 'react'
 import ClassNames from 'classnames'
+import {ReactComponent as CheckedSvg} from './radioCheck.svg'
 export interface RadioProps {
   value: string,
   activeValue?: string,
@@ -28,7 +29,9 @@ const Radio: React.FC<RadioProps> = (props) => {
     return (
         <label className={radioClasses} onClick={handleClick}>
         <span className={'b-radio__wrapper'} >{/*<input defaultValue={value} className={'b-radio__input'} type="radio"/>*/}
-          <span className={representClasses}/>
+          <span className={representClasses}>
+            <CheckedSvg className={'b-radio__checked'}/>
+          </span>
         </span>
           <span className={'b-radio__text'}>{children}</span>
         </label>

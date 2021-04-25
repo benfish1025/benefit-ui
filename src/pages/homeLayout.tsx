@@ -54,7 +54,7 @@ const HomeLayout = () => {
             <HomeFooter/>
           </Route>
           <Route path={'/components'}>
-            <Redirect to={'/components/start'}/>
+            <Redirect to={'/components/radio'}/>
             <ComponentsLayout/>
           </Route>
         </div>

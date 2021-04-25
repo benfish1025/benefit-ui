@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import Card from '../../components/Card/card'
 import Table from "../../components/Table/table"
-import Message from "../../components/Message/message";
-import Button from "../../components/Button/button";
+import Message, {MessageType} from "../../components/Message/message";
+import Button, {ButtonSize} from "../../components/Button/button";
 const columns = [
   {
     title: '参数',
@@ -131,30 +131,7 @@ const MessageDisplay = () => {
               explain={'可定制三种状态。'}
               code={Code2}
           >
-            <Message
-                showMessage={appear}
-                tittle={'正确'}
-                info={'点击确认回答下一题'}
-                btnText={'确认'}
-                onClickButton={handleClick}
-            />
-            <Message
-                showMessage={appear2}
-                tittle={'错误'}
-                type={'error'}
-                info={'点击查看正确解答。'}
-                btnText={'确认'}
-                onClickButton={handleClick2}
-            />
-            <Message
-                showMessage={appear3}
-                type={'primary'}
-                tittle={'title'}
-                info={'content content content content content'}
-                btnText={'确认'}
-                duration={300}
-                onClickButton={handleClick3}
-            />
+            <Message showMessage={appear}/>
             <Button style={{marginRight: '10px'}} size={'tiny'} onClick={handleClick}>success</Button>
             <Button style={{marginRight: '10px'}} size={'tiny'} onClick={handleClick2}>error</Button>
             <Button size={'tiny'} onClick={handleClick3}>primary</Button>

@@ -25,3 +25,8 @@
   left: 50%;
   transform: translateX(-50%);
 }
+.flex-column-small {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

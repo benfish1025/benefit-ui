@@ -166,9 +166,9 @@ const ComponentsLayout = () => {
               </li>
             </NavLink>
             <NavLink activeClassName={'sidebar-item--active'}
-                     to={'/components/spain'}>
+                     to={'/components/loading'}>
               <li className={'sidebar-item sidebar-item--low'}>
-                Spin 加载中
+                Loading 加载中
               </li>
             </NavLink>
           </ul>

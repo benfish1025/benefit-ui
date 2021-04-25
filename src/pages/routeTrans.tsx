@@ -12,6 +12,7 @@ import RateDisplay from "./Display/rateDisplay";
 import PopoverDisplay from "./Display/popoverDisplay";
 import PopconfirmDisplay from "./Display/PopconfirmDisplay";
 import MessageDisplay from "./Display/messageDisplay";
+import LoadingDisplay from "./Display/loadingDisplat";
 interface Iparams {
   floor: string
 }
@@ -76,8 +77,8 @@ const RouteTrans = () => {
       case 'modal': {
         return <ButtonDisplay/>
       }
-      case 'spain': {
-        return <ButtonDisplay/>
+      case 'loading': {
+        return <LoadingDisplay/>
       }
       default: {
         return <p>页面不存在</p>
