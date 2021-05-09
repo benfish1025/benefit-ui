@@ -50,6 +50,11 @@
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
+  &.is-disabled {
+    color: #e5e5e5;
+    background-color: #fff;
+    cursor: not-allowed;
+  }
   &.is-active {
     background-color: #ddf4ff;
     color: #1cb0f6;
@@ -62,6 +67,10 @@
     &.is-active {
       background-color: #ddf4ff;
       color: #1cb0f6;
+    }
+    &.is-disabled {
+      color: #e5e5e5;
+      background-color: #fff;
     }
   }
   &:first-child {

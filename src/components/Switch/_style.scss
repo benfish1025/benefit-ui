@@ -8,6 +8,19 @@
   position: relative;
   transition: background .1s;
   width: 52px;
+  &__text {
+    display: inline-flex;
+    align-items: center;
+    &.is-active span {
+      color: #1cb0f6;
+    }
+    & span {
+      color: #777777;
+      font-size: 1.3rem;
+      line-height: 1.3rem;
+      margin-left: 5px;
+    }
+  }
   &.is-thin {
     height: 12px;
     width: 46px;

@@ -94,7 +94,7 @@ const AutoCompleteDisplay = () => {
               code={Code1}
           >
             <div className="flex-column-wrapper">
-              <AutoComplete placeholder={'尝试键入月、夏、花、日、鸟、等字'} fetchSuggestions={handleFetch}/>
+              <AutoComplete defaultValue={'一朝春夏改，隔夜鸟花迁'} placeholder={'尝试键入月、夏、花、日、鸟、等字'} fetchSuggestions={handleFetch}/>
             </div>
           </Card>
         </div>

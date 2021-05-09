@@ -1,8 +1,11 @@
 import React, {useState} from 'react'
 import Card from '../../components/Card/card'
 import Table from "../../components/Table/table"
-import Message, {MessageType} from "../../components/Message/message";
-import Button, {ButtonSize} from "../../components/Button/button";
+import Message from "../../components/Message/message";
+import Modal from '../../components/Modal/modal'
+import Button from "../../components/Button/button";
+import {ReactComponent as DemondSvg} from "../svg/demond.svg";
+
 const columns = [
   {
     title: '参数',
@@ -96,6 +99,7 @@ const MessageDisplay = () => {
   const Code5 = `
 `
   const [appear, setAppear] = useState(false)
+
   const handleClick = () => {
     setAppear(!appear)
   }
@@ -109,59 +113,106 @@ const MessageDisplay = () => {
   const handleClick3 = () => {
     setAppear3(!appear3)
   }
+  const [appear4, setAppear4] = useState(false)
+  const handleClick4 = () => {
+    setAppear4(!appear4)
+  }
+  const [appear5, setAppear5] = useState(false)
+  const handleClick5 = () => {
+    setAppear5(!appear5)
+  }
+  const [appear6, setAppear6] = useState(false)
+  const handleClick6 = () => {
+    setAppear6(!appear6)
+  }
+  const [appear7, setAppear7] = useState(false)
+  const handleClick7 = () => {
+    setAppear7(!appear7)
+  }
+  const [appear8, setAppear8] = useState(false)
+  const handleClick8 = () => {
+    setAppear8(!appear8)
+  }
+  const cardElement = (
+      <div className="popover-inner-card">
+        <div className="popover-inner-card__image">
+          <DemondSvg/>
+        </div>
+        <div className="popover-inner-card__content">
+          <span className={'tittle'}>宝石</span>
+          <span className={'info'}>你有5块宝石</span>
+          <Button size={'tiny'} btnType={'none'}>访问宝石商店</Button>
+        </div>
+      </div>
+  )
   return (
       <div className={'display'}>
-        <h2 className={'display-tittle'}>Message 全局提示</h2>
+        <h2 className={'display-tittle'}>Dialog 全局弹窗</h2>
         <p className={'display-explain'}>全局展示操作反馈信息。</p>
         <h3 className={'display-tittle'}>何时使用</h3>
-        <p className={'display-explain'}>可提供成功、警告和错误等反馈信息。</p>
+        <p className={'display-explain'}>用户进行全局操作下的子操作时提供信息展示，用户输入等交互。</p>
         <h3 className={'display-tittle'}>代码演示</h3>
         <div className="display-card-container">
           <Card
-              divider={'按钮类型'}
-              explain={'按照主色分类，按钮有四种类型：成功按钮、错误按钮、主要按钮和默认按钮。'}
-              code={Code1}
-          >
-
-          </Card>
-        </div>
-        <div className="display-card-container">
-          <Card
-              divider={'提示类型'}
+              divider={'Banner型弹窗'}
               explain={'可定制三种状态。'}
               code={Code2}
           >
-            <Message showMessage={appear}/>
-            <Button style={{marginRight: '10px'}} size={'tiny'} onClick={handleClick}>success</Button>
-            <Button style={{marginRight: '10px'}} size={'tiny'} onClick={handleClick2}>error</Button>
-            <Button size={'tiny'} onClick={handleClick3}>primary</Button>
+
+            <Message showMessage={appear} tittle={'回答正确'} info={'再接再厉，本单元结束后领取奖励哦！'}/>
+            <Message type={"error"} showMessage={appear2} tittle={'回答正确'} info={'再接再厉，本单元结束后领取奖励哦！'}/>
+            <Message type={"primary"} showMessage={appear3} tittle={'回答正确'} info={'再接再厉，本单元结束后领取奖励哦！'}/>
+            <Button btnType={'success'} style={{marginRight: '10px'}} size={'tiny'} onClick={handleClick}>success</Button>
+            <Button btnType={'error'} style={{marginRight: '10px'}} size={'tiny'} onClick={handleClick2}>error</Button>
+            <Button btnType={'primary'} size={'tiny'} onClick={handleClick3}>primary</Button>
           </Card>
         </div>
         <div className="display-card-container">
           <Card
-              divider={'链接按钮'}
-              explain={'链接样式的按钮。链接行为需要指定目标地址。'}
+              divider={'Banner型弹窗/显示操作按钮'}
+              explain={'弹窗内显示操作按钮。'}
               code={Code3}
           >
-
+            <Message onClickButton={handleClick4} btnText={'确认'} showButton={true} showMessage={appear4} tittle={'回答正确'} info={'再接再厉，本单元结束后领取奖励哦！'}/>
+            <Message onClickButton={handleClick5} btnText={'确认'} showButton={true} type={"error"} showMessage={appear5} tittle={'回答正确'} info={'再接再厉，本单元结束后领取奖励哦！'}/>
+            <Message onClickButton={handleClick6} btnText={'确认'} showButton={true} type={"primary"} showMessage={appear6} tittle={'回答正确'} info={'再接再厉，本单元结束后领取奖励哦！'}/>
+            <Button btnType={'success'} style={{marginRight: '10px'}} size={'tiny'} onClick={handleClick4}>success</Button>
+            <Button btnType={'error'} style={{marginRight: '10px'}} size={'tiny'} onClick={handleClick5}>error</Button>
+            <Button btnType={'primary'} size={'tiny'} onClick={handleClick6}>primary</Button>
           </Card>
         </div>
         <div className="display-card-container">
           <Card
-              divider={'幽灵按钮'}
-              explain={'放置在有色背景上，自动应用其主色'}
+              divider={'Model型弹窗'}
+              explain={'经典窗口样式。'}
               code={Code4}
           >
-
+            <Modal
+                tittle={'此操作需要验证'}
+                section={'验证邮件已发送，请检查邮箱是否正确？'}
+                detail={'liben97@gmail.com'}
+                showAlert={appear7}
+                alertController={handleClick7}>
+              <div className="padding-bottom-small">
+                <Button onClick={handleClick7} btnType={'primary'} size={'full'}>确认</Button>
+              </div>
+              <Button onClick={handleClick7} size={'full'}>取消</Button>
+            </Modal>
+            <Button size={'tiny'} onClick={handleClick7}>Model型</Button>
           </Card>
         </div>
         <div className="display-card-container">
           <Card
-              divider={'按钮大小'}
-              explain={'按钮分三种方式获得尺寸:适应按钮文本内容，中等定宽尺寸，以及适应父容器'}
+              divider={'Model型弹窗/自定义内容'}
+              explain={'内容元素可自定义。'}
               code={Code5}
           >
-
+            <Modal
+                showAlert={appear8}
+                alertController={handleClick8}>
+              {cardElement}
+            </Modal>
+            <Button size={'tiny'} onClick={handleClick8}>Model型</Button>
           </Card>
         </div>
         <h3 className={'display-tittle'}>API</h3>

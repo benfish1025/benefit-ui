@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom'
 import Button, {ButtonSize} from "../Button/button";
 import Transition from '../Transition/transition'
 import ClassNames from 'classnames'
+import useDebounceAnti from "../../hooks/useDebounceAnti";
 
 
 export type MessageType = 'success' | 'primary' | 'error'
-interface MessageProps {
+export interface MessageProps {
   type?: MessageType,
   btnText?: string,
   btnSize?: ButtonSize,
@@ -20,14 +21,7 @@ interface MessageProps {
 }
 
 const Message = (props: MessageProps) => {
-  const {showMessage, duration, showButton, type = 'success', btnText, tittle, info, btnSize, onClickButton } = props
-  const [show, setShow] = useState(false)
-  useEffect(() => {
-    if (! showButton)
-    setTimeout(() => {
-      setShow(!show)
-    },300 || duration)
-  },[])
+  const {showMessage, showButton, type = 'success', btnText, tittle, info, btnSize, onClickButton } = props
   const messageTypeClasses = ClassNames('message-wrapper', {
     [`is-${type}`]: type
   })
@@ -35,7 +29,6 @@ const Message = (props: MessageProps) => {
     [`is-${type}`]: type
   })
   const handleClickButton = () => {
-    setShow(!show)
     if (onClickButton) {
       onClickButton()
     }
@@ -43,7 +36,7 @@ const Message = (props: MessageProps) => {
   const renderMessage = () => {
 
       return (
-          <Transition timeout={300} in={false} classNames={'spread'}>
+          <Transition timeout={300} in={showMessage} classNames={'spread'}>
             <div className={messageTypeClasses}>
               <div className="message-content">
                 <div className={iconTypeClasses} id={'check'}> </div>
@@ -60,8 +53,6 @@ const Message = (props: MessageProps) => {
       )
 
   }
-if (show) {
-  return ReactDOM.createPortal(renderMessage(), document.getElementById('dialog-container') as Element)
-} else return null
+   return ReactDOM.createPortal(renderMessage(), document.getElementById('dialog-container') as Element)
 }
 export default Message

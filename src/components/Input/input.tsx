@@ -1,7 +1,7 @@
 import React, {InputHTMLAttributes, ReactElement, useState} from 'react'
 import ClassNames from 'classnames'
 
-export interface InputProps {
+export interface IInputProps {
   value?: string,
   defaultValue?: string,
   placeholder?: string,
@@ -19,14 +19,16 @@ export interface InputProps {
   readonly?: boolean,
   className?: string,
   style?: React.CSSProperties,
-  thin?: boolean
+  inputSize?: 'strong' | 'thin' | 'mini',
+  defaultFocus?: boolean,
 }
+export type InputProps = IInputProps & InputHTMLAttributes<HTMLElement>
 const Input = (props: InputProps) => {
   const {
     readonly,
     value,
     onChange,
-    thin,
+    inputSize,
     className,
     style,
     defaultValue,
@@ -40,13 +42,17 @@ const Input = (props: InputProps) => {
     onPressEnter,
     placeholder,
     prefix,
-    suffix} = props
-  const [orderFocus, setOrderFocus] = useState(false)
+    suffix,
+    children,
+    defaultFocus,
+  ...restProps} = props
+  const [orderFocus, setOrderFocus] = useState(defaultFocus || false)
   const classes = ClassNames('b-input', className, {
     'is-disabled': disabled,
     'is-focused': orderFocus,
     'is-error': error,
-    'is-thin': thin
+    'is-thin': inputSize === 'thin',
+    'is-mini': inputSize === 'mini'
   })
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
@@ -75,7 +81,7 @@ const Input = (props: InputProps) => {
     }
   }
   return (
-      <div className={classes}>
+      <div style={style} className={classes}>
         {addonBefore && (
             <div className="addonbefore-wrapper">
               {typeof addonBefore === 'string'
@@ -96,19 +102,21 @@ const Input = (props: InputProps) => {
               }
             </div>
         )}
-        <input
-            placeholder={placeholder || ''}
-            type="text"
-            onChange={handleChange}
-            onKeyDown={handleKeyDown}
-            value={value}
-            defaultValue={defaultValue}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
-            style={style}
-            readOnly={readonly}
-            disabled={disabled}
-        />
+          <input
+              placeholder={placeholder || ''}
+              type="text"
+              onChange={handleChange}
+              onKeyDown={handleKeyDown}
+              value={value}
+              defaultValue={defaultValue}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              style={style}
+              readOnly={readonly}
+              disabled={disabled}
+              {...restProps}
+          />
+          {children}
         {suffix && (
             <div className="suffix-wrapper">
               {typeof suffix === 'string'

@@ -39,7 +39,7 @@ const TableRow = (props: TableRowProps) => {
           })
           if (!item.render) {
             return (
-            <TableCell value={rowData[item.title.toLowerCase()]} cellKey={item.key} rowKey={rowData.key} key={item.key} className={classes}>
+            <TableCell value={rowData[item.key.toLowerCase()]} cellKey={item.key} rowKey={rowData.key} key={item.key} className={classes}>
               <span>{rowData[item.key.toLowerCase()]}</span>
             </TableCell>
             )

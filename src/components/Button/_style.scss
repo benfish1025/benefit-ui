@@ -1,4 +1,5 @@
 .btn {
+  color: inherit;
   outline: none;
   position: relative;
   display: inline-block;
@@ -221,8 +222,14 @@
   font-size: 16px;
   font-weight: 700;
   border: none;
-  padding: 8px;
+  padding: 0;
   background: none;
+  &:hover:enabled {
+    filter: brightness(1.1);
+  }
+  &:active:enabled {
+    filter: brightness(1);
+  }
 }
 .btn-link {
   color: #1cb0f6;

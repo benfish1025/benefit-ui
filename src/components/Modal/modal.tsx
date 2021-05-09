@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import ClassNames from 'classnames'
 import Transition from '../Transition/transition'
+import useDebounce from "../../hooks/useDebounce";
 
 interface AlertProps {
     alertController: () => void,
@@ -12,7 +13,7 @@ interface AlertProps {
     detail?: string
 }
 
-const Alert: React.FC<AlertProps> = (props) => {
+const Modal: React.FC<AlertProps> = (props) => {
     const {
         children,
         tittle,
@@ -22,6 +23,14 @@ const Alert: React.FC<AlertProps> = (props) => {
         alertController,
         className } = props
     const ani = useRef<HTMLDivElement>(null)
+    const helpAppear = () => {
+        if (showAlert) {
+            return debouncAppear
+        } else {
+            return showAlert
+        }
+    }
+    const debouncAppear = useDebounce(showAlert, 200)
     const classes = ClassNames('alert-fullscreen',className,
         {
             [`alert-${showAlert}`]: showAlert
@@ -33,15 +42,15 @@ const Alert: React.FC<AlertProps> = (props) => {
 
                     </div>
                 </Transition>
-                <Transition in={showAlert} timeout={300} animation="alert">
+                <Transition in={helpAppear()} timeout={200} classNames={'alert-background'}>
                     <div className={'alert-container'}>
                         <div className="alert-container__closer" onClick={alertController}>
                             <img src="//duolingo-forum-web.duolingo.com/images/x.svg" />
                         </div>
                         <div className="alert-content">
-                            <h1 className={'alert-content__tittle'}>{tittle}</h1>
-                            <div className={'alert-content__section'}>{section}</div>
-                            <div className={'alert-content__detail'}>{detail}</div>
+                            {tittle && <h1 className={'alert-content__tittle'}>{tittle}</h1>}
+                            {section && <div className={'alert-content__section'}>{section}</div>}
+                            {detail && <div className={'alert-content__detail'}>{detail}</div>}
                             {children}
                         </div>
                     </div>
@@ -53,4 +62,4 @@ const Alert: React.FC<AlertProps> = (props) => {
 
 
 }
-export default Alert
+export default Modal

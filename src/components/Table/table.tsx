@@ -138,7 +138,7 @@ const Table = (props: TableProps) => {
   const helpDataource = () => {
     const mode = upper
     if (mode) {
-      return arrSortUtil('age', dataSource, mode)
+      return arrSortUtil('date', dataSource, mode)
     }else return dataSource
 
   }

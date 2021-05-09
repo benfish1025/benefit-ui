@@ -3,6 +3,7 @@ import Card from '../../components/Card/card'
 import Table from "../../components/Table/table"
 import Popconfirm from '../../components/Popconfirm/popconfirm'
 import Button from "../../components/Button/button";
+import useDebounce from "../../hooks/useDebounce";
 
 const columns = [
   {
@@ -165,14 +166,15 @@ const PopconfirmDisplay = () => {
 
       setVisible5(!visible5)
       setLoading(false)
-    }, 1000)
+    }, 2000)
   }
   const handleCancel = () => {
     setVisible5(!visible5)
   }
+  const debounceLoading = useDebounce(loading, 200)
   const greenButton = <Button btnType={'success'} size={'full'}>确认</Button>
   const garyButton = <Button size={'full'}>取消</Button>
-  const greenButton2 = <Button onClick={handleChecked} isLoading={loading} btnType={'primary'} size={'full'}>确认</Button>
+  const greenButton2 = <Button onClick={handleChecked} isLoading={debounceLoading} btnType={'primary'} size={'full'}>确认</Button>
   const garyButton2 = <Button onClick={handleCancel} size={'full'}>取消</Button>
   let timer: NodeJS.Timeout
 
@@ -202,19 +204,8 @@ const PopconfirmDisplay = () => {
         </div>
         <div className="display-card-container">
           <Card
-              divider={'弹出位置'}
-              explain={'放置在有色背景上，自动应用其主色'}
-              code={Code4}
-          >
-            <Popconfirm position={'bottom'} tittle={'单元四'} detail={'第4/21节'} visible={visible2}>
-              <Button onClick={handleClick2} btnType={'none'}>进入学习</Button>
-            </Popconfirm>
-          </Card>
-        </div>
-        <div className="display-card-container">
-          <Card
-              divider={'自定义颜色'}
-              explain={'自定义确认框背景颜色'}
+              divider={'自定义颜色/弹出位置'}
+              explain={'自定义确认框背景颜色。自定义弹出位置。'}
               code={Code2}
           >
             <div className="margin-right-small">

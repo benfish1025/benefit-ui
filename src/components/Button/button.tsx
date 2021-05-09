@@ -53,7 +53,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     } else {
         return (
             <button disabled={disabled} className={classes} {...restProps}>
-                <Loading delay={delay} loading={isLoading}>
+               <Loading delay={delay} loading={isLoading}>
                     <span className={isHidden}>
                         {children}
                     </span>

@@ -13,6 +13,12 @@ import PopoverDisplay from "./Display/popoverDisplay";
 import PopconfirmDisplay from "./Display/PopconfirmDisplay";
 import MessageDisplay from "./Display/messageDisplay";
 import LoadingDisplay from "./Display/loadingDisplat";
+import SelectDisplay from "./Display/selectDiaplay";
+import CascaderDisplay from "./Display/cascaderDisplay";
+import TagDisplay from "./Display/TagDisplay";
+import ProgressDisplay from "./Display/progressDisplay";
+import TableDisplay from "./Display/tableDisplay"
+import TabsDisplay from "./Display/tabsDisplay";
 interface Iparams {
   floor: string
 }
@@ -26,17 +32,17 @@ const RouteTrans = () => {
       case 'grid': {
         return <ButtonDisplay/>
       }
-      case 'affix': {
-        return <ButtonDisplay/>
-      }
       case 'menu': {
         return <MenuDisplay/>
       }
       case 'pagination': {
         return <PagerDisplay/>
       }
+      case 'select': {
+        return <SelectDisplay/>
+      }
       case 'cascader': {
-        return <ButtonDisplay/>
+        return <CascaderDisplay/>
       }
       case 'checkbox': {
         return <CheckBoxDisplay/>
@@ -46,6 +52,12 @@ const RouteTrans = () => {
       }
       case 'input': {
         return <InputDisplay/>
+      }
+      case 'tag': {
+        return <TagDisplay/>
+      }
+      case 'progress': {
+        return <ProgressDisplay/>
       }
       case 'autocomplete': {
         return <AutoCompleteDisplay/>
@@ -66,16 +78,13 @@ const RouteTrans = () => {
         return <ButtonDisplay/>
       }
       case 'tables': {
-        return <ButtonDisplay/>
+        return <TableDisplay/>
       }
       case 'tabs': {
-        return <ButtonDisplay/>
+        return <TabsDisplay/>
       }
-      case 'message': {
+      case 'dialog': {
         return <MessageDisplay/>
-      }
-      case 'modal': {
-        return <ButtonDisplay/>
       }
       case 'loading': {
         return <LoadingDisplay/>

@@ -1,0 +1,42 @@
+<svg viewBox="0 0 100 100">
+    <path class="b-progress-circle__track" d="
+          M 50 50
+          m 0 -43
+          a 40 40 0 1 1 0 85
+          a 40 40 0 1 1 0 -85
+          "
+          stroke="#e5e5e5"
+          stroke-width="10.5"
+          fill="none"
+          stroke-dasharray="295.31px, 295.31px"
+          stroke-dashoffset="0px">
+
+    </path>
+    <path class="b-progress-circle__path" d="
+          M 50 50
+          m 0 -43
+          a 40 40 0 1 1 0 85
+          a 40 40 0 1 1 0 -85
+          "
+          stroke="#1cb0f6"
+          fill="none"
+          stroke-linecap="round"
+          stroke-width="10.5"
+          style="stroke-dasharray: 120px, 295.31px; stroke-dashoffset: 0px;
+          transition: stroke-dasharray 0.6s ease 0s, stroke 0.6s ease 0s;">
+
+    </path>
+    <path class="b-progress-circle__path" d="
+          M 50 50
+          m 0 -43
+          a 40 40 0 1 1 0 85
+          a 40 40 0 1 1 0 -85
+          "
+          stroke="#1cb0f6"
+          fill="none"
+          stroke-linecap="round"
+          stroke-width="10.5"
+          style="stroke-dasharray: 120px, 295.31px; stroke-dashoffset: 0px;
+          transition: stroke-dasharray 0.6s ease 0s, stroke 0.6s ease 0s;">
+
+    </path><</svg>

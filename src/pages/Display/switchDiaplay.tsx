@@ -91,6 +91,15 @@ const SwitchDisplay = () => {
         </div>
         <div className="display-card-container">
           <Card
+              divider={'文案'}
+              explain={'开启或关闭时显示的提示文案。'}
+              code={Code2}
+          >
+            <Switch defaultValue={true} activeText={'opened'} inactiveText={'closed'}/>
+          </Card>
+        </div>
+        <div className="display-card-container">
+          <Card
               divider={'禁用状态'}
               explain={'设置滑块的禁用状态'}
               code={Code2}
@@ -101,6 +110,7 @@ const SwitchDisplay = () => {
             <Switch disabled={true} defaultValue={true}/>
           </Card>
         </div>
+
         <div className="display-card-container">
           <Card
               divider={'大小'}
@@ -111,6 +121,15 @@ const SwitchDisplay = () => {
               <Switch defaultValue={true} thin={true}/>
             </div>
             <Switch defaultValue={true}/>
+          </Card>
+        </div>
+        <div className="display-card-container">
+          <Card
+              divider={'样式'}
+              explain={'类似按钮的开关样式。'}
+              code={Code3}
+          >
+            <Switch inactiveText={'关注'} activeText={'已关注'} defaultValue={true} switchStyle={"button"}/>
           </Card>
         </div>
 

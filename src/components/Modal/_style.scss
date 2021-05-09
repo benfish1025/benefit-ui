@@ -23,8 +23,9 @@
   transform: translate(-50%,-50%);
   background: #fff;
   color: #4c4c4c;
-  padding: 30px;
+  padding: 30px 30px 30px;
   border-radius: 10px;
+  min-width: 300px;
   &__closer {
     width: 36px;
     height: 36px;
@@ -46,7 +47,6 @@
   }
 }
 .alert-content {
-  max-width: 300px;
   text-align: center;
   &__tittle {
     margin: 0 0 25px;

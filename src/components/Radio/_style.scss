@@ -26,14 +26,13 @@
     margin-right: 8px;
     border-radius: 12px;
     border-style: solid;
-    transition: filter 0.2s ease;
     padding: 11px 15px;
     color: #777777;
     background-color: rgb(255, 255, 253);
     border-color: rgb(229, 229, 229);
     border-width: 2px 2px 4px;
+    transition: background-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
     & .b-radio__text {
-      margin-left: .5rem;
       flex-grow: 1;
       text-align: center;
     }

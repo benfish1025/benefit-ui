@@ -1,0 +1,214 @@
+.b-tag {
+  color: #777777;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 10px;
+  height: 32px;
+  line-height: 3.2rem;
+  font-size: 1.3rem;
+  white-space: nowrap;
+  border-radius: 8px;
+  margin-right: 5px;
+  transition: all 0.1s ease-out 0s;
+  &.is-clickable {
+    cursor: pointer;
+    &:hover {
+      filter: brightness(1.05);
+    }
+    &:active {
+      filter: brightness(.95);
+    }
+  }
+  &.is-checkable {
+    cursor: pointer;
+    &:hover {
+      filter: brightness(1.05);
+    }
+    &:active {
+      filter: brightness(.95);
+    }
+
+  }
+  &--tiny {
+    border-radius: 6px;
+    height: 28px;
+    padding: 0 7px;
+    line-height: 2rem;
+    font-size: 1rem;
+  }
+  .svg-container {
+    cursor: pointer;
+    position: relative;
+    left: 4px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1rem;
+    text-align: center;
+    vertical-align: middle;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    transition: background-color 0.1s ease-out;
+    &.is--blue:hover {
+      background-color: #1cb0f6;
+      & svg > path {
+        stroke: #fff;
+      }
+    }
+    &.is--red:hover {
+      background-color: #ff4b4b;
+      & svg > path {
+        stroke: #fff;
+      }
+    }
+    &.is--yellow:hover {
+      background-color: #ff9600;
+      & svg > path {
+        stroke: #fff;
+      }
+    }
+    &.is--green:hover {
+      background-color: #58cc02;
+      & svg > path {
+        stroke: #fff;
+      }
+    }
+    &.is--purple:hover {
+      background-color: #9069cd;
+      & svg > path {
+        stroke: #fff;
+      }
+    }
+    &.is--gray:hover {
+      background-color: #777777;
+      & svg > path {
+        stroke: #fff;
+      }
+    }
+    &.is-blue:hover {
+      background-color: #fff;
+      & svg > path {
+        stroke: #1cb0f6;
+      }
+    }
+    &.is-red:hover {
+      background-color: #fff;
+      & svg > path {
+        stroke: #ff4b4b;
+      }
+    }
+    &.is-yellow:hover {
+      background-color: #fff;
+      & svg > path {
+        stroke: #ff9600;
+      }
+    }
+    &.is-green:hover {
+      background-color: #fff;
+      & svg > path {
+        stroke: #58cc02;
+      }
+    }
+    &.is-purple:hover {
+      background-color: #fff;
+      & svg > path {
+        stroke: #9069cd;
+      }
+    }
+    &.is-gray:hover {
+      background-color: #fff;
+      & svg > path {
+        stroke: #777777;
+      }
+    }
+    & svg {
+      width: 9px;
+      height: 9px;
+    }
+  }
+  &--blue {
+    background-color: #bbf2ff;
+    color: #1cb0f6;
+    & svg > path {
+      stroke: #1cb0f6;
+    }
+  }
+  &--gray {
+    background-color: #e5e5e5;
+    color: #777777;
+    & svg > path {
+      stroke: #777777;
+    }
+  }
+  &--red {
+    background-color: #ffdfe0;
+    color: #ff4b4b;
+    & svg > path {
+      stroke: #ff4b4b;
+    }
+  }
+  &--yellow {
+    background-color: #ffce8e;
+    color: #cd7900;
+    & svg > path {
+      stroke: #ff9600;
+    }
+  }
+  &--green {
+    background-color: #d7ffb8;
+    color: #58cc02;
+    & svg > path {
+      stroke: #58cc02;
+    }
+  }
+  &--purple {
+    background-color: #ffaade;
+    color: #9069cd;
+    & svg > path {
+      stroke: #9069cd;
+    }
+  }
+  &-blue {
+    background-color: #1cb0f6;
+    color: #fff;
+    & svg > path {
+      stroke: #fff;
+    }
+  }
+  &-gray {
+    background-color: #4b4b4b;
+    color: #fff;
+    & svg > path {
+      stroke: #fff;
+    }
+  }
+  &-red {
+    background-color: #ff4b4b;
+    color: #fff;
+    & svg > path {
+      stroke: #fff;
+    }
+  }
+  &-yellow {
+    background-color: #ffc800;
+    color: #fff;
+    & svg > path {
+      stroke: #fff;
+    }
+  }
+  &-green {
+    background-color: #58cc02;
+    color: #fff;
+    & svg > path {
+      stroke: #fff;
+    }
+  }
+  &-purple {
+    background-color: #ce82ff;
+    color: #fff;
+    & svg > path {
+      stroke: #fff;
+    }
+  }
+}

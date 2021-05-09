@@ -248,9 +248,12 @@ const InputDisplay = () => {
           >
             <div className="flex-column-wrapper">
               <div className={'padding-bottom-small'}>
-                <Input placeholder={'thin'} thin={true}/>
+                <Input placeholder={'mini'} inputSize={"mini"}/>
               </div>
-              <Input placeholder={'default'}/>
+              <div className={'padding-bottom-small'}>
+                <Input placeholder={'thin'} inputSize={"thin"}/>
+              </div>
+              <Input placeholder={'strong'}/>
             </div>
           </Card>
         </div>

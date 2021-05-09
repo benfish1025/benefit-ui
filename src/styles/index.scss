@@ -6,8 +6,8 @@
 
 /* Button Style*/
 @import "../components/Button/_style.scss";
-/* Alert Style*/
-@import "../components/Alert/_style.scss";
+/* Modal Style*/
+@import "../components/Modal/_style.scss";
 /* Nav Style*/
 @import "../components/Nav/_style.scss";
 /* Menu Style*/
@@ -40,8 +40,14 @@
 @import "../components/Divider/_style.scss";
 /* PagerStyle */
 @import "../components/Pager/_style.scss";
-/* PagerStyle */
+/* RadioStyle */
 @import "../components/Radio/_style.scss";
+/* TagStyle */
+@import "../components/Tag/_style.scss";
+/* ProgressStyle */
+@import "../components/Progress/_style.scss";
+/* TabsStyle */
+@import "../components/Tabs/_style.scss";
 /* ...... */
 @import "../pages/_style.scss";
 @import "animations";

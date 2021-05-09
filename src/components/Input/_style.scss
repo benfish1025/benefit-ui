@@ -1,14 +1,28 @@
 .b-input {
   display: inline-flex;
-  max-height: 74px;
   width: 100%;
   padding: 8px 10px;
   border-radius: 16px;
   background: #f7f7f7;
   border: 2px solid #e5e5e5;
   color: #4b4b4b;
+  height: auto;
+  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  &:hover {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
   &.is-thin {
     padding: 2px 5px;
+
+  }
+  &.is-mini {
+    padding: 0;
+    border-radius: 12px;
+    & input {
+      padding: 0 10px;
+      border-radius: 16px;
+      min-height: 28px;
+    }
   }
   & > div:last-child {
     margin: -10px -12px -10px 0;
@@ -40,10 +54,14 @@
   }
   &.is-focused {
     background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   }
   &.is-disabled {
     cursor: not-allowed;
     background: #e5e5e5;
+    &:hover {
+      box-shadow: none;
+    }
   }
   :not(:last-child) {
     margin-right: 10px;
@@ -58,9 +76,10 @@
     border: none;
     background: none;
     color: #4b4b4b;
-    min-height: 48px;
+    min-height: 42px;
     text-align: left;
     outline: none;
+    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
     &:focus {
       background: #fff;
     }

@@ -1,7 +1,5 @@
 import React, {useState} from 'react'
-// import {OptionProps} from "./option";
 import ClassNames from "classnames";
-import Unfold from "../Fold/fold";
 import Transition from "../Transition/transition";
 import {ReactComponent} from "./cascade-gray.svg";
 interface OptionProps {
@@ -33,6 +31,7 @@ const SelectMenu: React.FC<SelectMenuProps> = (props) => {
       handleChangeValue(option, level)
     }
   }
+
   return (
 
       <ul className={WrapperClasses}>
@@ -43,7 +42,7 @@ const SelectMenu: React.FC<SelectMenuProps> = (props) => {
               'is-active': orderValue[level] === option.value || ( multiple && orderValue.includes(option.value))
             })
             return (
-                <li key={index} onClick={(e) => handleSelect(e, option)} className={classes}>
+                <li key={index} onClick={option.disabled ? undefined : (e) => handleSelect(e, option)} className={classes}>
                   {option.value}
                   {option.children &&
                   <span className={'cascade-icon'}>

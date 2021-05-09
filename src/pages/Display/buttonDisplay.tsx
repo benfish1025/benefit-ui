@@ -3,7 +3,7 @@ import Card from '../../components/Card/card'
 import Button from "../../components/Button/button"
 import Table from "../../components/Table/table";
 const ButtonDisplay = () => {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const handleClick = () => {
     setLoading(!loading)
   }

@@ -6,10 +6,13 @@ interface  SwitchProps {
   defaultValue?: boolean,
   disabled?: boolean,
   onChange?: (value: boolean) => void,
-  thin?: boolean
+  thin?: boolean,
+  activeText?: string,
+  inactiveText?: string,
+  switchStyle?: 'slides' | 'button'
 }
 
-const Switch = ({thin, defaultValue,disabled, onChange}: SwitchProps) => {
+const Switch = ({switchStyle = 'slides', activeText, inactiveText, thin, defaultValue,disabled, onChange}: SwitchProps) => {
   const [value, setValue] = useState(defaultValue)
   const classes = ClassNames('switch', {
     'is-active': value,
@@ -21,6 +24,9 @@ const Switch = ({thin, defaultValue,disabled, onChange}: SwitchProps) => {
     'is-disabled': disabled,
     'is-thin': thin
   })
+  const textClasses = ClassNames('switch__text', {
+    'is-active': value,
+  })
   useEffect(() => {
     if (onChange && typeof value === 'boolean') {
       onChange(value)
@@ -31,10 +37,29 @@ const Switch = ({thin, defaultValue,disabled, onChange}: SwitchProps) => {
       setValue(!value)
     }
   }
+  const radioClasses = ClassNames('b-radio', {
+    'is-disabled': disabled,
+    'is-button-style': switchStyle === 'button',
+    'is-active': !disabled && value
+  })
+  if (switchStyle === 'slides') {
     return(
-        <div className={classes} onClick={handleClick}>
-          <div className={slideClasses}> </div>
+        <div className={textClasses}>
+          <div className={classes} onClick={handleClick}>
+            <div className={slideClasses}/>
+          </div>
+          {(activeText || inactiveText)
+          && <span>{value ? activeText : inactiveText}</span>}
         </div>
+
     )
+  } else {
+    return (
+        <label className={radioClasses} onClick={handleClick}>
+          <span className={'b-radio__text'}>{value ? activeText : inactiveText}</span>
+        </label>
+    )
+  }
+
   }
 export default Switch

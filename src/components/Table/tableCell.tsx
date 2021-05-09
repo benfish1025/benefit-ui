@@ -2,7 +2,9 @@ import React, {useContext, useEffect, useRef, useState} from 'react'
 import {TableContext} from "./table";
 import ClassNames from 'classnames'
 import Input from "../Input/input";
-import {useAutoFocus} from '../../hooks/useAutoFocus'
+import useClickOutside from '../../hooks/useClickOutside'
+import Popover from '../Popover/popover';
+
 interface TableCellProps {
   rowKey: string,
   key?: string,
@@ -12,6 +14,7 @@ interface TableCellProps {
 }
 
 const TableCell: React.FC<TableCellProps> = (props) => {
+  const [tip, setTip] = useState(false)
   const {value, key, className, children, rowKey, cellKey } =props
   const context = useContext(TableContext)
   const [input , setInput] = useState(false)
@@ -36,7 +39,13 @@ const TableCell: React.FC<TableCellProps> = (props) => {
       }
     }
   } : {}
-
+  useClickOutside(inputRef,() => {
+    if (context.onClickCell) {
+      context.onClickCell('', '')
+      setTip(true)
+    }
+  
+  })
 const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     switch(e.code) {
       case 'Enter': {
@@ -48,17 +57,22 @@ const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
       default: break
     }
 }
+
   return (
+    
       <td {...helpClickEvent} className={classes} key={key}>
         {context.inputColumn === cellKey && context.inputRow === rowKey
-          ? <input
-            defaultValue={value}
-            ref={inputRef}
-            onKeyDown={handleKeyDown}
-            className={'table-input'}/>
-          : children}
+        ? <input
+          defaultValue={value}
+          ref={inputRef}
+          onKeyDown={handleKeyDown}
+          className={'table-input'}/>
+        : children}
       </td>
+    
   )
+    
+      
 }
 
 export default TableCell

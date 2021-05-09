@@ -3,63 +3,82 @@ import Card from '../../components/Card/card'
 import Table from "../../components/Table/table"
 import Popover from "../../components/Popover/popover";
 import Button from "../../components/Button/button";
+import {ReactComponent as DemondSvg} from '../svg/demond.svg'
+import {ReactComponent as DemondItemSvg} from '../svg/demond-item.svg'
+import {ReactComponent as CompleteSvg} from '../svg/complete.svg'
+import {ReactComponent as WraningSvg} from '../svg/wraning.svg'
+
+
+
+const columns = [
+  {
+    title: '参数',
+    dataIndex: 'Attribute',
+    key: 'Attribute',
+
+  },
+  {
+    title: '说明',
+    dataIndex: 'Description',
+    key: 'Description'
+  },
+  {
+    title: '类型',
+    dataIndex: 'Type',
+    key: 'Type'
+  },{
+    title: '默认值',
+    dataIndex: 'Default',
+    key: 'Default'
+  }
+];
+const dataSource =  [
+  {
+    key: '1',
+    attribute: 'visible',
+    description: '受控时，控制显示',
+    type: `boolean`,
+    default: `——`,
+  },
+  {
+    key: '2',
+    attribute: 'content',
+    description: '卡片内容',
+    type: `string | React.ReactNode`,
+    default: `——`,
+  },
+  {
+    key: '3',
+    attribute: 'position',
+    description: '卡片弹出位置',
+    type: `'top' | 'left' | 'right' | 'bottom'`,
+    default: `'top'`,
+  },
+  {
+    key: '4',
+    attribute: 'dark',
+    description: '启用黑色模式',
+    type: 'boolean',
+    default: 'false',
+  }
+]
 const PopoverDisplay = () => {
   const [visible, setVisible] = useState(false)
   const handleClick = () => {
     setVisible(!visible)
   }
-  const columns = [
-    {
-      title: '参数',
-      dataIndex: 'Attribute',
-      key: 'Attribute',
-
-    },
-    {
-      title: '说明',
-      dataIndex: 'Description',
-      key: 'Description'
-    },
-    {
-      title: '类型',
-      dataIndex: 'Type',
-      key: 'Type'
-    },{
-      title: '默认值',
-      dataIndex: 'Default',
-      key: 'Default'
-    }
-  ];
-  const dataSource =  [
-    {
-      key: '1',
-      attribute: 'visible',
-      description: '受控时，控制显示',
-      type: `boolean`,
-      default: `——`,
-    },
-    {
-      key: '2',
-      attribute: 'content',
-      description: '卡片内容',
-      type: `string | React.ReactNode`,
-      default: `——`,
-    },
-    {
-      key: '3',
-      attribute: 'position',
-      description: '卡片弹出位置',
-      type: `'top' | 'left' | 'right' | 'bottom'`,
-      default: `'top'`,
-    },
-    {
-      key: '4',
-      attribute: 'dark',
-      description: '启用黑色模式',
-      type: 'boolean',
-      default: 'false',
-    }
-  ]
+  const cardElement = (
+      <div className="popover-inner-card">
+        <div className="popover-inner-card__image">
+          <DemondSvg/>
+        </div>
+        <div className="popover-inner-card__content">
+          <span className={'tittle'}>宝石</span>
+          <span className={'info'}>你有5块宝石</span>
+          <Button size={'tiny'} btnType={'none'}>访问宝石商店</Button>
+        </div>
+      </div>
+  )
   const Code1 = `
 `
   const Code2 = `
@@ -97,21 +116,21 @@ const PopoverDisplay = () => {
         </div>
         <div className="display-card-container">
           <Card
-              divider={'按钮状态'}
-              explain={'设置按钮的禁用和加载中状态'}
+              divider={'弹出位置'}
+              explain={'卡片可从上、右、下、左四个方位弹出。'}
               code={Code2}
           >
-            <div className="margin-right-small">
+            <div className="margin-right-large">
               <Popover content={'Top!'}>
                 <span className={'pop-anchor'}>上</span>
               </Popover>
             </div>
-            <div className="margin-right-small">
+            <div className="margin-right-large">
               <Popover position={'right'} content={'Right!'}>
                 <span className={'pop-anchor'}>右</span>
               </Popover>
             </div>
-            <div className="margin-right-small">
+            <div className="margin-right-large">
               <Popover position={'bottom'} content={'Bottom!'}>
                 <span className={'pop-anchor'}>下</span>
               </Popover>
@@ -123,8 +142,35 @@ const PopoverDisplay = () => {
         </div>
         <div className="display-card-container">
           <Card
-              divider={'链接按钮'}
-              explain={'链接样式的按钮。链接行为需要指定目标地址。'}
+              divider={'自定义'}
+              explain={'自定义卡片子元素。'}
+              code={Code3}
+          >
+            <Popover bgColor={'#ffffff'} content={cardElement}>
+              <DemondItemSvg/>
+            </Popover>
+          </Card>
+        </div>
+        <div className="display-card-container">
+          <Card
+              divider={'自定义颜色/取消动画'}
+              explain={'用户自定义卡片颜色。可取消卡片弹出时的动画。。'}
+              code={Code3}
+          >
+            <div className="margin-right-large">
+              <Popover showAnimation={false} bgColor={'#58cc02'} content={'您已完成本节任务'}>
+                <CompleteSvg/>
+              </Popover>
+            </div>
+            <Popover showAnimation={false} bgColor={'#ff9600'} content={'订阅已开启'}>
+              <WraningSvg/>
+            </Popover>
+          </Card>
+        </div>
+        <div className="display-card-container">
+          <Card
+              divider={'受控'}
+              explain={'卡片的弹出交由外部状态管理。'}
               code={Code3}
           >
             <Popover

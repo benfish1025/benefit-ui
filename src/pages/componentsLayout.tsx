@@ -55,12 +55,6 @@ const ComponentsLayout = () => {
               Navigation
             </li>
             <NavLink activeClassName={'sidebar-item--active'}
-                     to={'/components/affix'}>
-              <li className={'sidebar-item sidebar-item--low'}>
-                Affix 固钉
-              </li>
-            </NavLink>
-            <NavLink activeClassName={'sidebar-item--active'}
                      to={'/components/menu'}>
               <li className={'sidebar-item sidebar-item--low'}>
                 Menu 导航菜单
@@ -75,6 +69,12 @@ const ComponentsLayout = () => {
             <li className={'sidebar-item-sign'}>
               Form
             </li>
+            <NavLink activeClassName={'sidebar-item--active'}
+                     to={'/components/select'}>
+              <li className={'sidebar-item sidebar-item--low'}>
+                Select 选择器
+              </li>
+            </NavLink>
             <NavLink activeClassName={'sidebar-item--active'}
                      to={'/components/cascader'}>
               <li className={'sidebar-item sidebar-item--low'}>
@@ -139,6 +139,18 @@ const ComponentsLayout = () => {
               </li>
             </NavLink>
             <NavLink activeClassName={'sidebar-item--active'}
+                     to={'/components/tag'}>
+              <li className={'sidebar-item sidebar-item--low'}>
+                Tag 标签
+              </li>
+            </NavLink>
+            <NavLink activeClassName={'sidebar-item--active'}
+                     to={'/components/progress'}>
+              <li className={'sidebar-item sidebar-item--low'}>
+                Progress 进度条
+              </li>
+            </NavLink>
+            <NavLink activeClassName={'sidebar-item--active'}
                      to={'/components/tables'}>
               <li className={'sidebar-item sidebar-item--low'}>
                 Table 表格
@@ -154,15 +166,9 @@ const ComponentsLayout = () => {
               Notice
             </li>
             <NavLink activeClassName={'sidebar-item--active'}
-                     to={'/components/message'}>
+                     to={'/components/dialog'}>
               <li className={'sidebar-item sidebar-item--low'}>
-                Message 全局提示
-              </li>
-            </NavLink>
-            <NavLink activeClassName={'sidebar-item--active'}
-                     to={'/components/modal'}>
-              <li className={'sidebar-item sidebar-item--low'}>
-                Modal 对话框
+                Dialog 全局弹窗
               </li>
             </NavLink>
             <NavLink activeClassName={'sidebar-item--active'}
