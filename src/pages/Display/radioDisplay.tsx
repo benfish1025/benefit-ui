@@ -3,93 +3,111 @@ import Card from '../../components/Card/card'
 import Table from "../../components/Table/table"
 import RadioGroup from "../../components/Radio/radioGroup";
 import Radio from "../../components/Radio/radio";
+const columns = [
+  {
+    title: '参数',
+    dataIndex: 'Attribute',
+    key: 'Attribute',
 
+  },
+  {
+    title: '说明',
+    dataIndex: 'Description',
+    key: 'Description'
+  },
+  {
+    title: '类型',
+    dataIndex: 'Type',
+    key: 'Type'
+  },{
+    title: '默认值',
+    dataIndex: 'Default',
+    key: 'Default'
+  }
+];
+const dataSource =  [
+  {
+    key: '1',
+    attribute: 'defaultValue',
+    description: '非受控状态下活动值',
+    type: `string`,
+    default: `——`,
+  },
+  {
+    key: '2',
+    attribute: 'value',
+    description: '受控状态下活动值',
+    type: `string`,
+    default: `——`,
+  },
+  {
+    key: '3',
+    attribute: 'vertical',
+    description: '竖直排布模式',
+    type: 'boolean',
+    default: 'false',
+  },
+  {
+    key: '4',
+    attribute: 'radioStyle',
+    description: '单选框样式',
+    type: `'button' | 'radio'`,
+    default: `'radio'`,
+  },
+  {
+    key: '5',
+    attribute: 'onChange',
+    description: '数值变化时的回调',
+    type: '(value: string) => void',
+    default: '——',
+  }
+]
+const dataSource2 =  [
+  {
+    key: '1',
+    attribute: 'value',
+    description: '作为标识唯一值',
+    type: `string`,
+    default: `——`,
+  },
+  {
+    key: '2',
+    attribute: 'index',
+    description: '索引',
+    type: `string`,
+    default: `——`,
+  }
+]
+const Code1 = `<RadioGroup>
+  <Radio value={'苹果'}>苹果</Radio>
+  <Radio value={'牛油果'}>牛油果</Radio>
+  <Radio value={'火龙果'}>火龙果</Radio>
+  <Radio value={'长生不老果'}>长生不老果</Radio>
+</RadioGroup>
+`
+const Code2 = `<RadioGroup vertical={true}>
+  <Radio disabled={true} value={'苹果'}>苹果</Radio>
+  <Radio value={'牛油果'}>牛油果</Radio>
+  <Radio value={'火龙果'}>火龙果</Radio>
+  <Radio value={'长生不老果'}>长生不老果</Radio>
+</RadioGroup>
+`
+const Code3 = `<RadioGroup radioStyle={'button'}>
+  <Radio value={'苹果'}>苹果</Radio>
+  <Radio value={'牛油果'}>牛油果</Radio>
+  <Radio value={'火龙果'}>火龙果</Radio>
+  <Radio value={'长生不老果'}>长生不老果</Radio>
+</RadioGroup>
+`
+const Code4 = `<RadioGroup radioStyle={'button'} vertical={true}>
+  <Radio disabled={true} value={'苹果'}>苹果</Radio>
+  <Radio value={'牛油果'}>牛油果</Radio>
+  <Radio value={'火龙果'}>火龙果</Radio>
+  <Radio value={'长生不老果'}>长生不老果</Radio>
+</RadioGroup>
+`
 const RadioDisplay = () => {
-  const columns = [
-    {
-      title: '参数',
-      dataIndex: 'Attribute',
-      key: 'Attribute',
 
-    },
-    {
-      title: '说明',
-      dataIndex: 'Description',
-      key: 'Description'
-    },
-    {
-      title: '类型',
-      dataIndex: 'Type',
-      key: 'Type'
-    },{
-      title: '默认值',
-      dataIndex: 'Default',
-      key: 'Default'
-    }
-  ];
-  const dataSource =  [
-    {
-      key: '1',
-      attribute: 'defaultValue',
-      description: '非受控状态下活动值',
-      type: `string`,
-      default: `——`,
-    },
-    {
-      key: '2',
-      attribute: 'value',
-      description: '受控状态下活动值',
-      type: `string`,
-      default: `——`,
-    },
-    {
-      key: '3',
-      attribute: 'vertical',
-      description: '竖直排布模式',
-      type: 'boolean',
-      default: 'false',
-    },
-    {
-      key: '4',
-      attribute: 'radioStyle',
-      description: '单选框样式',
-      type: `'button' | 'radio'`,
-      default: `'radio'`,
-    },
-    {
-      key: '5',
-      attribute: 'onChange',
-      description: '数值变化时的回调',
-      type: '(value: string) => void',
-      default: '——',
-    }
-  ]
-  const dataSource2 =  [
-    {
-      key: '1',
-      attribute: 'value',
-      description: '作为标识唯一值',
-      type: `string`,
-      default: `——`,
-    },
-    {
-      key: '2',
-      attribute: 'index',
-      description: '索引',
-      type: `string`,
-      default: `——`,
-    }
-  ]
-  const Code1 = `
-`
-  const Code2 = `
-`
-  const Code3 = `
-`
-  const Code4 = `
-`
-  const Code5 = `
-`
   return (
       <div className={'display'}>
         <h2 className={'display-tittle'}>Radio 单选框</h2>
@@ -113,12 +131,12 @@ const RadioDisplay = () => {
         </div>
         <div className="display-card-container">
           <Card
-              divider={'垂直排列'}
+              divider={'垂直排列/禁用'}
               explain={'选项垂直排列。'}
               code={Code2}
           >
             <RadioGroup vertical={true}>
-              <Radio value={'苹果'}>苹果</Radio>
+              <Radio disabled={true} value={'苹果'}>苹果</Radio>
               <Radio value={'牛油果'}>牛油果</Radio>
               <Radio value={'火龙果'}>火龙果</Radio>
               <Radio value={'长生不老果'}>长生不老果</Radio>
@@ -141,13 +159,13 @@ const RadioDisplay = () => {
         </div>
         <div className="display-card-container">
           <Card
-              divider={'竖排按钮'}
+              divider={'竖排按钮/禁用'}
               explain={'按钮垂直排列。'}
               code={Code4}
           >
             <div className="flex-column-wrapper">
               <RadioGroup radioStyle={'button'} vertical={true}>
-                <Radio value={'苹果'}>苹果</Radio>
+                <Radio disabled={true} value={'苹果'}>苹果</Radio>
                 <Radio value={'牛油果'}>牛油果</Radio>
                 <Radio value={'火龙果'}>火龙果</Radio>
                 <Radio value={'长生不老果'}>长生不老果</Radio>

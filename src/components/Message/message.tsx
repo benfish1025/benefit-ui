@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom'
 import Button, {ButtonSize} from "../Button/button";
 import Transition from '../Transition/transition'
 import ClassNames from 'classnames'
-import useDebounceAnti from "../../hooks/useDebounceAnti";
-
 
 export type MessageType = 'success' | 'primary' | 'error'
 export interface MessageProps {
@@ -14,7 +12,7 @@ export interface MessageProps {
   tittle?: string,
   info?: string,
   onClickButton?: () => void,
-  onClose?: () => {},
+  onClose?: () => void,
   duration?: number,
   showButton?: boolean,
   showMessage?: boolean

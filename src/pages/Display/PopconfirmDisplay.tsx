@@ -119,8 +119,78 @@ const dataSource =  [
     type: 'CSSProperties',
     default: '——',
   }
-
 ]
+const Code1 = `<Popconfirm
+  tittle={'单元四'}
+  detail={'第4/21节'}
+  visible={visible}
+  secondButtonText={'查看详情'}
+  firstButtonText={'好'}
+  onFirstButtonClick={handleClick}
+>
+    <Button onClick={handleClick} btnType={'none'}>进入学习</Button>
+</Popconfirm>
+`
+const Code2 = `<Popconfirm
+    bgColor={'#ff4b4b'}
+    tittle={'单元四'}
+    detail={'第4/21节'}
+    visible={visible3}
+    secondButtonText={'查看详情'}
+    firstButtonText={'好'}
+    onFirstButtonClick={handleClick3}
+>
+  <Button
+      onClick={handleClick3}
+      btnType={'none'}>红果果</Button>
+</Popconfirm>
+
+<Popconfirm
+    bgColor={'#58cc02'}
+    tittle={'单元四'}
+    detail={'第4/21节'}
+    position={'bottom'}
+    visible={visible4}
+    secondButtonText={'查看详情'}
+    firstButtonText={'好'}
+    onFirstButtonClick={handleClick4}
+>
+  <Button
+      onClick={handleClick4}
+      btnType={'none'}>绿泡泡</Button>
+</Popconfirm>
+`
+const Code3 = `<Popconfirm
+  bgColor={'#f7f7f7'}
+  textColor={'#777777'}
+  tittle={'单元四'}
+  detail={'第4/21节'}
+  visible={visible6}
+  replaceFirstButton={greenButton}
+  replaceSecondButton={garyButton}
+>
+<Button
+    onClick={handleClick6}
+    btnType={'none'}>可拔插</Button>
+</Popconfirm>
+`
+const Code4 = `<Popconfirm
+    bgColor={'#f7f7f7'}
+    textColor={'#777777'}
+    tittle={'确认删除?'}
+    detail={'此次删除将不可撤销'}
+    visible={visible5}
+    replaceFirstButton={greenButton2}
+    replaceSecondButton={garyButton2}
+>
+  <Button
+      onClick={handleClick5}
+      btnType={'none'}
+  >Delete</Button>
+</Popconfirm>
+`
+const Code5 = `
+`
 const PopconfirmDisplay = () => {
   const [visible, setVisible] = useState(false)
   const handleClick = () => {
@@ -148,16 +218,7 @@ const PopconfirmDisplay = () => {
     setVisible5(!visible5)
   }
 
-  const Code1 = `
-`
-  const Code2 = `
-`
-  const Code3 = `
-`
-  const Code4 = `
-`
-  const Code5 = `
-`
+
 
   const handleChecked = () => {
     clearTimeout(timer)
@@ -172,7 +233,7 @@ const PopconfirmDisplay = () => {
     setVisible5(!visible5)
   }
   const debounceLoading = useDebounce(loading, 200)
-  const greenButton = <Button btnType={'success'} size={'full'}>确认</Button>
+  const greenButton = <Button onClick={handleClick6} btnType={'success'} size={'full'}>确认</Button>
   const garyButton = <Button size={'full'}>取消</Button>
   const greenButton2 = <Button onClick={handleChecked} isLoading={debounceLoading} btnType={'primary'} size={'full'}>确认</Button>
   const garyButton2 = <Button onClick={handleCancel} size={'full'}>取消</Button>
@@ -197,6 +258,7 @@ const PopconfirmDisplay = () => {
                 visible={visible}
                 secondButtonText={'查看详情'}
                 firstButtonText={'好'}
+                onFirstButtonClick={handleClick}
             >
               <Button onClick={handleClick} btnType={'none'}>进入学习</Button>
             </Popconfirm>
@@ -216,6 +278,7 @@ const PopconfirmDisplay = () => {
                   visible={visible3}
                   secondButtonText={'查看详情'}
                   firstButtonText={'好'}
+                  onFirstButtonClick={handleClick3}
               >
                 <Button
                     onClick={handleClick3}
@@ -230,6 +293,7 @@ const PopconfirmDisplay = () => {
                 visible={visible4}
                 secondButtonText={'查看详情'}
                 firstButtonText={'好'}
+                onFirstButtonClick={handleClick4}
             >
               <Button
                   onClick={handleClick4}
@@ -241,7 +305,7 @@ const PopconfirmDisplay = () => {
           <Card
               divider={'更多组合'}
               explain={'可拔插的按钮组合,可以定制更多样式'}
-              code={Code5}
+              code={Code3}
           >
             <Popconfirm
                 bgColor={'#f7f7f7'}
@@ -262,7 +326,7 @@ const PopconfirmDisplay = () => {
           <Card
               divider={'异步的确认框'}
               explain={'返回结果时，确认框收起，表示消息成功提交。'}
-              code={Code3}
+              code={Code4}
           >
             <Popconfirm
                 bgColor={'#f7f7f7'}

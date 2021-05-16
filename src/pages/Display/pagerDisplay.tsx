@@ -2,85 +2,85 @@ import React from 'react'
 import Card from '../../components/Card/card'
 import Table from "../../components/Table/table"
 import Pagination from "../../components/Pager/pagination";
+const columns = [
+  {
+    title: '参数',
+    dataIndex: 'Attribute',
+    key: 'Attribute',
+
+  },
+  {
+    title: '说明',
+    dataIndex: 'Description',
+    key: 'Description'
+  },
+  {
+    title: '类型',
+    dataIndex: 'Type',
+    key: 'Type'
+  },{
+    title: '默认值',
+    dataIndex: 'Default',
+    key: 'Default'
+  }
+];
+const dataSource =  [
+  {
+    key: '1',
+    attribute: 'defaultCurrent',
+    description: '默认活跃的页码',
+    type: `number`,
+    default: `1`,
+  },
+  {
+    key: '2',
+    attribute: 'total',
+    description: '条目总数',
+    type: `number`,
+    default: `——`,
+  },
+  {
+    key: '3',
+    attribute: 'onChange',
+    description: '页码切换时的回调',
+    type: '(index: number) => void',
+    default: '——',
+  },
+  {
+    key: '4',
+    attribute: 'showSizeChanger',
+    description: '是否显示切换单页数目的菜单',
+    type: 'boolean',
+    default: 'false',
+  },
+  {
+    key: '5',
+    attribute: 'showQuickJumper',
+    description: '是否显示跳转页面的输入框',
+    type: 'boolean',
+    default: 'false',
+  },
+  {
+    key: '6',
+    attribute: 'simple',
+    description: '应用精简模式',
+    type: 'boolean',
+    default: 'false',
+  }
+]
+const Code1 = ` <Pagination total={60}/>
+`
+const Code2 = `<Pagination total={200} defaultCurrent={12}/>
+`
+const Code3 = `<Pagination total={500} showSizeChanger={true}/>
+`
+const Code4 = `<Pagination total={500} showQuickJumper={true}/>
+`
+const Code5 = `<Pagination total={200} defaultCurrent={9} simple={true}/>
+`
 
 
 const PagerDisplay = () => {
-  const columns = [
-    {
-      title: '参数',
-      dataIndex: 'Attribute',
-      key: 'Attribute',
-
-    },
-    {
-      title: '说明',
-      dataIndex: 'Description',
-      key: 'Description'
-    },
-    {
-      title: '类型',
-      dataIndex: 'Type',
-      key: 'Type'
-    },{
-      title: '默认值',
-      dataIndex: 'Default',
-      key: 'Default'
-    }
-  ];
-  const dataSource =  [
-    {
-      key: '1',
-      attribute: 'defaultCurrent',
-      description: '默认活跃的页码',
-      type: `number`,
-      default: `1`,
-    },
-    {
-      key: '2',
-      attribute: 'total',
-      description: '条目总数',
-      type: `number`,
-      default: `——`,
-    },
-    {
-      key: '3',
-      attribute: 'onChange',
-      description: '页码切换时的回调',
-      type: '(index: number) => void',
-      default: '——',
-    },
-    {
-      key: '4',
-      attribute: 'showSizeChanger',
-      description: '是否显示切换单页数目的菜单',
-      type: 'boolean',
-      default: 'false',
-    },
-    {
-      key: '5',
-      attribute: 'showQuickJumper',
-      description: '是否显示跳转页面的输入框',
-      type: 'boolean',
-      default: 'false',
-    },
-    {
-      key: '6',
-      attribute: 'simple',
-      description: '应用精简模式',
-      type: 'boolean',
-      default: 'false',
-    }
-  ]
-  const Code1 = ` <Pagination total={60}/>
-`
-  const Code2 = `<Pagination total={200} defaultCurrent={12}/>
-`
-  const Code3 = `<Pagination total={500} showSizeChanger={true}/>
-`
-  const Code4 = `<Pagination total={500} showQuickJumper={true}/>
-`
-  const Code5 = `<Pagination total={200} defaultCurrent={9} simple={true}/>
-`
   return (
       <div className={'display'}>
         <h2 className={'display-tittle'}>Pagination 分页</h2>

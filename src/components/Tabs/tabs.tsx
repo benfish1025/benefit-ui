@@ -1,7 +1,7 @@
 import React, {createContext, CSSProperties, useEffect, useRef, useState} from 'react'
 import ClassNames from 'classnames'
-import TabItem, {TabItemProps} from "./tabItem";
-import TabPane, {TabPaneProps} from "./tabPane";
+import TabItem from "./tabItem";
+import {TabPaneProps} from "./tabPane";
 
 interface TabsProps {
   className?: string,
@@ -14,7 +14,7 @@ interface TabsProps {
   onEdit?: (key: string) => void
 }
 interface ContextProps {
-  onEdit?: (key: string) => void,
+  onEdit?: (key: string, index:number) => void,
   onSelect?: (index: number, childWidth: number) => void,
   index?: number,
   childWidth?: number,
@@ -25,7 +25,15 @@ export const TabsContext = createContext<ContextProps>({index: 0})
 
 const Tabs: React.FC<TabsProps> = (props) => {
   const {onEdit, editable, type = 'default', showBorder, onSelect, defaultIndex = 0, className, style, children} = props
-  const [currentIndex, setCurrentIndex] = useState(defaultIndex)
+  const childLength = React.Children.toArray(children).length
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const preDefault = useRef(defaultIndex)
+  useEffect(() => {
+    if (currentIndex < 0 || (currentIndex === defaultIndex - 1 && preDefault.current < defaultIndex)) {
+      setCurrentIndex(defaultIndex)
+    }
+    preDefault.current = defaultIndex
+  },[defaultIndex])
   const [childWidth, setChildWidth] = useState(0)
   const classes = ClassNames('b-tabs',className, {
     'is-card': type === 'card'
@@ -35,7 +43,12 @@ const Tabs: React.FC<TabsProps> = (props) => {
     'is-card': type === 'card'
     }
   )
-  const handleEdit = (key: string) => {
+  const handleEdit = (key: string, i: number) => {
+    if (i < currentIndex) {
+      setCurrentIndex(currentIndex - 1)
+    } else if (i === currentIndex && i === (childLength - 1)) {
+      setCurrentIndex(currentIndex - 1)
+    }
     if (onEdit) {
       onEdit(key)
     }
@@ -54,6 +67,7 @@ const Tabs: React.FC<TabsProps> = (props) => {
     type: type,
     editable: editable
   }
+
   const sliderStyle = {
     transform: `translateX(${currentIndex * childWidth + childWidth / 2 - 16}px)`
   }
@@ -66,7 +80,7 @@ const Tabs: React.FC<TabsProps> = (props) => {
       const tabKey = childElement.props.tabKey
       if (displayName === 'TabPane') {
         return (
-              <TabItem tabKey={tabKey} index={i}>{tabTittle}</TabItem>
+              <TabItem key={tabKey} tabKey={tabKey} index={i}>{tabTittle}</TabItem>
         )
       } else {
         return null
@@ -79,7 +93,7 @@ const Tabs: React.FC<TabsProps> = (props) => {
       const { displayName } = childElement.type
       if (displayName === 'TabPane') {
         return (
-            React.cloneElement(childElement, {index: i})
+            React.cloneElement(childElement, {index: i, key: childElement.props.tabKey})
         )
       } else {
         return null

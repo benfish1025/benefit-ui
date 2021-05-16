@@ -31,52 +31,52 @@ const columns = [
 const dataSource =  [
   {
     key: '1',
-    attribute: 'btnType',
-    description: '不同样式风格的按钮',
-    type: `'none' | 'white' | 'ghost' | 'success' | 'primary' | 'error'| 'link' | 'default'`,
-    default: `'default'`,
+    attribute: 'type',
+    description: '弹框类型',
+    type: `'success' | 'primary' | 'error'`,
+    default: `'success'`,
   },
   {
     key: '2',
-    attribute: 'size',
-    description: '按钮获得尺寸的方式',
-    type: `'tiny' | 'middle' | 'full'`,
-    default: `'middle'`,
+    attribute: 'showMessage',
+    description: '显示弹框',
+    type: 'boolean',
+    default: 'false',
   },
   {
     key: '3',
-    attribute: 'isLoading',
-    description: '是否为加载状态',
+    attribute: 'showButton',
+    description: '显示弹框中的按钮',
     type: 'boolean',
     default: 'false',
   },
   {
     key: '4',
-    attribute: 'disabled',
-    description: '是否为禁用状态',
-    type: 'boolean',
-    default: 'false',
+    attribute: 'tittle',
+    description: '弹框标题',
+    type: 'string',
+    default: '——',
   },
   {
     key: '5',
-    attribute: 'href',
-    description: '链接按钮的地址',
+    attribute: 'info',
+    description: '弹框解释信息',
     type: 'string',
     default: '——',
   },
   {
     key: '6',
-    attribute: 'onClick等原生属性',
-    description: '点击按钮时的回调',
-    type: 'React.MouseEventHandler',
+    attribute: 'btnText',
+    description: '按钮文字',
+    type: 'string',
     default: '——',
   },
   {
     key: '7',
-    attribute: 'className',
-    description: '自定义 Button 类名',
-    type: 'string',
-    default: '——',
+    attribute: 'btnSize',
+    description: '按钮大小',
+    type: `'tiny' | 'middle' | 'full'`,
+    default: `'middle'`,
   },
   {
     key: '8',
@@ -84,19 +84,97 @@ const dataSource =  [
     description: '自定义 Button 样式',
     type: 'React.CSSProperties',
     default: '——',
+  },
+  {
+    key: '9',
+    attribute: 'onClickButton',
+    description: '弹框按钮被点击时的回调',
+    type: '() => void',
+    default: '——',
+  },
+  {
+    key: '10',
+    attribute: 'onClose',
+    description: '关闭按钮被点击时的回调',
+    type: '() => void',
+    default: '——',
+  },
+  {
+    key: '11',
+    attribute: 'duration',
+    description: '弹框显示时常',
+    type: 'number',
+    default: '——',
   }
 ]
 const MessageDisplay = () => {
 
-  const Code1 = `
+  const Code1 = `<Message 
+  showMessage={appear} 
+  tittle={'Tittle'} 
+  info={'content content'}
+/>
+<Message 
+  type={"error"} 
+  showMessage={appear2} 
+  tittle={'Tittle'} 
+  info={'content content'}
+/>
+<Message 
+  type={"primary"} 
+  showMessage={appear3} 
+  tittle={'Tittle'} 
+  info={'content content'}
+/>
 `
-  const Code2 = `
+  const Code2 = `<Message 
+  onClickButton={handleClick4} 
+  btnText={'确认'} 
+  showButton={true} 
+  showMessage={appear4} 
+  tittle={'回答正确'} 
+  info={'一鼓作气，本单元结束后领取奖励哦！'}
+/>
+
+<Message 
+  onClickButton={handleClick5} 
+  btnText={'确认'} 
+  showButton={true} 
+  type={"error"} 
+  showMessage={appear5} 
+  tittle={'回答错误'} 
+  info={'再接再厉，本单元结束后领取奖励哦！'}
+/>
+
+<Message 
+  onClickButton={handleClick6} 
+  btnText={'确认'} 
+  showButton={true} 
+  type={"primary"} 
+  showMessage={appear6} 
+  tittle={'设置成功'} 
+  info={'答题习惯已保存！'}
+/>
 `
-  const Code3 = `
+  const Code3 = `<Modal
+  tittle={'Tittle'}
+  section={'content content content content'}
+  detail={'content content content content'}
+  showAlert={appear7}
+  alertController={handleClick7}
+    >
+    <div className="padding-bottom-small">
+      <Button onClick={handleClick7} btnType={'primary'} size={'full'}>确认</Button>
+    </div>
+    <Button onClick={handleClick7} size={'full'}>取消</Button>
+</Modal>
 `
-  const Code4 = `
-`
-  const Code5 = `
+  const Code4 = `<Modal
+  showAlert={appear8}
+  alertController={handleClick8}
+  >
+    {cardElement}
+</Modal>
 `
   const [appear, setAppear] = useState(false)
 
@@ -156,12 +234,12 @@ const MessageDisplay = () => {
           <Card
               divider={'Banner型弹窗'}
               explain={'可定制三种状态。'}
-              code={Code2}
+              code={Code1}
           >
 
-            <Message showMessage={appear} tittle={'回答正确'} info={'再接再厉，本单元结束后领取奖励哦！'}/>
-            <Message type={"error"} showMessage={appear2} tittle={'回答正确'} info={'再接再厉，本单元结束后领取奖励哦！'}/>
-            <Message type={"primary"} showMessage={appear3} tittle={'回答正确'} info={'再接再厉，本单元结束后领取奖励哦！'}/>
+            <Message showMessage={appear} tittle={'Tittle'} info={'content content'}/>
+            <Message type={"error"} showMessage={appear2} tittle={'Tittle'} info={'content content'}/>
+            <Message type={"primary"} showMessage={appear3} tittle={'Tittle'} info={'content content'}/>
             <Button btnType={'success'} style={{marginRight: '10px'}} size={'tiny'} onClick={handleClick}>success</Button>
             <Button btnType={'error'} style={{marginRight: '10px'}} size={'tiny'} onClick={handleClick2}>error</Button>
             <Button btnType={'primary'} size={'tiny'} onClick={handleClick3}>primary</Button>
@@ -171,11 +249,11 @@ const MessageDisplay = () => {
           <Card
               divider={'Banner型弹窗/显示操作按钮'}
               explain={'弹窗内显示操作按钮。'}
-              code={Code3}
+              code={Code2}
           >
-            <Message onClickButton={handleClick4} btnText={'确认'} showButton={true} showMessage={appear4} tittle={'回答正确'} info={'再接再厉，本单元结束后领取奖励哦！'}/>
-            <Message onClickButton={handleClick5} btnText={'确认'} showButton={true} type={"error"} showMessage={appear5} tittle={'回答正确'} info={'再接再厉，本单元结束后领取奖励哦！'}/>
-            <Message onClickButton={handleClick6} btnText={'确认'} showButton={true} type={"primary"} showMessage={appear6} tittle={'回答正确'} info={'再接再厉，本单元结束后领取奖励哦！'}/>
+            <Message onClickButton={handleClick4} btnText={'确认'} showButton={true} showMessage={appear4} tittle={'回答正确'} info={'一鼓作气，本单元结束后领取奖励哦！'}/>
+            <Message onClickButton={handleClick5} btnText={'确认'} showButton={true} type={"error"} showMessage={appear5} tittle={'回答错误'} info={'再接再厉，本单元结束后领取奖励哦！'}/>
+            <Message onClickButton={handleClick6} btnText={'确认'} showButton={true} type={"primary"} showMessage={appear6} tittle={'设置成功'} info={'答题习惯已保存！'}/>
             <Button btnType={'success'} style={{marginRight: '10px'}} size={'tiny'} onClick={handleClick4}>success</Button>
             <Button btnType={'error'} style={{marginRight: '10px'}} size={'tiny'} onClick={handleClick5}>error</Button>
             <Button btnType={'primary'} size={'tiny'} onClick={handleClick6}>primary</Button>
@@ -185,12 +263,12 @@ const MessageDisplay = () => {
           <Card
               divider={'Model型弹窗'}
               explain={'经典窗口样式。'}
-              code={Code4}
+              code={Code3}
           >
             <Modal
-                tittle={'此操作需要验证'}
-                section={'验证邮件已发送，请检查邮箱是否正确？'}
-                detail={'liben97@gmail.com'}
+                tittle={'Tittle'}
+                section={'content content content content'}
+                detail={'content content content content'}
                 showAlert={appear7}
                 alertController={handleClick7}>
               <div className="padding-bottom-small">
@@ -205,7 +283,7 @@ const MessageDisplay = () => {
           <Card
               divider={'Model型弹窗/自定义内容'}
               explain={'内容元素可自定义。'}
-              code={Code5}
+              code={Code4}
           >
             <Modal
                 showAlert={appear8}

@@ -31,9 +31,11 @@
       }
     }
   }
-  & li:first-child {
+  & li {
     border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
   }
+
   &.is-card {
     & li:first-child {
       border-top-left-radius: 8px;
@@ -85,6 +87,7 @@
   white-space: nowrap;
   color: #777777;
   font-size: 1.6rem;
+  line-height: 2.1rem;
   font-weight: 700;
   letter-spacing: .6px;
   vertical-align: middle;
@@ -92,6 +95,9 @@
   transition: background-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) 0ms, color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) 0ms;
   text-align: center;
   position: relative;
+  &.auto-width {
+    width: 100%;
+  }
   &.is-card {
     background-color: #e5e5e5;
     border-top-left-radius: 8px;

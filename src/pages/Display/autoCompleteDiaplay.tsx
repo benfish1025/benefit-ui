@@ -40,7 +40,7 @@ const AutoCompleteDisplay = () => {
       key: '1',
       attribute: 'fetchSuggestions',
       description: '数据获取方法',
-      type: `(str: string) => DataSourceType[] | Promise<DataSourceType[]>`,
+      type: `(str: string) => DataSourceType[] | Promise`,
       default: `——`,
     },
     {
@@ -58,15 +58,25 @@ const AutoCompleteDisplay = () => {
       default: '——',
     }
   ]
-  const Code1 = `
+  const Code1 = `const handleFetch = (query: string) => {
+  return poems.filter(name => name.includes(query)).map(name => ({value: name}))
+}
+
+<AutoComplete
+  defaultValue={'一朝春夏改，隔夜鸟花迁'} 
+  placeholder={'尝试键入月、夏、花、日、鸟等字'} 
+  fetchSuggestions={handleFetch}
+/>
 `
-  const Code2 = `
-`
-  const Code3 = `
-`
-  const Code4 = `
-`
-  const Code5 = `
+  const Code2 = `const handleFetchData = (query: string) => {
+  return fetch('https://api.github.com/search/users?q='+ query)
+      .then(res => res.json())
+      .then(({ items }) => {
+        return items.slice(0, 10).map((item: any) => ({ value: item.login, ...item}))
+      })
+}
+
+<AutoComplete placeholder={'尝试键入字母'} fetchSuggestions={handleFetchData}/>
 `
   const lakers = ['端午临中夏，时清日复长', '别院深深夏席清，石榴开遍透帘明', '风吹古木晴天雨，月照平沙夏夜霜', '一朝春夏改，隔夜鸟花迁', '汉苑残花别，吴江盛夏来',
     '水积春塘晚，阴交夏木繁', '征行浑与求名背，九月中旬往夏州', '忽如一夜春风来，千树万树梨花开', '晓看红湿处，花重锦官城', '待到重阳日，还来就菊花', '桃花潭水深千尺，不及汪伦送我情', '风住尘香花已尽，日晚倦梳头']
@@ -94,18 +104,11 @@ const AutoCompleteDisplay = () => {
               code={Code1}
           >
             <div className="flex-column-wrapper">
-              <AutoComplete defaultValue={'一朝春夏改，隔夜鸟花迁'} placeholder={'尝试键入月、夏、花、日、鸟、等字'} fetchSuggestions={handleFetch}/>
-            </div>
-          </Card>
-        </div>
-        <div className="display-card-container">
-          <Card
-              divider={'自定义选项'}
-              explain={'可选项的内容和样式可被自定义。'}
-              code={Code2}
-          >
-            <div className="flex-column-wrapper">
-
+            <AutoComplete
+                defaultValue={'一朝春夏改，隔夜鸟花迁'}
+                placeholder={'尝试键入月、夏、花、日、鸟等字'}
+                fetchSuggestions={handleFetch}
+            />
             </div>
           </Card>
         </div>
@@ -113,10 +116,10 @@ const AutoCompleteDisplay = () => {
           <Card
               divider={'获取异步数据'}
               explain={'展示的匹配数据为异步获取的。'}
-              code={Code3}
+              code={Code2}
           >
             <div className="flex-column-wrapper">
-              <AutoComplete fetchSuggestions={handleFetchData}/>
+              <AutoComplete placeholder={'尝试键入字母'} fetchSuggestions={handleFetchData}/>
             </div>
           </Card>
         </div>

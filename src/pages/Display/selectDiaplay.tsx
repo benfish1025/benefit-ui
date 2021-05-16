@@ -3,19 +3,38 @@ import Card from '../../components/Card/card'
 import Table from "../../components/Table/table"
 import Select from "../../components/Select/select";
 const options =  [{
-  value: '选项1',
+  value: '黄金糕',
   label: '黄金糕'
 }, {
-  value: '选项2',
+  value: '双皮奶',
   label: '双皮奶'
 }, {
-  value: '选项3',
+  value: '蚵仔煎',
   label: '蚵仔煎'
 }, {
-  value: '选项4',
+  value: '龙须面',
   label: '龙须面'
 }, {
-  value: '选项5',
+  value: '北京烤鸭',
+  label: '北京烤鸭'
+}
+]
+
+const options2 =  [{
+  value: '黄金糕',
+  label: '黄金糕'
+}, {
+  value: '双皮奶',
+  label: '双皮奶',
+  disabled: true
+}, {
+  value: '蚵仔煎',
+  label: '蚵仔煎'
+}, {
+  value: '龙须面',
+  label: '龙须面'
+}, {
+  value: '北京烤鸭',
   label: '北京烤鸭'
 }
 ]
@@ -44,73 +63,137 @@ const columns = [
 const dataSource =  [
   {
     key: '1',
-    attribute: 'btnType',
-    description: '不同样式风格的按钮',
-    type: `'none' | 'white' | 'ghost' | 'success' | 'primary' | 'error'| 'link' | 'default'`,
-    default: `'default'`,
+    attribute: 'options',
+    description: '列表信息数组',
+    type: `OptionProps[]`,
+    default: `——`,
   },
   {
     key: '2',
-    attribute: 'size',
-    description: '按钮获得尺寸的方式',
-    type: `'tiny' | 'middle' | 'full'`,
-    default: `'middle'`,
+    attribute: 'defaultValue',
+    description: '默认选中的列表项，单选数组元素为1，多选为任意数量',
+    type: `string[]`,
+    default: `——`,
   },
   {
     key: '3',
-    attribute: 'isLoading',
-    description: '是否为加载状态',
-    type: 'boolean',
-    default: 'false',
+    attribute: 'placeholder',
+    description: '选框提示信息',
+    type: 'string',
+    default: '——',
   },
   {
     key: '4',
-    attribute: 'disabled',
-    description: '是否为禁用状态',
+    attribute: 'clearable',
+    description: '是否显示清楚按钮',
     type: 'boolean',
     default: 'false',
   },
   {
     key: '5',
-    attribute: 'href',
-    description: '链接按钮的地址',
-    type: 'string',
-    default: '——',
+    attribute: 'disabled',
+    description: '禁用选框',
+    type: 'boolean',
+    default: 'false',
   },
   {
     key: '6',
-    attribute: 'onClick等原生属性',
-    description: '点击按钮时的回调',
-    type: 'React.MouseEventHandler',
-    default: '——',
+    attribute: 'multiple',
+    description: '是否为多选',
+    type: 'boolean',
+    default: 'false',
   },
   {
     key: '7',
-    attribute: 'className',
-    description: '自定义 Button 类名',
-    type: 'string',
+    attribute: 'onChange',
+    description: '选中项变化时的回调',
+    type: '(selectedValue?: string, selectedValues?: string[]) => void',
     default: '——',
   },
   {
     key: '8',
-    attribute: 'style',
-    description: '自定义 Button 样式',
-    type: 'React.CSSProperties',
+    attribute: 'onVisible',
+    description: '下拉菜单展示时的回调',
+    type: '(visible: boolean) => void',
     default: '——',
+  },
+  {
+    key: '9',
+    attribute: 'zIndex',
+    description: '调整选框的z-index层级',
+    type: 'number',
+    default: '10',
+  },
+  {
+    key: '10',
+    attribute: 'changeOnEnd',
+    description: '多选时，只在多选层级为最后一级时，允许完成选择',
+    type: 'boolean',
+    default: 'false',
   }
 ]
+const dataSource2 =  [
+  {
+    key: '1',
+    attribute: 'key',
+    description: '唯一键',
+    type: 'number',
+    default: `——`,
+  },
+  {
+    key: '2',
+    attribute: 'value',
+    description: '选项的对应值',
+    type: `string`,
+    default: `——`,
+  },
+  {
+    key: '3',
+    attribute: 'label',
+    description: '显示的选项标签文字',
+    type: `string`,
+    default: `——`,
+  },
+  {
+    key: '4',
+    attribute: 'disabled',
+    description: '是否禁用',
+    type: `boolean`,
+    default: `false`,
+  }
+]
+const Code1 = `<Select
+    defaultValue={['龙须面']}
+    zIndex={100}
+    options={options}
+    placeholder={'点击选择'}
+/>
+`
+const Code2 = `<Select
+    defaultValue={['黄金糕']}
+    zIndex={80}
+    clearable={true}
+    options={options2}
+    placeholder={'点击选择'}
+/>
+`
+const Code3 = `<Select
+    disabled={true}
+    options={options}
+    placeholder={'disabled'}
+/>
+`
+const Code4 = `<Select
+    clearable={true}
+    multiple={true}
+    options={options}
+    placeholder={'点击选择'}
+/>
+`
+
 const SelectDisplay = () => {
 
-  const Code1 = `
-`
-  const Code2 = `
-`
-  const Code3 = `
-`
-  const Code4 = `
-`
-  const Code5 = `
-`
+
   return (
       <div className={'display'}>
         <h2 className={'display-tittle'}>Select 选择器</h2>
@@ -126,6 +209,8 @@ const SelectDisplay = () => {
           >
             <div style={{width: '250px'}}>
               <Select
+                  defaultValue={['龙须面']}
+                  zIndex={100}
                   options={options}
                   placeholder={'点击选择'}
               />
@@ -134,13 +219,16 @@ const SelectDisplay = () => {
         </div>
         <div className="display-card-container">
           <Card
-              divider={'禁用选项'}
-              explain={'设置按钮的禁用和加载中状态'}
+              divider={'禁用选项/清空按钮'}
+              explain={'下拉选项可禁用。自定义显示清空按钮。'}
               code={Code2}
           >
             <div style={{width: '250px'}}>
             <Select
-                options={options}
+                defaultValue={['黄金糕']}
+                zIndex={80}
+                clearable={true}
+                options={options2}
                 placeholder={'点击选择'}
             />
             </div>
@@ -149,14 +237,14 @@ const SelectDisplay = () => {
         <div className="display-card-container">
           <Card
               divider={'禁用选择器'}
-              explain={'链接样式的按钮。链接行为需要指定目标地址。'}
+              explain={'选择器的禁用状态。'}
               code={Code3}
           >
             <div style={{width: '250px'}}>
             <Select
                 disabled={true}
                 options={options}
-                placeholder={'点击选择'}
+                placeholder={'disabled'}
             />
             </div>
           </Card>
@@ -169,6 +257,7 @@ const SelectDisplay = () => {
           >
             <div style={{width: '250px'}}>
             <Select
+                clearable={true}
                 multiple={true}
                 options={options}
                 placeholder={'点击选择'}
@@ -176,18 +265,14 @@ const SelectDisplay = () => {
             </div>
           </Card>
         </div>
-        <div className="display-card-container">
-          <Card
-              divider={'按钮大小'}
-              explain={'按钮分三种方式获得尺寸:适应按钮文本内容，中等定宽尺寸，以及适应父容器'}
-              code={Code5}
-          >
 
-          </Card>
-        </div>
         <h3 className={'display-tittle'}>API</h3>
         <div className="display-table-container">
           <Table columns={columns} dataSource={dataSource}/>
+        </div>
+        <h3 className={'display-tittle'}>Option</h3>
+        <div className="display-table-container">
+          <Table columns={columns} dataSource={dataSource2}/>
         </div>
 
       </div>

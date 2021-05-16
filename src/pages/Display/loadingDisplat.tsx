@@ -56,7 +56,46 @@ const dataSource =  [
     default: '#84d8ff（淡蓝色）',
   }
 ]
-
+const Code1 = `<Loading loading={true}>
+`
+const Code2 = `<Loading loading={loading}>
+  <div style={{
+    height: '180px', 
+    width: '265px', 
+    backgroundColor: '#f7f7f7', 
+    borderRadius: '8px'
+  }}>
+  </div>
+</Loading>
+`
+const Code3 = `<Loading loading={true} tip={'加载中...'}>
+  <div style={{
+    height: '180px', 
+    width: '265px', 
+    backgroundColor: '#f7f7f7', 
+    borderRadius: '8px'
+  }}>
+  </div>
+</Loading>
+`
+const Code4 = `<Loading  tip={'加载中...'} delay={500} loading={loadingDelay}>
+  <div style={{
+    height: '180px', 
+    width: '265px', 
+    backgroundColor: '#f7f7f7', 
+    borderRadius: '8px'}}>
+  </div>
+</Loading>
+`
+const Code5 = `<Loading color={'#ff4b4b'} loading={true} tip={'加载中...'}>
+  <div style={{
+    height: '180px', 
+    width: '265px', 
+    backgroundColor: '#f7f7f7', 
+    borderRadius: '8px'}}>
+  </div>
+</Loading>
+`
 const LoadingDisplay = () => {
   const [loading, setLoading] = useState(false)
   const [loadingDelay, setLoadingDelay] = useState(false)
@@ -67,22 +106,13 @@ const LoadingDisplay = () => {
     setLoadingDelay(!loadingDelay)
   }
 
-  const Code1 = `
-`
-  const Code2 = `
-`
-  const Code3 = `
-`
-  const Code4 = `
-`
-  const Code5 = `
-`
+
   return (
       <div className={'display'}>
-        <h2 className={'display-tittle'}>Button 按钮</h2>
-        <p className={'display-explain'}>按钮用于开始一个即时操作。</p>
+        <h2 className={'display-tittle'}>Loading 加载中</h2>
+        <p className={'display-explain'}>表示加载状态的的图形标识。</p>
         <h3 className={'display-tittle'}>何时使用</h3>
-        <p className={'display-explain'}>标记了一个（或封装一组）操作命令，响应用户点击行为，触发相应的业务逻辑。</p>
+        <p className={'display-explain'}>与服务器通信,需要告知用户加载状态时。</p>
         <h3 className={'display-tittle'}>代码演示</h3>
         <div className="display-card-container">
           <Card
@@ -106,8 +136,12 @@ const LoadingDisplay = () => {
             <div>
               <div className="padding-bottom-small">
                 <Loading loading={loading}>
-                  <div style={{height: '180px', width: '265px', backgroundColor: '#f7f7f7', borderRadius: '8px'}}>
-
+                  <div style={{
+                    height: '180px',
+                    width: '265px',
+                    backgroundColor: '#f7f7f7',
+                    borderRadius: '8px'
+                  }}>
                   </div>
                 </Loading>
               </div>
@@ -124,8 +158,12 @@ const LoadingDisplay = () => {
           >
 
             <Loading loading={true} tip={'加载中...'}>
-              <div style={{height: '180px', width: '265px', backgroundColor: '#f7f7f7', borderRadius: '8px'}}>
-
+              <div style={{
+                height: '180px',
+                width: '265px',
+                backgroundColor: '#f7f7f7',
+                borderRadius: '8px'
+              }}>
               </div>
             </Loading>
           </Card>
@@ -134,14 +172,17 @@ const LoadingDisplay = () => {
           <Card
               divider={'延迟'}
               explain={'适应响应时长有可能变化较大的情况，提升用户体验。'}
-              code={Code3}
+              code={Code4}
           >
 
             <div>
               <div className="padding-bottom-small">
                 <Loading  tip={'加载中...'} delay={500} loading={loadingDelay}>
-                  <div style={{height: '180px', width: '265px', backgroundColor: '#f7f7f7', borderRadius: '8px'}}>
-
+                  <div style={{
+                    height: '180px',
+                    width: '265px',
+                    backgroundColor: '#f7f7f7',
+                    borderRadius: '8px'}}>
                   </div>
                 </Loading>
               </div>
@@ -153,12 +194,15 @@ const LoadingDisplay = () => {
           <Card
               divider={'自定义颜色'}
               explain={'修改加载状态颜色。'}
-              code={Code3}
+              code={Code5}
           >
 
             <Loading color={'#ff4b4b'} loading={true} tip={'加载中...'}>
-              <div style={{height: '180px', width: '265px', backgroundColor: '#f7f7f7', borderRadius: '8px'}}>
-
+              <div style={{
+                height: '180px',
+                width: '265px',
+                backgroundColor: '#f7f7f7',
+                borderRadius: '8px'}}>
               </div>
             </Loading>
           </Card>

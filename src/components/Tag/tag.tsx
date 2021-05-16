@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
+import React from 'react'
 import ClassNames from 'classnames'
 import {ReactComponent as ForkSvg} from './fork.svg'
-import {isBoolean} from "util";
+
 interface TagProps {
   children: React.ReactNode,
   closable?: boolean,

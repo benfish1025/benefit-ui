@@ -78,7 +78,12 @@
 }
 
 .hero-route-wrapper {
-    padding-top: 90px;
+    padding-top: 82px;
+    height: 100vh;
+    &--scroll {
+        height: 100%;
+        overflow-y: scroll;
+    }
 }
 
 .home-background {
@@ -220,6 +225,37 @@
         background-color: rgb(255, 255, 253);
         border-color: rgb(229, 229, 229);
         border-width: 2px 2px 4px;
+        & .image {
+            width: 125px;
+            height: 100px;
+            margin: 45px 0;
+            text-align: center;
+            line-height: 35px;
+            color: #afafaf;
+            transition: color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+            & svg {
+                width: 125px;
+                height: 100px;
+                & path {
+                    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+                }
+            }
+        }
+        & .tittle {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            filter: brightness(1.2);
+        }
+        & .info {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: 2.2rem;
+            margin-bottom: 10px;
+            padding: 0 18px;
+            filter: brightness(1.2);
+        }
         &:hover {
             background-color: #f7f7f7;
         }
@@ -230,6 +266,12 @@
             border-width: 2px;
             margin-bottom: 0px;
             transform: translateY(2px) translateZ(0);
+            & svg path {
+                stroke: #84d8ff;
+            }
+            & .image {
+                color: #84d8ff;
+            }
         }
     }
 }
@@ -288,21 +330,37 @@
 }
 
 .components-layout {
+    height: 100vh;
     width: 100%;
     display: flex;
-    &__sidebar {}
+    padding-top: 82px;
+    &__sidebar {
+        &::-webkit-scrollbar {
+            width : 3px;  /*高宽分别对应横竖滚动条的尺寸*/
+        }
+        &::-webkit-scrollbar-thumb {
+            /*滚动条里面小方块*/
+            border-radius:3px;
+            background-color: #e5e5e5;
+        }
+        &::-webkit-scrollbar-track {
+            background   : #f7f7f7;
+        }
+        height: 100%;
+        overflow-y: scroll;
+    }
     &__content {
+        height: 100%;
         flex-grow: 1;
+        overflow-y: scroll;
     }
 }
 
 .sidebar {
-    padding: 0 0 30px;
+    padding: 0 0 60px;
     margin: 0;
     display: flex;
     width: 280px;
-    height: 100%;
-    border-right: 2px solid #e5e5e5;
     flex-direction: column;
 }
 
@@ -392,6 +450,13 @@
         font-weight: 500;
         margin-bottom: 35px;
         padding-left: 55px;
+        &-small {
+            color: #4b4b4b;
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            padding-left: 55px;
+        }
     }
 }
 .popover-inner-card {
@@ -427,4 +492,17 @@
             margin-bottom: 10px;
         }
     }
+}
+.color-card {
+    height: 65px;
+    width: 165px;
+    color: rgba(255,255,255,.8);
+    border-radius: 8px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 65px;
+    text-align: center;
+    background-color: #1cb0f6;
+    margin-right: 25px;
+    margin-bottom: 25px;
 }

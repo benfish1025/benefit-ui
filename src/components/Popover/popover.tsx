@@ -1,7 +1,6 @@
 import React, {CSSProperties, useState} from 'react'
 import ClassNames from 'classnames'
 import Transition from "../Transition/transition";
-import useDebounce from "../../hooks/useDebounce";
 
 interface  PopoverProps {
   visible?: boolean,
@@ -11,18 +10,23 @@ interface  PopoverProps {
   bgColor?: string,
   style?: CSSProperties,
   textColor?: string,
-  showAnimation?: boolean
+  showAnimation?: boolean,
+  zIndex?: number
 }
 const Popover: React.FC<PopoverProps> = (props) => {
-  const {showAnimation = true, textColor, style, bgColor,dark, visible, children, content, position = 'top'} = props
+  const {zIndex, showAnimation = true, textColor, style, bgColor,dark, visible, children, content, position = 'top'} = props
   const [appear, setAppear] = useState(false)
-  const debouncedAppesr = useDebounce(appear, 100)
   const helpAppear = () => {
+    if (!content) {
+      return false
+    }
     if (typeof visible === 'boolean') {
       return visible
-    } else return debouncedAppesr
+    } else return appear
   }
-
+  const popStyle = {
+    zIndex: zIndex
+  }
   const classes = ClassNames('b-popover', {
     [`b-popover--${position}`]: position,
     'is-dark': dark,
@@ -44,7 +48,7 @@ const Popover: React.FC<PopoverProps> = (props) => {
   }
   if (showAnimation) {
     return (
-        <div className={'b-popover-wrapper'} {...mouseEvent}>
+        <div style={popStyle} className={'b-popover-wrapper'} {...mouseEvent}>
           {children}
           <Transition in={helpAppear()} timeout={300} classNames={aniClasses}>
             <div style={backgroundStyle} className={classes}>
@@ -55,7 +59,7 @@ const Popover: React.FC<PopoverProps> = (props) => {
     )
   } else {
     return (
-        <div className={'b-popover-wrapper'} {...mouseEvent}>
+        <div style={popStyle} className={'b-popover-wrapper'} {...mouseEvent}>
           {children}
           {helpAppear() && <div {...mouseEvent} style={backgroundStyle} className={classes}>
               {content}

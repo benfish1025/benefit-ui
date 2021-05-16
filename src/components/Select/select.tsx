@@ -1,6 +1,5 @@
-import React, {FunctionComponentElement, ReactChildren, ReactHTMLElement, useEffect, useRef, useState} from 'react'
+import React, {useRef, useState} from 'react'
 import Input from "../Input/input";
-import Button from "../Button/button";
 import useClickOutside from "../../hooks/useClickOutside"
 import Transition from '../Transition/transition'
 import SelectMenu from "./selectMenu"
@@ -24,23 +23,28 @@ export interface SelectProps {
   disabled?: boolean,
   multiple?: boolean,
   onChange?: (selectedValue?: string, selectedValues?: string[]) => void
-  onVisible?: (visible: boolean) => void
+  onVisible?: (visible: boolean) => void,
+  zIndex?: number,
+  changeOnEnd?: boolean
 }
-const helpOrderValue = (orderValue: unknown[], multiple: boolean) => {
-  if (multiple) {
+const helpOrderValue = (orderValue: unknown[], multiple: boolean, option?: OptionProps,changeOnEnd?: boolean) => {
+  if (multiple && orderValue.length) {
     return ' '
+  }else if (changeOnEnd && option ) {
+    if(!option.children) {
+      return orderValue.join(',')
+    } else return undefined
+  } else {
+    return orderValue.join(',')
   }
-  return orderValue.join(',')
 }
 const Select: React.FC<SelectProps> = (props) => {
-  const {clearable, options, disabled, placeholder, defaultValue, onChange, multiple, onVisible} = props
+  const {changeOnEnd, zIndex, clearable, options, disabled, placeholder, defaultValue, onChange, multiple, onVisible} = props
   const [notEmpty, setNotEmpty] = useState(false)
   const selectRef = useRef<HTMLDivElement>(null)
   const [orderValue,setOrderValue] = useState<unknown[]>(defaultValue || [])
   const [spread, setSpread] = useState(false)
- /* const tagsRef = useRef<HTMLDivElement>(null)
-  const [height, setHeight] =useState('')*/
-
+  const [currentValue, setCurrentValue] = useState<OptionProps>({} as OptionProps)
   const selectClasses = ClassNames('b-select', {
     'is-live': !disabled
   })
@@ -49,6 +53,10 @@ const Select: React.FC<SelectProps> = (props) => {
     'is-spread': spread,
     'spread-icon--fork': notEmpty
   })
+  const style = {
+    zIndex: zIndex
+  }
+
   const mouseEvent = !clearable
       ? {}
       : {
@@ -61,18 +69,6 @@ const Select: React.FC<SelectProps> = (props) => {
           setNotEmpty(false)
         }
       }
-  const handleClick = () => {
-    setSpread(!spread)
-    if (onVisible) {
-      onVisible(spread)
-    }
-  }
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (onChange) {
-      onChange(e.target.value)
-    }
-  }
-
   const helpMenuValue = () => {
     if (Object.prototype.toString.call(orderValue) === '[object Array]') {
       return orderValue
@@ -99,49 +95,56 @@ const Select: React.FC<SelectProps> = (props) => {
     if(!option.children || (option && option.children.length === 0)) {
       setSpread(false)
     }
+    if (changeOnEnd){
+      setCurrentValue(option)
+    }
   }
   const handleInputClick = () => {
     if (!disabled) {
       setSpread(!spread)
     }
   }
-  const handleFork = () => {
+  const handleFork = (e: React.MouseEvent) => {
+    e.stopPropagation()
     if (notEmpty) {
       setOrderValue([])
+    } else {
+      if (!disabled) {
+        setSpread(!spread)
+      }
     }
     setNotEmpty(false)
   }
   useClickOutside(selectRef,() => {
     setSpread(false)})
   return (
-      <div ref={selectRef} className={selectClasses}>
+      <div style={style} ref={selectRef} className={selectClasses}>
         <div onClick={handleInputClick}  {...mouseEvent} className={'b-select--inner'}>
-         <Input
-              value={helpOrderValue(orderValue, !!multiple)}
+          {!multiple && <Input
+              value={helpOrderValue(orderValue, !!multiple, currentValue, changeOnEnd)}
               readonly={true}
               disabled={disabled}
               inputSize={"thin"}
               placeholder={placeholder}
          >
-           {multiple && <div className={'b-select--multiple'}>
-             {orderValue.map((item, index) => {
-               return <Tag
-                   size={"small"}
-                   type={'gray'}
-                   shallow={true}
-                   closable={true}
-                   onClose={() => handleSelect({value: item} as OptionProps, 0)}
-               >
-                 {item as string}
-               </Tag>
-             })}
+         </Input>}
 
-           </div>}
-         </Input>
-
-
+          {multiple && <div className={'b-select--multiple'}>
+            {!orderValue.length && <span className={'placeholder'}>{placeholder}</span>}
+            {orderValue.map((item, index) => {
+              return <Tag
+                  size={"small"}
+                  type={'gray'}
+                  shallow={true}
+                  closable={true}
+                  onClose={() => handleSelect({value: item} as OptionProps, 0)}
+              >
+                {item as string}
+              </Tag>
+            })}
+          </div>}
           <span onClick={handleFork} className={iconClasses}>
-              {notEmpty && clearable ? <ForkSvg/> : <ArrowSvg/>}
+              {orderValue.length && notEmpty && clearable ? <ForkSvg/> : <ArrowSvg/>}
             </span>
         </div>
         <Transition in={spread} timeout={300} animation="zoom-in-top">

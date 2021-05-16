@@ -19,6 +19,10 @@ import TagDisplay from "./Display/TagDisplay";
 import ProgressDisplay from "./Display/progressDisplay";
 import TableDisplay from "./Display/tableDisplay"
 import TabsDisplay from "./Display/tabsDisplay";
+import StartDisplay from './Display/startDisplay'
+import ColorDisplay from './Display/colorDisplay'
+import CarouselDisplay from "./Display/carouselDisplay";
+import UploadDisplay from "./Display/uploadDisplay";
 interface Iparams {
   floor: string
 }
@@ -74,8 +78,8 @@ const RouteTrans = () => {
       case 'popconfirm': {
         return <PopconfirmDisplay/>
       }
-      case 'slides': {
-        return <ButtonDisplay/>
+      case 'carousel': {
+        return <CarouselDisplay/>
       }
       case 'tables': {
         return <TableDisplay/>
@@ -88,6 +92,15 @@ const RouteTrans = () => {
       }
       case 'loading': {
         return <LoadingDisplay/>
+      }
+      case 'start': {
+        return <StartDisplay/>
+      }
+      case 'color': {
+        return <ColorDisplay/>
+      }
+      case 'upload': {
+        return <UploadDisplay/>
       }
       default: {
         return <p>页面不存在</p>

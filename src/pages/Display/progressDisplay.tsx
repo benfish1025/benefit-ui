@@ -29,73 +29,60 @@ const columns = [
 const dataSource =  [
   {
     key: '1',
-    attribute: 'btnType',
-    description: '不同样式风格的按钮',
-    type: `'none' | 'white' | 'ghost' | 'success' | 'primary' | 'error'| 'link' | 'default'`,
-    default: `'default'`,
+    attribute: 'percent',
+    description: '进度条比率',
+    type: `number`,
+    default: `0`,
   },
   {
     key: '2',
-    attribute: 'size',
-    description: '按钮获得尺寸的方式',
-    type: `'tiny' | 'middle' | 'full'`,
-    default: `'middle'`,
+    attribute: 'type',
+    description: '进度条样式',
+    type: `'line' | 'circle'`,
+    default: `'line'`,
   },
   {
     key: '3',
-    attribute: 'isLoading',
-    description: '是否为加载状态',
+    attribute: 'showText',
+    description: '是否显示比率文字',
     type: 'boolean',
     default: 'false',
   },
   {
     key: '4',
-    attribute: 'disabled',
-    description: '是否为禁用状态',
+    attribute: 'showAnimation',
+    description: '比率不为100%时,是否显示加载动画',
     type: 'boolean',
     default: 'false',
   },
   {
     key: '5',
-    attribute: 'href',
-    description: '链接按钮的地址',
+    attribute: 'color',
+    description: '自定义进度条颜色',
     type: 'string',
-    default: '——',
-  },
-  {
-    key: '6',
-    attribute: 'onClick等原生属性',
-    description: '点击按钮时的回调',
-    type: 'React.MouseEventHandler',
-    default: '——',
-  },
-  {
-    key: '7',
-    attribute: 'className',
-    description: '自定义 Button 类名',
-    type: 'string',
-    default: '——',
-  },
-  {
-    key: '8',
-    attribute: 'style',
-    description: '自定义 Button 样式',
-    type: 'React.CSSProperties',
-    default: '——',
+    default: '#1cb0f6(蓝色)',
   }
 ]
+const Code1 = `<Progress percent={rate}/>
+`
+const Code2 = `<Progress showText={true} percent={rate}/>
+`
+const Code3 = `<Progress color={'#ff9600'} showText={true} percent={rate}/>
+
+<Progress color={'#ff4b4b'} showText={true} percent={rate}/>
+
+<Progress color={'#89e219'} showText={true} percent={rate}/>
+
+<Progress color={'#9069cd'} showText={true} percent={rate}/>
+`
+const Code4 = `<Progress color={'#ff9600'} showText={true} showAnimation={true} percent={rate}/>
+
+`
+const Code5 = `<Progress color={'#9069cd'} showText={true} type={"circle"} percent={rate}/>
+`
 const ProgressDisplay = () => {
 
-  const Code1 = `
-`
-  const Code2 = `
-`
-  const Code3 = `
-`
-  const Code4 = `
-`
-  const Code5 = `
-`
+
   const [rate, setRate] = useState(30)
   const handleReduce = () => {
     setRate(rate - 10)
@@ -131,7 +118,7 @@ const ProgressDisplay = () => {
           <Card
               divider={'文字提示'}
               explain={'显示百分比的文字提示。'}
-              code={Code1}
+              code={Code2}
           >
             <div className="flex-column-wrapper">
               <div className="padding-bottom-small">
@@ -148,7 +135,7 @@ const ProgressDisplay = () => {
           <Card
               divider={'自定义颜色'}
               explain={'采用用户自定义颜色。'}
-              code={Code1}
+              code={Code3}
           >
             <div className="flex-column-wrapper">
               <div className="padding-bottom-small">
@@ -174,7 +161,7 @@ const ProgressDisplay = () => {
           <Card
               divider={'动画'}
               explain={'使用动画显示进度条运行中的状态。'}
-              code={Code1}
+              code={Code4}
           >
             <div className="flex-column-wrapper">
               <div className="padding-bottom-small">
@@ -192,7 +179,7 @@ const ProgressDisplay = () => {
           <Card
               divider={'圆形'}
               explain={'圆形的进度条。'}
-              code={Code2}
+              code={Code5}
           >
             <div className="flex-column-wrapper">
               <div className="padding-bottom-small">

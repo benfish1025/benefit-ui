@@ -4,14 +4,14 @@ import HomeSection from './homeSection'
 import HomeFooter from './homeFooter'
 import {ReactComponent as Logo} from '../benefit-ui.svg'
 import {ReactComponent as GitHub} from './svg/Gmail.svg'
-
+import ScrollToTop from "./scrollToTOP";
 import {
   Redirect,
   BrowserRouter as Router,
-  Switch,
   NavLink,
     Link,
-  Route} from 'react-router-dom'
+  Route,
+useLocation} from 'react-router-dom'
 import ComponentsLayout from "./componentsLayout";
 
 const HomeLayout = () => {
@@ -47,17 +47,24 @@ const HomeLayout = () => {
           </div>
 
         </div>
-        <div className="hero-route-wrapper">
+
+          <ScrollToTop>
           <Route exact={true} path={'/'}>
-            <HomeBackground/>
-            <HomeSection/>
-            <HomeFooter/>
+            <div className="hero-route-wrapper">
+              <div className="hero-route-wrapper--scroll">
+                <HomeBackground/>
+                <HomeSection/>
+                <HomeFooter/>
+              </div>
+
+            </div>
           </Route>
           <Route path={'/components'}>
-            <Redirect to={'/components/tabs'}/>
+            <Redirect to={'/components/start'}/>
             <ComponentsLayout/>
           </Route>
-        </div>
+          </ScrollToTop>
+
       </Router>
       </>
   )

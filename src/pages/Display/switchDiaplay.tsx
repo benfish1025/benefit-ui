@@ -2,77 +2,116 @@ import React from 'react'
 import Card from '../../components/Card/card'
 import Table from "../../components/Table/table"
 import Switch from "../../components/Switch/switch";
+const columns = [
+  {
+    title: '参数',
+    dataIndex: 'Attribute',
+    key: 'Attribute',
 
+  },
+  {
+    title: '说明',
+    dataIndex: 'Description',
+    key: 'Description'
+  },
+  {
+    title: '类型',
+    dataIndex: 'Type',
+    key: 'Type'
+  },{
+    title: '默认值',
+    dataIndex: 'Default',
+    key: 'Default'
+  }
+];
+const dataSource =  [
+  {
+    key: '1',
+    attribute: 'defaultValue',
+    description: '非受控状态下活动值',
+    type: `boolean`,
+    default: `false`,
+  },
+  {
+    key: '2',
+    attribute: 'value',
+    description: '受控状态下活动值',
+    type: `boolean`,
+    default: `false`,
+  },
+  {
+    key: '3',
+    attribute: 'disabled',
+    description: '是否为禁用状态',
+    type: 'boolean',
+    default: 'false',
+  },
+  {
+    key: '4',
+    attribute: 'thin',
+    description: '窄模式',
+    type: 'boolean',
+    default: 'false',
+  },
+  {
+    key: '5',
+    attribute: 'onChange',
+    description: '值变化时的回调',
+    type: '(value: boolean) => void',
+    default: '——',
+  },
+  {
+    key: '6',
+    attribute: 'activeText',
+    description: '开关开启时的文字提示',
+    type: 'string',
+    default: '——',
+  },
+  {
+    key: '7',
+    attribute: 'inactiveText',
+    description: '开关关闭时的文字提示',
+    type: 'string',
+    default: '——',
+  },
+  {
+    key: '8',
+    attribute: 'switchStyle',
+    description: '开关样式风格',
+    type: `'slides' | 'button'`,
+    default: `'slides'`,
+  }
+]
+const Code1 = `<Switch 
+  defaultValue={true} 
+  activeText={'opened'} 
+  inactiveText={'closed'}
+/>
+`
+const Code2 = `<Switch 
+  defaultValue={true} 
+  activeText={'opened'} 
+  inactiveText={'closed'}
+/>
+`
+const Code3 = `<Switch disabled={true}/>
+`
+const Code4 = `<Switch 
+  defaultValue={true} 
+  thin={true}
+/>
+
+<Switch defaultValue={true}/>
+`
+const Code5 = `<Switch 
+  inactiveText={'关注'} 
+  activeText={'已关注'} 
+  defaultValue={true} 
+  switchStyle={"button"}
+/>
+`
 const SwitchDisplay = () => {
-  const columns = [
-    {
-      title: '参数',
-      dataIndex: 'Attribute',
-      key: 'Attribute',
 
-    },
-    {
-      title: '说明',
-      dataIndex: 'Description',
-      key: 'Description'
-    },
-    {
-      title: '类型',
-      dataIndex: 'Type',
-      key: 'Type'
-    },{
-      title: '默认值',
-      dataIndex: 'Default',
-      key: 'Default'
-    }
-  ];
-  const dataSource =  [
-    {
-      key: '1',
-      attribute: 'defaultValue',
-      description: '非受控状态下活动值',
-      type: `boolean`,
-      default: `false`,
-    },
-    {
-      key: '2',
-      attribute: 'value',
-      description: '受控状态下活动值',
-      type: `boolean`,
-      default: `false`,
-    },
-    {
-      key: '3',
-      attribute: 'disabled',
-      description: '是否为禁用状态',
-      type: 'boolean',
-      default: 'false',
-    },
-    {
-      key: '4',
-      attribute: 'thin',
-      description: '窄模式',
-      type: 'boolean',
-      default: 'false',
-    },
-    {
-      key: '5',
-      attribute: 'onChange',
-      description: '值变化时的回调',
-      type: '(value: boolean) => void',
-      default: '——',
-    }
-  ]
-  const Code1 = `
-`
-  const Code2 = `
-`
-  const Code3 = `
-`
-  const Code4 = `
-`
-  const Code5 = `
-`
   return (
       <div className={'display'}>
         <h2 className={'display-tittle'}>Switch 按钮</h2>
@@ -102,7 +141,7 @@ const SwitchDisplay = () => {
           <Card
               divider={'禁用状态'}
               explain={'设置滑块的禁用状态'}
-              code={Code2}
+              code={Code3}
           >
             <div className="margin-right-small">
               <Switch disabled={true}/>
@@ -115,7 +154,7 @@ const SwitchDisplay = () => {
           <Card
               divider={'大小'}
               explain={'链接样式的按钮。链接行为需要指定目标地址。'}
-              code={Code3}
+              code={Code4}
           >
             <div className="margin-right-small">
               <Switch defaultValue={true} thin={true}/>
@@ -127,7 +166,7 @@ const SwitchDisplay = () => {
           <Card
               divider={'样式'}
               explain={'类似按钮的开关样式。'}
-              code={Code3}
+              code={Code5}
           >
             <Switch inactiveText={'关注'} activeText={'已关注'} defaultValue={true} switchStyle={"button"}/>
           </Card>

@@ -8,7 +8,7 @@ const HomeBackground = () => {
           <ColorLogo/>
         </div>
         <div className={'home-background__slogan'}>
-          <p>基于React17构建，支持TS类型系统，可爱灵活强大，仿多邻国风格的组件库</p>
+          <p>基于React17构建，支持TS类型系统，可爱灵活强大，多邻国风格的组件库</p>
         </div>
         <div className="home-background__background">
           <Background/>

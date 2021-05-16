@@ -1,6 +1,12 @@
 .loves-container {
   display: flex;
   align-items: center;
+  &__tip {
+    height: 1.6rem;
+    line-height: 1.5rem;
+    font-size: 1.4rem;
+    color: #777777;
+  }
 }
 .love {
   display: inline-block;

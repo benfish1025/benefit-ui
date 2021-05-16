@@ -220,12 +220,12 @@ sup { top: -.5em; }
 // Links
 
 a {
-  color: $link-color;
-  text-decoration: $link-decoration;
+  color: inherit;
+  text-decoration: none;
 
   &:hover {
-    color: $link-hover-color;
-    text-decoration: $link-hover-decoration;
+    color: inherit;
+    text-decoration: none;
   }
 }
 
@@ -339,7 +339,7 @@ th {
 
 label {
   display: inline-block; // 1
-  margin-bottom: .5rem;
+
 }
 
 // Remove the default `border-radius` that macOS Chrome adds.

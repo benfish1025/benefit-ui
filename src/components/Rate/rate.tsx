@@ -97,7 +97,7 @@ const Rate: React.FC<RateProps> = (props) => {
     return (
         <div className={'loves-container'} onMouseLeave={handleMouseLeave}>
           { renderLoves() }
-          <span>{tip}</span>
+          <span className={'loves-container__tip'}>{tip}</span>
         </div>
     )
   }

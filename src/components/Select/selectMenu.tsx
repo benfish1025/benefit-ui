@@ -43,14 +43,16 @@ const SelectMenu: React.FC<SelectMenuProps> = (props) => {
             })
             return (
                 <li key={index} onClick={option.disabled ? undefined : (e) => handleSelect(e, option)} className={classes}>
-                  {option.value}
+                  {option.label}
                   {option.children &&
                   <span className={'cascade-icon'}>
                     <ReactComponent/>
                   </span>
                   }
-                  <Transition in={((option.value === currentValue.value &&
-                      option.children && orderValue[level] === option.value) || (!multiple && orderValue[level] === option.value && orderValue.length > level + 1))} timeout={400} animation="zoom-in-top">
+                  <Transition in={((option.value === currentValue.value
+                      && option.children
+                      && orderValue[level] === option.value)
+                      || (!multiple && orderValue[level] === option.value && orderValue.length > level + 1))} timeout={400} animation="zoom-in-top">
                   <SelectMenu
                       level={level + 1}
                       options={option.children}

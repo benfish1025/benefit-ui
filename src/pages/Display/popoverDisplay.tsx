@@ -56,12 +56,67 @@ const dataSource =  [
   },
   {
     key: '4',
-    attribute: 'dark',
-    description: '启用黑色模式',
+    attribute: 'color',
+    description: '自定义颜色',
+    type: 'string',
+    default: '——',
+  },
+  {
+    key: '5',
+    attribute: 'showAnimation',
+    description: '是否显示弹出动画',
     type: 'boolean',
     default: 'false',
   }
 ]
+const Code1 = `<Popover content={'采集的动作'}>
+    <span className={'pop-anchor'}>采采</span>
+  </Popover>
+  <Popover content={'苍耳，可食用'}>
+    <span className={'pop-anchor'}>卷耳</span>
+  </Popover>，不盈顷筐。嗟我怀人，<Popover content={'放置'}>
+  <span className={'pop-anchor'}>寘</span>
+</Popover>彼<Popover content={'大路'}>
+  <span className={'pop-anchor'}>周行</span>
+</Popover>。
+`
+const Code2 = `<div className="margin-right-large">
+  <Popover content={'Top!'}>
+    <span className={'pop-anchor'}>上</span>
+  </Popover>
+</div>
+<div className="margin-right-large">
+  <Popover zIndex={50} position={'right'} content={'Right!'}>
+    <span className={'pop-anchor'}>右</span>
+  </Popover>
+</div>
+<div className="margin-right-large">
+  <Popover position={'bottom'} content={'Bottom!'}>
+    <span className={'pop-anchor'}>下</span>
+  </Popover>
+</div>
+<Popover position={'left'} content={'Left!'}>
+  <span className={'pop-anchor'}>左</span>
+</Popover>
+`
+const Code3 = `<Popover bgColor={'#ffffff'} content={cardElement}>
+  <DemondItemSvg/>
+</Popover>
+`
+const Code4 = `<Popover
+    content={'不归我管了！'}
+    visible={visible}
+    dark={true}
+>
+  <Button
+      onClick={handleClick}
+      size={'tiny'}
+  >
+    受控
+  </Button>
+</Popover>
+`
+
 const PopoverDisplay = () => {
   const [visible, setVisible] = useState(false)
   const handleClick = () => {
@@ -79,16 +134,7 @@ const PopoverDisplay = () => {
         </div>
       </div>
   )
-  const Code1 = `
-`
-  const Code2 = `
-`
-  const Code3 = `
-`
-  const Code4 = `
-`
-  const Code5 = `
-`
+
   return (
       <div className={'display'}>
         <h2 className={'display-tittle'}>Popover 气泡卡片</h2>
@@ -126,7 +172,7 @@ const PopoverDisplay = () => {
               </Popover>
             </div>
             <div className="margin-right-large">
-              <Popover position={'right'} content={'Right!'}>
+              <Popover zIndex={50} position={'right'} content={'Right!'}>
                 <span className={'pop-anchor'}>右</span>
               </Popover>
             </div>
@@ -171,7 +217,7 @@ const PopoverDisplay = () => {
           <Card
               divider={'受控'}
               explain={'卡片的弹出交由外部状态管理。'}
-              code={Code3}
+              code={Code4}
           >
             <Popover
                 content={'不归我管了！'}

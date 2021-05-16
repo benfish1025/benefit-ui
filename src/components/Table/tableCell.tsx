@@ -1,9 +1,8 @@
 import React, {useContext, useEffect, useRef, useState} from 'react'
 import {TableContext} from "./table";
 import ClassNames from 'classnames'
-import Input from "../Input/input";
 import useClickOutside from '../../hooks/useClickOutside'
-import Popover from '../Popover/popover';
+
 
 interface TableCellProps {
   rowKey: string,
@@ -44,7 +43,7 @@ const TableCell: React.FC<TableCellProps> = (props) => {
       context.onClickCell('', '')
       setTip(true)
     }
-  
+
   })
 const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     switch(e.code) {
@@ -59,7 +58,7 @@ const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
 }
 
   return (
-    
+
       <td {...helpClickEvent} className={classes} key={key}>
         {context.inputColumn === cellKey && context.inputRow === rowKey
         ? <input
@@ -69,10 +68,10 @@ const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
           className={'table-input'}/>
         : children}
       </td>
-    
+
   )
-    
-      
+
+
 }
 
 export default TableCell

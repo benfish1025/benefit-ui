@@ -7,7 +7,7 @@ import {ReactComponent as ForkSvg} from '../Tag/fork.svg'
 
 export interface TabItemProps {
   children?: string,
-  index?: number,
+  index: number,
   tabKey?: string
 }
 
@@ -29,7 +29,8 @@ const TabItem: React.FC<TabItemProps> = (props) => {
   }, [])
   const classes = ClassNames('b-tabs-item', {
     'is-active': index === context.index,
-    'is-card': context.type === 'card'
+    'is-card': context.type === 'card',
+    'auto-width': context.type !== 'card'
   })
   const clickHandle = (e: React.MouseEvent) => {
     if (context.onSelect && index !== undefined) {
@@ -39,7 +40,7 @@ const TabItem: React.FC<TabItemProps> = (props) => {
   const handleEdit = (e: React.MouseEvent) => {
     e.stopPropagation()
     if (context.onEdit && tabKey !== undefined) {
-      context.onEdit(tabKey)
+      context.onEdit(tabKey, index)
     }
   }
   return (

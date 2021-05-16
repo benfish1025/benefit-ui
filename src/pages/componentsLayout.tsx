@@ -1,11 +1,5 @@
 import React from 'react'
-import Menu from "../components/Menu/menu"
-import MenuItem from "../components/Menu/menuItem"
-import SubMenu from "../components/Menu/subMenu";
 import {NavLink, Route} from "react-router-dom";
-import Nav from "../components/Nav/nav";
-import Card from '../components/Card/card'
-import ButtonDisplay from "./Display/buttonDisplay";
 import RouteTrans from './routeTrans'
 
 const ComponentsLayout = () => {
@@ -27,12 +21,6 @@ const ComponentsLayout = () => {
                 色彩搭配
               </li>
             </NavLink>
-            <NavLink activeClassName={'sidebar-item--active'}
-                     to={'/components/zindex'}>
-              <li className={'sidebar-item'}>
-                层级规范
-              </li>
-            </NavLink>
             <li className={'sidebar-item-tittle'}>
               组件
             </li>
@@ -45,12 +33,7 @@ const ComponentsLayout = () => {
                 Button 按钮
               </li>
             </NavLink>
-            <NavLink activeClassName={'sidebar-item--active'}
-                     to={'/components/grid'}>
-              <li className={'sidebar-item sidebar-item--low'}>
-                Grid 栅格
-              </li>
-            </NavLink>
+
             <li className={'sidebar-item-sign'}>
               Navigation
             </li>
@@ -117,6 +100,12 @@ const ComponentsLayout = () => {
                 Switch 开关
               </li>
             </NavLink>
+            <NavLink activeClassName={'sidebar-item--active'}
+                     to={'/components/upload'}>
+              <li className={'sidebar-item sidebar-item--low'}>
+                Upload 上传
+              </li>
+            </NavLink>
             <li className={'sidebar-item-sign'}>
               Data
             </li>
@@ -133,9 +122,9 @@ const ComponentsLayout = () => {
               </li>
             </NavLink>
             <NavLink activeClassName={'sidebar-item--active'}
-                     to={'/components/slides'}>
+                     to={'/components/carousel'}>
               <li className={'sidebar-item sidebar-item--low'}>
-                Slides 轮播
+                Carousel 走马灯
               </li>
             </NavLink>
             <NavLink activeClassName={'sidebar-item--active'}
@@ -179,7 +168,7 @@ const ComponentsLayout = () => {
             </NavLink>
           </ul>
         </div>
-        <div className={'components-layout__content'}>
+        <div id={'scroll-anchor'} className={'components-layout__content'}>
           <Route path={'/components/:floor'}>
             <RouteTrans/>
           </Route>

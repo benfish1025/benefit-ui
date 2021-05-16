@@ -4,168 +4,178 @@ import Table from "../../components/Table/table"
 import Input from '../../components/Input/input'
 import {ReactComponent as SearchSvg} from '../svg/search.svg'
 import Button from "../../components/Button/button";
+const columns = [
+  {
+    title: '参数',
+    dataIndex: 'Attribute',
+    key: 'Attribute',
 
+  },
+  {
+    title: '说明',
+    dataIndex: 'Description',
+    key: 'Description'
+  },
+  {
+    title: '类型',
+    dataIndex: 'Type',
+    key: 'Type'
+  },{
+    title: '默认值',
+    dataIndex: 'Default',
+    key: 'Default'
+  }
+];
+const dataSource =  [
+  {
+    key: '1',
+    attribute: 'defaultValue',
+    description: '非受控的输入框内容',
+    type: `string`,
+    default: `——`
+  },
+  {
+    key: '2',
+    attribute: 'value',
+    description: '受控的输入框内容',
+    type: `string`,
+    default: `——`,
+  },
+  {
+    key: '3',
+    attribute: 'placeholder',
+    description: '输入框占位符',
+    type: 'string',
+    default: '——',
+  },
+  {
+    key: '4',
+    attribute: 'disabled',
+    description: '是否为禁用状态',
+    type: 'boolean',
+    default: 'false',
+  },
+  {
+    key: '5',
+    attribute: 'error',
+    description: '显示错误状态',
+    type: 'boolean',
+    default: 'false',
+  },
+  {
+    key: '6',
+    attribute: 'thin',
+    description: '窄模式',
+    type: 'boolean',
+    default: 'false',
+  },
+  {
+    key: '7',
+    attribute: 'readonly',
+    description: '是否为只读状态',
+    type: 'boolean',
+    default: 'false',
+  },
+  {
+    key: '8',
+    attribute: 'onChange',
+    description: '输入内容变化时的回调',
+    type: 'React.ChangeEventHandler',
+    default: '——',
+  },
+  {
+    key: '9',
+    attribute: 'onKeyDown',
+    description: '特定键响应后的回调',
+    type: 'React.KeyboardEventHandler',
+    default: '——',
+  },
+  {
+    key: '10',
+    attribute: 'onPressEnter',
+    description: 'Enter 键响应后的回调',
+    type: 'React.KeyboardEventHandler',
+    default: '——',
+  },
+  {
+    key: '11',
+    attribute: 'onFocus',
+    description: '获得焦点后的回调',
+    type: 'React.FocusEventHandler',
+    default: '——',
+  },
+  {
+    key: '12',
+    attribute: 'onBlur',
+    description: '失去焦点后的回调',
+    type: 'React.FocusEventHandler',
+    default: '——',
+  },
+  {
+    key: '13',
+    attribute: 'addonBefore',
+    description: '前缀',
+    type: 'string | ReactElement',
+    default: '——',
+  },
+  {
+    key: '14',
+    attribute: 'addonAfter',
+    description: '后缀',
+    type: 'string | ReactElement',
+    default: '——',
+  },
+  {
+    key: '15',
+    attribute: 'prefix',
+    description: '前置',
+    type: 'string | ReactElement',
+    default: '——',
+  },
+  {
+    key: '16',
+    attribute: 'suffix',
+    description: '后置',
+    type: 'string | ReactElement',
+    default: '——',
+  },
+  {
+    key: '17',
+    attribute: 'style',
+    description: '自定义 Button 样式',
+    type: 'React.CSSProperties',
+    default: '——',
+  },
+  {
+    key: '18',
+    attribute: 'className',
+    description: '自定义 Button 类名',
+    type: 'string',
+    default: '——',
+  },
+]
+const Code1 = `<Input placeholder={'请输入内容'}/>
+`
+const Code2 = `<Input placeholder={'Error'} error={true}/>
+
+<Input placeholder={'disabled'} disabled={true}/>       
+`
+const Code3 = `<Input placeholder={'google'} addonBefore={'http://'} addonAfter={'.com'}/>
+
+<Input placeholder={'当太空人'} addonBefore={'我的梦想是'}/>
+`
+const Code4 = `<Input placeholder={'搜索'} addonAfter={searchSvg}/>
+`
+const Code5 = `<Input placeholder={'输入关键字'} addonAfter={searchButton}/>
+`
+const Code6 = `<Input placeholder={'mini'} inputSize={"mini"}/>
+
+<Input placeholder={'thin'} inputSize={"thin"}/>
+
+<Input placeholder={'strong'}/>
+`
 const InputDisplay = () => {
-  const columns = [
-    {
-      title: '参数',
-      dataIndex: 'Attribute',
-      key: 'Attribute',
 
-    },
-    {
-      title: '说明',
-      dataIndex: 'Description',
-      key: 'Description'
-    },
-    {
-      title: '类型',
-      dataIndex: 'Type',
-      key: 'Type'
-    },{
-      title: '默认值',
-      dataIndex: 'Default',
-      key: 'Default'
-    }
-  ];
-  const dataSource =  [
-    {
-      key: '1',
-      attribute: 'defaultValue',
-      description: '非受控的输入框内容',
-      type: `string`,
-      default: `——`
-    },
-    {
-      key: '2',
-      attribute: 'value',
-      description: '受控的输入框内容',
-      type: `string`,
-      default: `——`,
-    },
-    {
-      key: '3',
-      attribute: 'placeholder',
-      description: '输入框占位符',
-      type: 'string',
-      default: '——',
-    },
-    {
-      key: '4',
-      attribute: 'disabled',
-      description: '是否为禁用状态',
-      type: 'boolean',
-      default: 'false',
-    },
-    {
-      key: '5',
-      attribute: 'error',
-      description: '显示错误状态',
-      type: 'boolean',
-      default: 'false',
-    },
-    {
-      key: '6',
-      attribute: 'thin',
-      description: '窄模式',
-      type: 'boolean',
-      default: 'false',
-    },
-    {
-      key: '7',
-      attribute: 'readonly',
-      description: '是否为只读状态',
-      type: 'boolean',
-      default: 'false',
-    },
-    {
-      key: '8',
-      attribute: 'onChange',
-      description: '输入内容变化时的回调',
-      type: 'React.ChangeEventHandler',
-      default: '——',
-    },
-    {
-      key: '9',
-      attribute: 'onKeyDown',
-      description: '特定键响应后的回调',
-      type: 'React.KeyboardEventHandler',
-      default: '——',
-    },
-    {
-      key: '10',
-      attribute: 'onPressEnter',
-      description: 'Enter 键响应后的回调',
-      type: 'React.KeyboardEventHandler',
-      default: '——',
-    },
-    {
-      key: '11',
-      attribute: 'onFocus',
-      description: '获得焦点后的回调',
-      type: 'React.FocusEventHandler',
-      default: '——',
-    },
-    {
-      key: '12',
-      attribute: 'onBlur',
-      description: '失去焦点后的回调',
-      type: 'React.FocusEventHandler',
-      default: '——',
-    },
-    {
-      key: '13',
-      attribute: 'addonBefore',
-      description: '前缀',
-      type: 'string | ReactElement',
-      default: '——',
-    },
-    {
-      key: '14',
-      attribute: 'addonAfter',
-      description: '后缀',
-      type: 'string | ReactElement',
-      default: '——',
-    },
-    {
-      key: '15',
-      attribute: 'prefix',
-      description: '前置',
-      type: 'string | ReactElement',
-      default: '——',
-    },
-    {
-      key: '16',
-      attribute: 'suffix',
-      description: '后置',
-      type: 'string | ReactElement',
-      default: '——',
-    },
-    {
-      key: '17',
-      attribute: 'style',
-      description: '自定义 Button 样式',
-      type: 'React.CSSProperties',
-      default: '——',
-    },
-    {
-      key: '18',
-      attribute: 'className',
-      description: '自定义 Button 类名',
-      type: 'string',
-      default: '——',
-    },
-  ]
-  const Code1 = `
-`
-  const Code2 = `
-`
-  const Code3 = `
-`
-  const Code4 = `
-`
-  const Code5 = `
-`
   const searchSvg = (
     <div style={{margin: '0 20px'}}>
       <SearchSvg/>
@@ -186,7 +196,7 @@ const InputDisplay = () => {
               code={Code1}
           >
             <div className="flex-column-wrapper">
-              <Input placeholder={'说点什么？除了我的身材 :）'}/>
+              <Input placeholder={'请输入内容'}/>
             </div>
           </Card>
         </div>
@@ -194,7 +204,7 @@ const InputDisplay = () => {
           <Card
               divider={'状态'}
               explain={'输入框有两种非正常态，错误和禁用。'}
-              code={Code5}
+              code={Code2}
           >
             <div className="flex-column-wrapper">
               <div className={'padding-bottom-small'}>
@@ -208,7 +218,7 @@ const InputDisplay = () => {
           <Card
               divider={'前置/后置文本'}
               explain={'在输入框前后设置文本'}
-              code={Code2}
+              code={Code3}
           >
             <div className="flex-column-wrapper">
               <div className={'padding-bottom-small'}>
@@ -222,7 +232,7 @@ const InputDisplay = () => {
           <Card
               divider={'前置/后置图标'}
               explain={'在输入框前后设置图标。'}
-              code={Code3}
+              code={Code4}
           >
             <div className="flex-column-wrapper">
               <Input placeholder={'搜索'} addonAfter={searchSvg}/>
@@ -233,7 +243,7 @@ const InputDisplay = () => {
           <Card
               divider={'前置/后置组件'}
               explain={'在输入框前后设置其他组件。'}
-              code={Code4}
+              code={Code5}
           >
             <div className="flex-column-wrapper">
               <Input placeholder={'输入关键字'} addonAfter={searchButton}/>
@@ -244,7 +254,7 @@ const InputDisplay = () => {
           <Card
               divider={'输入框大小'}
               explain={'输入框有两种大小供选择，宽型和窄型。'}
-              code={Code5}
+              code={Code6}
           >
             <div className="flex-column-wrapper">
               <div className={'padding-bottom-small'}>

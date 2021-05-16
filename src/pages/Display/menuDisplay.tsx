@@ -106,23 +106,23 @@ const MenuDisplay = () => {
   const dataSource3 =  [
     {
       key: '1',
-      attribute: 'index',
-      description: '下拉菜单项索引',
+      attribute: 'tabKey',
+      description: '唯一键',
       type: `string`,
       default: `——`,
     },
     {
       key: '2',
-      attribute: 'title',
-      description: '下拉菜单选项的名称',
+      attribute: 'tab',
+      description: '卡片标签的名称',
       type: `string`,
       default: `——`,
     },
     {
       key: '3',
-      attribute: 'className',
-      description: '自定义 SubMenu 类名',
-      type: 'string',
+      attribute: 'index',
+      description: '卡片索引',
+      type: 'number',
       default: '——',
     }
   ]
