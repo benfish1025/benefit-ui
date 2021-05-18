@@ -13,7 +13,9 @@ type DataSourceType<T = {}> = T & DataSourceObject
 interface AutoCompleteProps extends Omit<InputProps, 'onSelect'>{
   fetchSuggestions: (str: string) => DataSourceType[] | Promise<DataSourceType[]>,
   onSelect?: (item: DataSourceType) => void,
-  renderOptions?: (item: DataSourceType) => ReactElement
+  renderOptions?: (item: DataSourceType) => ReactElement,
+  zIndex?: number
+
 }
 
 const AutoComplete = (props: AutoCompleteProps) => {
@@ -22,6 +24,7 @@ const AutoComplete = (props: AutoCompleteProps) => {
     onSelect,
     value,
     renderOptions,
+    zIndex,
       ...restProps
   } = props
   const [ inputValue, setInputValue ] = useState(value as string)
@@ -117,6 +120,9 @@ const AutoComplete = (props: AutoCompleteProps) => {
   const renderTemplate = (item: DataSourceType) => {
     return renderOptions ? renderOptions(item) : highLightInputValue(item.value)
   }
+  const zIndexStyle = {
+    zIndex: zIndex
+  }
   const renderDropDown = () => {
     return(
         <ul className={'suggestions-wrapper'}>
@@ -144,7 +150,7 @@ const AutoComplete = (props: AutoCompleteProps) => {
     )
   }
   return (
-      <div className={'b-autocomplete'} ref={componentRef}>
+      <div style={zIndexStyle} className={'b-autocomplete'} ref={componentRef}>
         <Input
           value={inputValue}
           onChange={handleChange}

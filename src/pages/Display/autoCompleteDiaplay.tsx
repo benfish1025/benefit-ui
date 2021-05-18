@@ -84,7 +84,7 @@ const AutoCompleteDisplay = () => {
     return fetch('https://api.github.com/search/users?q='+ query)
         .then(res => res.json())
         .then(({ items }) => {
-          return items.slice(0, 10).map((item: any) => ({ value: item.login, ...item}))
+          return items.slice(0, 6).map((item: any) => ({ value: item.login, ...item}))
         })
   }
   const handleFetch = (query: string) => {
@@ -105,6 +105,7 @@ const AutoCompleteDisplay = () => {
           >
             <div className="flex-column-wrapper">
             <AutoComplete
+                zIndex={100}
                 defaultValue={'一朝春夏改，隔夜鸟花迁'}
                 placeholder={'尝试键入月、夏、花、日、鸟等字'}
                 fetchSuggestions={handleFetch}

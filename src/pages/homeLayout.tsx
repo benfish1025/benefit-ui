@@ -1,10 +1,13 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import HomeBackground from './homeBackground'
+import HomeBackgroundImage from "./homeBackgroundImage";
+import HomeBackgroundLogo from "./homeBackgroundLogo";
 import HomeSection from './homeSection'
 import HomeFooter from './homeFooter'
 import {ReactComponent as Logo} from '../benefit-ui.svg'
 import {ReactComponent as GitHub} from './svg/Gmail.svg'
 import ScrollToTop from "./scrollToTOP";
+import Loading from "../components/Loading/loading";
 import {
   Redirect,
   BrowserRouter as Router,
@@ -15,6 +18,16 @@ useLocation} from 'react-router-dom'
 import ComponentsLayout from "./componentsLayout";
 
 const HomeLayout = () => {
+  const [lazy, setLazy] = useState(false)
+  useEffect(() => {
+    let timer: NodeJS.Timeout
+    timer = setTimeout(() => {
+      setLazy(true)
+    },500)
+    return () => {
+      clearTimeout(timer)
+    }
+  },[])
   return (
       <>
       <Router>
@@ -51,8 +64,13 @@ const HomeLayout = () => {
           <ScrollToTop>
           <Route exact={true} path={'/'}>
             <div className="hero-route-wrapper">
-              <div className="hero-route-wrapper--scroll">
-                <HomeBackground/>
+             <div className="hero-route-wrapper--scroll">
+                <HomeBackground>
+                    <HomeBackgroundLogo/>
+                  {lazy ? <HomeBackgroundImage/> : <Loading color={'#e5e5e5'} loading={true}><div className={'home-background__background'}>
+
+                  </div></Loading>}
+                </HomeBackground>
                 <HomeSection/>
                 <HomeFooter/>
               </div>
