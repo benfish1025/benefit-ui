@@ -78,8 +78,7 @@ const AutoCompleteDisplay = () => {
 
 <AutoComplete placeholder={'尝试键入字母'} fetchSuggestions={handleFetchData}/>
 `
-  const lakers = ['端午临中夏，时清日复长', '别院深深夏席清，石榴开遍透帘明', '风吹古木晴天雨，月照平沙夏夜霜', '一朝春夏改，隔夜鸟花迁', '汉苑残花别，吴江盛夏来',
-    '水积春塘晚，阴交夏木繁', '征行浑与求名背，九月中旬往夏州', '忽如一夜春风来，千树万树梨花开', '晓看红湿处，花重锦官城', '待到重阳日，还来就菊花', '桃花潭水深千尺，不及汪伦送我情', '风住尘香花已尽，日晚倦梳头']
+  const lakers = ['黄金', '黄金别墅', '黄金增值']
   const handleFetchData = (query: string) => {
     return fetch('https://api.github.com/search/users?q='+ query)
         .then(res => res.json())

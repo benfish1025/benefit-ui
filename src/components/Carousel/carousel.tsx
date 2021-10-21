@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from "react";
 import ClassNames from 'classnames'
-import { ReactComponent as RightSvg} from '../Select/cascade-gray.svg'
+
 interface CarouselProps {
   autoplay?: boolean,
   interval?: number,

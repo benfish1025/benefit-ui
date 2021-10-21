@@ -5,7 +5,8 @@ export interface TabPaneProps {
   children?: React.ReactNode,
   tabKey?: string,
   tab: string,
-  index?: number
+  index?: number,
+  showExtra?: boolean
 }
 
 const TabPane: React.FC<TabPaneProps> = (props) => {

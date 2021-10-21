@@ -30,7 +30,7 @@ const TabItem: React.FC<TabItemProps> = (props) => {
   const classes = ClassNames('b-tabs-item', {
     'is-active': index === context.index,
     'is-card': context.type === 'card',
-    'auto-width': context.type !== 'card'
+    'auto-width': context.type === 'expand'
   })
   const clickHandle = (e: React.MouseEvent) => {
     if (context.onSelect && index !== undefined) {

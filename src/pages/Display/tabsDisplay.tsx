@@ -6,6 +6,7 @@ import TabPane, {TabPaneProps} from '../../components/Tabs/tabPane'
 import {ReactComponent as DemondSvg} from "../svg/demond.svg";
 import Button from "../../components/Button/button";
 import {nanoid} from 'nanoid'
+import ContentCard from '../../components/ContentCard/contentcard'
 const TabList: TabPaneProps[] = [{
   tab: '标签一',
   tabKey: '0',
@@ -185,8 +186,6 @@ const Code4 = `const handleClickButton = () => {
 
 <Button size={"tiny"} onClick={handleClickButton}>新增标签</Button>
 `
-const Code5 = `
-`
 const TabsDisplay = () => {
   const [editLIst, setEditLIst] = useState(TabList)
   const handleEdit = (key: string) => {
@@ -202,6 +201,10 @@ const TabsDisplay = () => {
       children: `标签内容${nanoid()}`
     }))
   }
+  const buttonElement = (<>
+  <Button size={'tiny'} btnType={'none'}>热门排序</Button> 
+  | <Button size={'tiny'} btnType={'none'}>时间排序</Button>
+  </>)
   const cardElement = (
       <div className="popover-inner-card">
         <div className="popover-inner-card__image">
@@ -214,6 +217,19 @@ const TabsDisplay = () => {
         </div>
       </div>
   )
+  
+  const contentCardElement = React.useMemo(() => {
+    const data = {
+      title: '欧元美元价格走势分析欧元美元价格走势分析欧元美元价格走势分析欧美元价格走势分析',
+      preview: '疫情的变化会影响短期高频经济活动和后续修复节奏，以及利率的走向；通胀数据数据对于减量疫情的变化会影响疫情的变化会影响短期高频经济活动和后续修复节奏，以及利率的走向；通胀数据数据对于减量疫情的变化会影响短期高频经走向；通胀数据数据对于减量疫情的变化会影响短期高频经...',
+      tags: ['美股', '美聯儲'],
+      viewCount: 1000,
+      author: 'AAA',
+      publishTime: 2012,
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png',
+    }
+    return <ContentCard data={data}/>
+  }, [])
   return (
       <div className={'display'}>
         <h2 className={'display-tittle'}>tabs 标签页</h2>
@@ -228,7 +244,7 @@ const TabsDisplay = () => {
               code={Code1}
           >
             <div style={{width: '450px'}}>
-              <Tabs>
+              <Tabs type={'expand'}>
                 <TabPane tab={'个人中心'}>{cardElement}</TabPane>
                 <TabPane tab={'课程专区'}>
                   <div style={{
@@ -273,7 +289,7 @@ const TabsDisplay = () => {
               code={Code2}
           >
             <div style={{width: '250px'}}>
-              <Tabs showBorder={true}>
+              <Tabs type={'expand'} showBorder={true}>
                 <TabPane tab={'关注者'}>
                   <div style={{
                     padding: "20px",
@@ -361,6 +377,37 @@ const TabsDisplay = () => {
                 </Tabs>
               </div>
               <Button size={"tiny"} onClick={handleClickButton}>新增标签</Button>
+            </div>
+          </Card>
+        </div>
+        <div className="display-card-container">
+          <Card
+              divider={'附加组件/按需显示'}
+              explain={'可插入导航栏插入附加组件，并设置按需显示。'}
+              code={Code1}
+          >
+            <div style={{width: '900px'}}>
+              <Tabs tabBarExtraContent={buttonElement}>
+                <TabPane tab={'原创'} showExtra={true}>
+                  {contentCardElement}
+                </TabPane>
+                <TabPane tab={'新闻快讯'} showExtra={false}>
+                  <div style={{
+                    padding: "20px",
+                    textAlign: 'center'
+                  }}>
+                    新闻快讯
+                  </div>
+                </TabPane>
+                <TabPane tab={'交易策略'} showExtra={false}>
+                  <div style={{
+                    padding: "20px",
+                    textAlign: 'center'
+                  }}>
+                    交易策略
+                  </div>
+                </TabPane>
+              </Tabs>
             </div>
           </Card>
         </div>

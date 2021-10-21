@@ -166,6 +166,12 @@ const ComponentsLayout = () => {
                 Loading 加载中
               </li>
             </NavLink>
+            <NavLink activeClassName={'sidebar-item--active'}
+                     to={'/components/test'}>
+              <li className={'sidebar-item sidebar-item--low'}>
+                test 組件測試
+              </li>
+            </NavLink>
           </ul>
         </div>
         <div id={'scroll-anchor'} className={'components-layout__content'}>

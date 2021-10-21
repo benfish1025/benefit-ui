@@ -9,23 +9,25 @@ interface TabsProps {
   defaultIndex?: number,
   onSelect?: (index: number) => void,
   showBorder?: boolean,
-  type?: 'default' | 'card',
+  type?: 'expand' | 'card' | 'compact',
   editable?: boolean,
-  onEdit?: (key: string) => void
+  onEdit?: (key: string) => void,
+  tabBarExtraContent?: React.ReactNode
 }
 interface ContextProps {
   onEdit?: (key: string, index:number) => void,
   onSelect?: (index: number, childWidth: number) => void,
   index?: number,
   childWidth?: number,
-  type?: 'default' | 'card',
+  type?: 'expand' | 'card' | 'compact',
   editable?: boolean
 }
 export const TabsContext = createContext<ContextProps>({index: 0})
 
 const Tabs: React.FC<TabsProps> = (props) => {
-  const {onEdit, editable, type = 'default', showBorder, onSelect, defaultIndex = 0, className, style, children} = props
+  const {onEdit, editable, type = 'compact', showBorder, onSelect, defaultIndex = 0, className, tabBarExtraContent, children} = props
   const childLength = React.Children.toArray(children).length
+  const childrenArray = React.Children.toArray(children) as React.FunctionComponentElement<TabPaneProps>[]
   const [currentIndex, setCurrentIndex] = useState(0)
   const preDefault = useRef(defaultIndex)
   useEffect(() => {
@@ -105,7 +107,8 @@ const Tabs: React.FC<TabsProps> = (props) => {
         <div className={wrapperClasses}>
           <ul className={classes} >
             {createChildrenTab()}
-            {type === 'default' && <div style={sliderStyle} className="b-tabs-slider"> </div>}
+            {type === 'expand' && <div style={sliderStyle} className="b-tabs-slider"> </div>}
+            {type === 'compact' && childrenArray[currentIndex].props.showExtra && <div className={'tab-bar-extra-wrapper'}>{tabBarExtraContent}</div>}
           </ul>
           {createChildrenPane()}
         </div>

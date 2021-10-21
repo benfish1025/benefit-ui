@@ -23,6 +23,7 @@ import StartDisplay from './Display/startDisplay'
 import ColorDisplay from './Display/colorDisplay'
 import CarouselDisplay from "./Display/carouselDisplay";
 import UploadDisplay from "./Display/uploadDisplay";
+import TestDisplay from "./Display/testDisplay";
 interface Iparams {
   floor: string
 }
@@ -101,6 +102,9 @@ const RouteTrans = () => {
       }
       case 'upload': {
         return <UploadDisplay/>
+      }
+      case 'test': {
+        return <TestDisplay/>
       }
       default: {
         return <p>页面不存在</p>
